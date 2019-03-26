@@ -35,3 +35,8 @@ a {
   margin: 2rem 0rem;
   color: var(--primary-color);
 }
+
+.heading-3 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+}
