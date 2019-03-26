@@ -6,4 +6,5 @@
 @import "./modules/components/_form.css";
 @import "./modules/pages/_account-list.css";
 @import "./modules/pages/_transactions.css";
+@import "./modules/pages/_profile.css";
 @import "./modules/layout/_footer.css";
