@@ -1,0 +1,22 @@
+nav {
+  border-bottom: 1px solid #144499;
+}
+
+.logo-container {
+  display: inline-block;
+  /* padding: 1rem; */
+}
+
+.logo {
+  /* margin: 0.5rem; */
+  font-size: 3.5rem;
+}
+
+.list,
+.list li {
+  display: inline-block;
+}
+
+.list li a {
+  padding: 1rem 1.3rem;
+}

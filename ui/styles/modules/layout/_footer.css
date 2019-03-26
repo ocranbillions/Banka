@@ -1,0 +1,23 @@
+footer {
+  height: 5rem;
+  background: var(--primary-color);
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.foot_contents {
+  display: flex;
+  width: 100%;
+  color: white;
+}
+
+.logo-white {
+  color: white;
+  font-size: 2.5rem;
+}
+
+footer p {
+  flex: 1;
+  text-align: center;
+  padding-top: 1rem;
+}

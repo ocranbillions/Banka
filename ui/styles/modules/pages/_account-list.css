@@ -1,0 +1,31 @@
+.side_nav {
+  width: 20%;
+  padding-top: 2rem;
+}
+
+.side_nav ul {
+  list-style-type: none;
+}
+.side_nav li a {
+  display: block;
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.account-list {
+  width: 80%;
+}
+
+.table_container th,
+.table_container td {
+  padding: 1.5rem 2.5rem;
+}
+
+table {
+  margin: 0 auto;
+}
+
+tr:nth-child(even) {
+  background: rgb(226, 221, 221);
+}
