@@ -40,6 +40,10 @@
   margin-bottom: 10rem;
 }
 
+.padding-top-small {
+  padding-top: 1.5rem;
+}
+
 .absolute-center {
   position: absolute;
   top: 50%;
