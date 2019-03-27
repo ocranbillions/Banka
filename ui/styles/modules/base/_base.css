@@ -30,7 +30,7 @@ a {
 }
 
 .heading-1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 300;
   text-align: center;
   margin: 2rem 0rem;
@@ -40,4 +40,23 @@ a {
 .heading-3 {
   color: var(--primary-color);
   font-size: 2.5rem;
+}
+
+.bg-green {
+  background: green;
+}
+
+.bg-red {
+  background: red;
+}
+
+.bg-orange {
+  background: orange;
+}
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }
