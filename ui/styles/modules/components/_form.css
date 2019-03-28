@@ -27,3 +27,10 @@ button {
   margin-right: auto;
   border: 1px dashed blue;
 }
+
+.form-radio input {
+  display: inline-block;
+  height: 1.3rem;
+  width: 1.3rem;
+  margin: 0.5rem;
+}
