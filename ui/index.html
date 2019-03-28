@@ -28,7 +28,7 @@
 		<section class="login-section">
 			<h1 class="heading-1">Secure Login</h1>
 			<div>
-				<form action="./pages/admin.accounts.html" class="login_form margin-bottom-small">
+				<form action="" class="login_form margin-bottom-small">
 					<div class="form__group">
 						<label for="email" class="form__label">Email</label>
 						<input type="email" class="form__input" placeholder="email" id="email">
@@ -38,7 +38,15 @@
 						<label for="password" class="form__label">Password</label>
 						<input type="password" class="form__input" placeholder="password" id="password">
 					</div>
-					<button type="submit" class="btn btn-blue">Login</button>
+
+
+					<div class="form__group form-radio">
+						Cashier<input type="radio" name="user" value="cashier" checked>
+						Client<input type="radio" name="user" value="client">
+						Admin<input type="radio" name="user" value="admin">
+					</div>
+
+					<button type="submit" class="btn btn-blue login-btn">Login</button>
 				</form>
 
 				<div class="align-center">
@@ -59,6 +67,11 @@
 			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
 		</div>
 	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<script src="./scripts/script.js"></script>
 </body>
 
 </html>
