@@ -1,0 +1,64 @@
+nav {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.logo-container {
+  display: inline-block;
+  /* padding: 1rem; */
+}
+
+.logo {
+  font-size: 3.5rem;
+}
+
+.nav-links a:hover {
+  color: white;
+  background: var(--primary-color);
+}
+
+.list,
+.list li {
+  display: inline-block;
+}
+
+.list li a {
+  display: block;
+  padding: 0.3rem 1.3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    text-align: center;
+  }
+  .logo-container {
+    display: block;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .float-right {
+    float: none;
+  }
+
+  .list,
+  .list li {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .list {
+    text-align: center;
+  }
+
+  .list li a {
+    padding: 0.3rem 0.5rem;
+  }
+
+  nav .btn {
+    margin-bottom: 1rem;
+    border: none;
+    display: block;
+  }
+}

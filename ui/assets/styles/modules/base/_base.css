@@ -1,0 +1,75 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+:root {
+  --primary-color: #144499;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: "Varela Round", sans-serif;
+  padding: 0.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 120rem;
+  margin: 0px auto;
+}
+
+.heading-1 {
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
+  margin: 2rem 0rem;
+  color: var(--primary-color);
+}
+
+.heading-3 {
+  color: var(--primary-color);
+  font-size: 1.7rem;
+}
+
+.bg-green {
+  background: green;
+}
+
+.bg-red {
+  background: red;
+}
+
+.bg-orange {
+  background: orange;
+}
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 52.5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 57.5%;
+  }
+}

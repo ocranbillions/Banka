@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
+	<title>myBANK - Accounts</title>
+</head>
+
+<body>
+	<nav class="clearfix wrapper">
+		<div class="logo-container margin-top-small">
+			<a href="#" class="logo">mobileBANK</a>
+		</div>
+		<div class="float-right margin-top-small nav-links">
+			<ul class="list">
+				<li><a href="./admin.accounts.html">View Accounts</a></li>
+				<li><a href="./admin.create_account.html">Create Staff</a></li>
+				<li><a href="./admin.employees.html">Staff List</a></li>
+				<li><a href="../index.html">Log out</a></li>
+			</ul>
+		</div>
+	</nav>
+	<main class="wrapper margin-top-small">
+		<section class="account-list-section clearfix">
+			<div class="side_nav float-left">
+				<h3 class="heading-3 align-center mt-8">Admin Dashboard</h3>
+				<ul class="">
+					<li><a href="admin.accounts.html">View Accounts</a></li>
+					<li><a href="admin.create_account.html">Create Staff</a></li>
+					<li><a href="admin.employees.html">Staff List</a></li>
+					<li><a href="#">Account Settings</a></li>
+					<li><a href="#">Quick Links</a></li>
+					<li><a href="#">FAQ</a></li>
+					<li><a href="../index.html">Log out</a></li>
+				</ul>
+			</div>
+			<div class="account-list float-left margin-top-medium">
+				<h1 class="heading-1">Create User Account</h1>
+
+				<div>
+					<form action="./admin.employees.html" class="login_form margin-bottom-small">
+						<div class="form__group">
+							<label for="fname" class="form__label">First Name</label>
+							<input type="text" class="form__input" placeholder="First Name" id="fname">
+						</div>
+						<div class="form__group">
+							<label for="lname" class="form__label">Last Name</label>
+							<input type="text" class="form__input" placeholder="Last Name" id="lname">
+						</div>
+						<div class="form__group">
+							<label for="email" class="form__label">Email</label>
+							<input type="email" class="form__input" placeholder="email" id="email">
+						</div>
+
+						<div class="form__group">
+							<label for="password" class="form__label">Password</label>
+							<input type="password" class="form__input" placeholder="password" id="password">
+						</div>
+
+						<div class="form__group form-radio">
+							Admin<input type="radio" name="user_type" value="admin" checked>
+							Cashier<input type="radio" name="user_type" value="cashier">
+						</div>
+
+						<button type="submit" class="btn btn-blue">Create Account</button>
+					</form>
+
+				</div>
+		</section>
+
+
+	</main>
+
+	<footer class="wrapper margin-top-big">
+		<div class="foot_contents absolute-center">
+			<div class="logo-container">
+				<a href="#" class="logo logo-white">mobileBANK</a>
+			</div>
+			<P>MEDIA ICONS</P>
+			<p class="copyright"> © 2019 mobileBank PLC. RC 554422. All Rights Reserved.</p>
+			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
+		</div>
+	</footer>
+</body>
+
+</html>

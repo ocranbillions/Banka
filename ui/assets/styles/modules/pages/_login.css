@@ -1,0 +1,10 @@
+.login-section {
+  margin: 0px auto;
+  width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-section {
+    width: 80%;
+  }
+}
