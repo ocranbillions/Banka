@@ -1,32 +1,10 @@
 import gulp from 'gulp';
 import watch from 'gulp-watch';
 import bS from 'browser-sync';
-
+import concatCss from 'gulp-concat-css';
 const browserSync = bS.create();
 
-// Run all tasks
-// gulp.task('styles', bundleCss);
-
 gulp.task('watch', liveEdit);
-
-
-// function bundleCss() {
-// 	return gulp
-// 		.src('./styles/main.css')
-// 		.on('error', (errorInfo) => {
-// 			console.log(errorInfo.toString());
-// 			this.emit('end');
-// 		})
-// 		.pipe(gulp.dest('./'));
-// }
-
-function injectCss() {
-	return gulp.src('./styles/main.css').pipe(browserSync.stream());
-}
-
-function reloadBrowser() {
-	browserSync.reload();
-}
 
 function liveEdit(done) {
 	browserSync.init({
@@ -36,10 +14,26 @@ function liveEdit(done) {
 		},
 	});
 
+	// Watch all html for changes
 	watch('./*.html', reloadBrowser);
 	watch('./pages/**/*.html', reloadBrowser);
-	watch('./styles/**/*.css', injectCss);
-	// watch('./styles/**/*.css', gulp.series(bundleCss, injectCss));
 
+	// Watch all css for changes
+	watch('./assets/styles/**/*.css', gulp.series(bundleCss, injectCssToBrowser));
 	done();
+}
+
+// FUNCTIONS
+function bundleCss() {
+	return gulp.src('assets/styles/main.css')
+		.pipe(concatCss("main.bundle.css"))
+		.pipe(gulp.dest('assets/styles/'));
+}
+
+function injectCssToBrowser() {
+	return gulp.src('./assets/styles/main.bundle.css').pipe(browserSync.stream());
+}
+
+function reloadBrowser() {
+	browserSync.reload();
 }
