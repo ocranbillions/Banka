@@ -21,3 +21,15 @@ footer p {
   text-align: center;
   padding-top: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  footer {
+    height: 15rem;
+  }
+
+  .foot_contents {
+    display: block;
+    position: relative;
+    /* transform: translate(0%, 0%); */
+  }
+}

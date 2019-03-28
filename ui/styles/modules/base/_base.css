@@ -17,6 +17,7 @@ html {
 body {
   font-size: 1.5rem;
   font-family: "Varela Round", sans-serif;
+  padding: 0.5rem;
 }
 
 a {
@@ -30,7 +31,7 @@ a {
 }
 
 .heading-1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 300;
   text-align: center;
   margin: 2rem 0rem;
@@ -39,7 +40,7 @@ a {
 
 .heading-3 {
   color: var(--primary-color);
-  font-size: 2.5rem;
+  font-size: 1.7rem;
 }
 
 .bg-green {
@@ -59,4 +60,16 @@ a {
 
 .red {
   color: red;
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 52.5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 57.5%;
+  }
 }

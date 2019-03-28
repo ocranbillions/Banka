@@ -17,19 +17,6 @@
   width: 80%;
 }
 
-.table_container th,
-.table_container td {
-  padding: 1.5rem 2.5rem;
-}
-
-table {
-  margin: 0 auto;
-}
-
-tr:nth-child(even) {
-  background: rgb(226, 221, 221);
-}
-
 #popup {
   height: 100vh;
   width: 100%;
@@ -64,6 +51,23 @@ tr:nth-child(even) {
   margin-bottom: 1rem;
 }
 
-.popup_content p span {
-  /* border-bottom: 1px solid blue; */
+@media only screen and (max-width: 900px) {
+  /* .side_nav {
+    display: none;
+  }
+
+  .account-list {
+    width: 100%;
+    text-align: center;
+  } */
+}
+
+@media only screen and (max-width: 600px) {
+  .side_nav {
+    display: none;
+  }
+
+  .account-list {
+    width: 100%;
+  }
 }
