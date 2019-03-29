@@ -7,5 +7,6 @@
 @import "./modules/pages/_account-list.css";
 @import "./modules/components/_table.css";
 @import "./modules/components/_transactions.css";
+@import "./modules/components/_popup.css";
 @import "./modules/pages/_profile.css";
 @import "./modules/layout/_footer.css";
