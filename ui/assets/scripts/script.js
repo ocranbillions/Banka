@@ -35,5 +35,11 @@ $('.new-acct').on('click', () => {
 	$('.new-acct-popup').css('visibility', 'visible');
 });
 
+$('.new-staff').on('click', () => {
+	$('.pop-create-staff').css('visibility', 'visible');
+});
+
+
+
 
 

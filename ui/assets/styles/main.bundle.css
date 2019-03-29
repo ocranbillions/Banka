@@ -379,10 +379,12 @@ tr:nth-child(even) {
   margin: 0 auto;
 }
 
-.new-acct-popup .popup_content {
+.new-acct-popup .popup_content,
+.pop-create-staff .popup_content {
   text-align: left;
 }
 
+.pop-create-staff .popup_content form,
 .new-acct-popup .popup_content form {
   border: none;
 }

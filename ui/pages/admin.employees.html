@@ -17,7 +17,7 @@
 		<div class="float-right margin-top-small nav-links">
 			<ul class="list">
 				<li><a href="./admin.accounts.html">View Accounts</a></li>
-				<li><a href="./admin.create_account.html">Create Staff</a></li>
+				<li><a href="#" class="new-staff">Create Staff</a></li>
 				<li><a href="./admin.employees.html">Staff List</a></li>
 				<li><a href="../index.html">Log out</a></li>
 			</ul>
@@ -29,7 +29,7 @@
 				<h3 class="heading-3 align-center mt-8">Admin Dashboard</h3>
 				<ul class="">
 					<li><a href="./admin.accounts.html">View Accounts</a></li>
-					<li><a href="admin.create_account.html">Create Staff</a></li>
+					<li><a href="#" class="new-staff">Create Staff</a></li>
 					<li><a href="./admin.employees.html">Staff List</a></li>
 					<li><a href="#">Account Settings</a></li>
 					<li><a href="#">Quick Links</a></li>
@@ -93,6 +93,62 @@
 			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
 		</div>
 	</footer>
+
+	<!-- HIDDEN MODAL -->
+	<section>
+		<div class="popup popup-acc-details">
+			<div class="popup_content clearfix">
+				<div class="popup_close float-right"><a href="">X</a></div>
+
+				<div class="account_details">
+					<p class="name heading-3"><span>Samuel Ocran</span></p>
+					<p class="account_number"><span>0164104902</span></p>
+					<p class="type"><span>Savings Account</span></p>
+					<p class="status"><span>Active</span></p>
+					<p class="balance"><span>N5,000,000.00</span></p>
+				</div>
+				<div class="action">
+					<p class="activate"><a href="#" class="btn">Activate Account</a></p>
+					<p class="deactivate"><a href="#" class="btn">Deactivate Account</a></p>
+					<p class="delete"><a href="#" class="btn">Delete Account</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popup pop-create-staff">
+			<div class="popup_content clearfix">
+				<div class="popup_close float-right"><a href="">X</a></div>
+				<div>
+					<form action="./admin.employees.html" class="login_form margin-bottom-small">
+						<div class="form__group">
+							<label for="fname" class="form__label">First Name</label>
+							<input type="text" class="form__input" placeholder="First Name" id="fname">
+						</div>
+						<div class="form__group">
+							<label for="lname" class="form__label">Last Name</label>
+							<input type="text" class="form__input" placeholder="Last Name" id="lname">
+						</div>
+						<div class="form__group">
+							<label for="email" class="form__label">Email</label>
+							<input type="email" class="form__input" placeholder="email" id="email">
+						</div>
+
+						<div class="form__group form-radio">
+							Cashier<input type="radio" name="user-type" value="cashier" checked>
+							Admin<input type="radio" name="user-type" value="admin">
+						</div>
+
+						<button type="submit" class="btn btn-blue">Create</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<script src="../assets/scripts/script.js"></script>
 </body>
 
 </html>
