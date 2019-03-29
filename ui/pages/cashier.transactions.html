@@ -52,12 +52,12 @@
 							<p>New balance: <span class="new-bal">N34,000.00</span></p>
 							<p>Status: <span class="status">Pending</span></p>
 							<p>Cashier: <span class="status">Not Yet Assigned</span></p>
-							<p><a href="#" class="btn">Process Request</a></p>
+							<p><a href="#0162456854" class="btn btn-process">Process Request</a></p>
 						</div>
 					</div>
 
 					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">-</span></div>
+						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong>N25,000</strong></span></p>
 							<p>Account number: <span class="trans-account">5544265321</span></p>
@@ -73,7 +73,7 @@
 					</div>
 
 					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">+</span></div>
+						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong>N12,000</strong></span></p>
 							<p>Account number: <span class="trans-account">2255465785</span></p>
@@ -106,6 +106,32 @@
 			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
 		</div>
 	</footer>
+
+	<!-- HIDDEN MODAL -->
+	<section class="popup popup-transaction">
+		<div class="popup_content clearfix">
+			<div class="popup_close float-right"><a href="">X</a></div>
+
+			<div class="transaction">
+				<p class="type green"><span>Deposit</span></p>
+				<p class="amount"><span><strong>N10,000.00</strong></span></p>
+				<p>Account number: <span class="trans-account">0162456854</span></p>
+				<p>Owner: <span class="trans-account">Samuel Ocran</span></p>
+				<p class="current-bal">Current Balance<span> N34,000.00</span></p>
+				<p class="account_number"><input type="number" class="enter-amount"> </p>
+
+			</div>
+			<div class="action">
+				<p class="credit"><a href="./cashier.accounts.html" class="btn">Credit</a></p>
+				<p class="debit"><a href="./cashier.accounts.html" class="btn">Debit </a></p>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<script src="../assets/scripts/script.js"></script>
 </body>
 
 </html>

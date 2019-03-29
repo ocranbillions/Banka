@@ -1,10 +1,11 @@
 import gulp from 'gulp';
 import watch from 'gulp-watch';
-import bS from 'browser-sync';
 import concatCss from 'gulp-concat-css';
+import bS from 'browser-sync';
 const browserSync = bS.create();
 
 gulp.task('watch', liveEdit);
+
 
 function liveEdit(done) {
 	browserSync.init({
@@ -14,11 +15,11 @@ function liveEdit(done) {
 		},
 	});
 
-	// Watch all html for changes
+	// Reload browser upon changes to any html
 	watch('./*.html', reloadBrowser);
 	watch('./pages/**/*.html', reloadBrowser);
 
-	// Watch all css for changes
+	// Inject css into browser when change occurs to any css file
 	watch('./assets/styles/**/*.css', gulp.series(bundleCss, injectCssToBrowser));
 	done();
 }

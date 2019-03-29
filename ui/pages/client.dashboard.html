@@ -18,7 +18,7 @@
 			<ul class="list">
 				<li><a href="./client.dashboard.html">Dashboard</a></li>
 				<li><a href="./client.transactions.html">Transactions</a></li>
-				<li><a href="#">Create New Account</a></li>
+				<li><a href="#" class="new-acct">Create New Account</a></li>
 				<li><a href="../index.html">Log out</a></li>
 			</ul>
 		</div>
@@ -30,7 +30,7 @@
 				<ul class="">
 					<li><a href="./client.dashboard.html">Dashboard</a></li>
 					<li><a href="./client.transactions.html">Transactions</a></li>
-					<li><a href="#">Create New Account</a></li>
+					<li><a href="#" class="new-acct">Create New Account</a></li>
 					<li><a href="#">Account Settings</a></li>
 					<li><a href="#">Quick Links</a></li>
 					<li><a href="#">FAQ</a></li>
@@ -45,9 +45,10 @@
 						<p class="heading-3"><span class="">0132152333 </span> - <span class="green">Active</span></p>
 						<div class="account-details">
 							<p class="margin-bottom-small">Available Balance: N255,000.00</p>
-							<a href="" class="btn bg-green">Deposit</a>
-							<a href="" class="btn bg-red">Withdraw</a>
-							<a href="./client.history.html" class="btn bg-orange">View Account history</a>
+							<p class="margin-bottom-small">Make a transaction</p>
+							<a href="#" class="btn bg-green deposit">Deposit</a>
+							<a href="#" class="btn bg-red withdraw">Withdraw</a>
+							<a href="./client.history.html" class="btn ">View Account history</a>
 						</div>
 					</div>
 
@@ -55,9 +56,10 @@
 						<p class="heading-3"><span class="">2541536521 </span> - <span class="green">Active</span></p>
 						<div class="account-details">
 							<p class="margin-bottom-small">Available Balance: N20,150.00</p>
-							<a href="" class="btn bg-green">Deposit</a>
-							<a href="" class="btn bg-red">Withdraw</a>
-							<a href="./client.history.html" class="btn bg-orange">View Account history</a>
+							<p class="margin-bottom-small">Make a transaction</p>
+							<a href="#" class="btn bg-green deposit">Deposit</a>
+							<a href="#" class="btn bg-red withdraw">Withdraw</a>
+							<a href="./client.history.html" class="btn ">View Account history</a>
 						</div>
 					</div>
 
@@ -65,9 +67,10 @@
 						<p class="heading-3"><span class="">0132152333 </span> - <span class="red">Dormant</span></p>
 						<div class="account-details">
 							<p class="margin-bottom-small">Available Balance: N255,000.00</p>
-							<a href="" class="btn bg-green">Deposit</a>
-							<a href="" class="btn bg-red">Withdraw</a>
-							<a href="./client.history.html" class="btn bg-orange">View Account history</a>
+							<p class="margin-bottom-small">Make a transaction</p>
+							<a href="#" class="btn bg-green deposit">Deposit</a>
+							<a href="#" class="btn bg-red withdraw">Withdraw</a>
+							<a href="./client.history.html" class="btn ">View Account history</a>
 						</div>
 					</div>
 
@@ -88,6 +91,66 @@
 			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
 		</div>
 	</footer>
+
+	<!-- HIDDEN MODALs -->
+	<section>
+		<div class="popup client-request-modal">
+			<div class="popup_content clearfix">
+				<div class="popup_close float-right"><a href="">X</a></div>
+
+				<div class="transaction">
+					<p class="green"><span>Make your request</span></p>
+					<p class="account_number"><input type="number" class="enter-amount"> </p>
+
+				</div>
+				<div class="action">
+					<p class="credit"><a href="./client.transactions.html" class="btn">Deposit</a></p>
+					<p class="debit"><a href="./client.transactions.html" class="btn">Withdraw</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popup new-acct-popup">
+			<div class="popup_content clearfix">
+				<div class="popup_close float-right"><a href="">X</a></div>
+				<div>
+					<form action="./client.dashboard.html" class="login_form margin-bottom-small">
+						<div class="form__group">
+							<label for="fname" class="form__label">First Name</label>
+							<input type="text" class="form__input" placeholder="First Name" id="fname">
+						</div>
+						<div class="form__group">
+							<label for="lname" class="form__label">Last Name</label>
+							<input type="text" class="form__input" placeholder="Last Name" id="lname">
+						</div>
+						<div class="form__group">
+							<label for="email" class="form__label">Email</label>
+							<input type="email" class="form__input" placeholder="email" id="email">
+						</div>
+
+						<div class="form__group">
+							<label for="openingbal" class="form__label">Opening balance</label>
+							<input type="number" class="form__input" id="openingbal">
+						</div>
+
+						<div class="form__group form-radio">
+							Savings<input type="radio" name="account-type" value="saving" checked>
+							Current<input type="radio" name="account-type" value="current">
+						</div>
+
+						<button type="submit" class="btn btn-blue">Create Account</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<script src="../assets/scripts/script.js"></script>
+
 </body>
 
 </html>

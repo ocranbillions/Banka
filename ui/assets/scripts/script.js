@@ -15,3 +15,31 @@ $('.login-btn').on('click', () => {
 		$('.login-section form').attr('action', './pages/admin.accounts.html');
 	}
 });
+
+
+// Popup account details when admin/staff selects an account
+$('.acc-list td a').on('click', () => {
+	$('.popup-acc-details').css('visibility', 'visible');
+});
+
+$('.btn-process').on('click', () => {
+	$('.popup-transaction').css('visibility', 'visible');
+});
+
+$('.deposit, .withdraw').on('click', () => {
+	$('.client-request-modal').css('visibility', 'visible');
+});
+
+
+$('.new-acct').on('click', () => {
+	$('.new-acct-popup').css('visibility', 'visible');
+});
+
+$('.new-staff').on('click', () => {
+	$('.pop-create-staff').css('visibility', 'visible');
+});
+
+
+
+
+
