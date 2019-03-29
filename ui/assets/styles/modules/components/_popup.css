@@ -28,3 +28,11 @@
   display: inline-block;
   margin: 0 auto;
 }
+
+.new-acct-popup .popup_content {
+  text-align: left;
+}
+
+.new-acct-popup .popup_content form {
+  border: none;
+}

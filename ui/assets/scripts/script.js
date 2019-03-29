@@ -22,7 +22,18 @@ $('.acc-list td a').on('click', () => {
 	$('.popup-acc-details').css('visibility', 'visible');
 });
 
-
 $('.btn-process').on('click', () => {
 	$('.popup-transaction').css('visibility', 'visible');
 });
+
+$('.deposit, .withdraw').on('click', () => {
+	$('.client-request-modal').css('visibility', 'visible');
+});
+
+
+$('.new-acct').on('click', () => {
+	$('.new-acct-popup').css('visibility', 'visible');
+});
+
+
+
