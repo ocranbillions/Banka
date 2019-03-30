@@ -6,8 +6,9 @@ export default {
       createdOn: '22-02-2019 10:53:58',
       firstName: 'Babajide',
       lastName: 'Bayo',
+      email: 'doubleB@yahoo.com',
       type: 'savings',
-      balance: 25000.00,
+      balance: 25000.01,
       status: 'active',
     },
     {
