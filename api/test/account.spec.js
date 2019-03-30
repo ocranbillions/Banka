@@ -26,7 +26,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   });
 
   // Test case for getting a single account
-  describe(`GET ${PREFIX}/accounts/acct_number`, () => {
+  describe(`GET ${PREFIX}/accounts/:acct_number`, () => {
     it('Should get a single account', () => {
       chai.request(server)
         .get(`${PREFIX}/accounts/7785412532`)
@@ -60,18 +60,18 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
     });
   });
 
-  // // Delete an account
-  // describe(`DELETE ${PREFIX}/accounts/:acct_number`, () => {
-  //   it('Should delete a valid account', () => {
-  //     chai.request(server)
-  //       .delete('/api/v1/accounts/1221125232')
-  //       .end((err, res) => {
-  //         res.body.should.have.property('status');
-  //         res.body.should.have.property('message').eql('Account successfully deleted');
-  //         res.should.have.status(200);
-  //       });
-  //   });
-  // });
+  // Delete an account
+  describe(`DELETE ${PREFIX}/accounts/:acct_number`, () => {
+    it('Should delete an account', () => {
+      chai.request(server)
+        .delete('/api/v1/accounts/1221125232')
+        .end((err, res) => {
+          res.body.should.have.property('status');
+          res.body.should.have.property('message').eql('Account successfully deleted');
+          res.should.have.status(200);
+        });
+    });
+  });
 
   // // Change account status
   // describe(`PATCH ${PREFIX}/accounts/:acct_number`, () => {

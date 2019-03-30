@@ -40,6 +40,18 @@ const AccountController = {
 
     return lastItem;
   },
+
+  deleteAccount(num) {
+    // Lookup the account
+    const accountNumber = parseInt(num, RADIX);
+    const index = accounts.findIndex(acct => acct.accountNumber === accountNumber);
+
+    // NOTE: findIndex returns -1 if item not found
+    if (index === -1) return 404;
+
+    // Return deleted account;
+    return accounts.splice(index, 1);
+  },
 };
 
 export default AccountController;
