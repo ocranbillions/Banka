@@ -29,7 +29,6 @@ router.get('/:acct_number', (req, res) => {
   });
 });
 
-
 // Handles request for creating an account
 router.post('/', (req, res) => {
   const formData = req.body;

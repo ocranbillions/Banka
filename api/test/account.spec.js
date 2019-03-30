@@ -42,14 +42,11 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   describe(`POST ${PREFIX}/accounts`, () => {
     it('Should create an account', () => {
       const newAccount = {
-        accountNumber: 2541236521,
         firstName: 'Samuel',
         lastName: 'Ocran',
         email: 'sammiestt@gmail.com',
         type: 'savings',
-        openingBalance: 67500.00,
-        createdOn: '22-02-2019 10:53:58',
-        status: 'active',
+        openingBalance: '67500.00',
       };
 
       chai.request(server)
