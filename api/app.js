@@ -10,6 +10,7 @@ server.get('/', (req, res) => {
   res.send('Welcome to mobileBank');
 });
 
+
 server.use('/api/v1/accounts', (req, res) => {
   const { accounts } = db;
   res.json({
@@ -17,6 +18,7 @@ server.use('/api/v1/accounts', (req, res) => {
     status: 'success',
   });
 });
+
 
 const port = process.env.PORT || 1000;
 server.listen(port, () => {
