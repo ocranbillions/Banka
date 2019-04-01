@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import bodyParser from 'body-parser';
-// import db from './jsdb/db';
 
 // routes
 import accountRoutes from './routes/accountRoutes';
@@ -14,13 +13,6 @@ server.get('/', (req, res) => {
   res.send('Welcome to mobileBank');
 });
 
-// server.use('/api/v1/', (req, res) => {
-//   const { accounts } = db;
-//   res.json({
-//     data: accounts,
-//     status: 'success',
-//   });
-// });
 
 // Handles all account routes
 server.use('/api/v1/accounts', accountRoutes);
