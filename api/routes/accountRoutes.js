@@ -32,8 +32,7 @@ router.get('/:acct_number', (req, res) => {
 
 // Handles request for creating an account
 router.post('/', (req, res) => {
-  const formData = req.body;
-  const result = AccountController.addAccount(formData);
+  const result = AccountController.addAccount(req.body);
 
   // Bad request, error in user inputs
   if (result.error) {
@@ -52,7 +51,31 @@ router.post('/', (req, res) => {
 });
 
 
-// router.patch('/:acct_number', AccountController.changeAccountStatus);
+router.patch('/:acct_number', (req, res) => {
+  const result = AccountController.changeAccountStatus(req.params.acct_number, req.body);
+
+  if (result === 404) {
+    return res.status(404).json({
+      errorMessage: 'The account with the given number was not found',
+      status: 404,
+    });
+  }
+
+  if (result === 401) {
+    return res.status(401).json({
+      errorMessage: 'Account status can only be \'active\' or \'dormant\'',
+      status: 401,
+    });
+  }
+
+  // Status was successfuly changed
+  const account = result;
+
+  return res.json({
+    accountNumber: account.accountNumber,
+    accounStatus: account.status,
+  });
+});
 
 
 router.delete('/:acct_number', (req, res) => {
