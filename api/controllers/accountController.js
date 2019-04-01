@@ -1,5 +1,6 @@
-import Joi from 'joi';
 import db from '../jsdb/db';
+import helpers from '../helpers/helpers';
+import Account from '../models/AccountModel';
 
 const { accounts } = db;
 const RADIX = 10;
@@ -17,30 +18,16 @@ const AccountController = {
   },
 
   addAccount(reqBody) {
-    // Validate form input
-    // Define input requirements
-    const schema = {
-      firstName: Joi.string().min(3).required(),
-      lastName: Joi.string().min(3).required(),
-      email: Joi.string().min(10).required(),
-      type: Joi.string().min(5).required(),
-      openingBalance: Joi.string().min(4).required(),
-    };
-
-    const result = Joi.validate(reqBody, schema);
-    // Error in user input
+    const result = helpers.validateNewAccount(reqBody);
     if (result.error) return result;
 
-    reqBody.accountNumber = 2541236521;
-    reqBody.createdOn = '22-02-2019 10:53:58';
-    reqBody.status = 'Active';
-    reqBody.id = accounts.length + 1;
+    const newAccount = new Account(reqBody);
 
-    accounts.push(reqBody);
+    newAccount.id = accounts.length + 1;
+    accounts.push(newAccount);
 
     // Return newly created account
-    const lastItem = accounts[accounts.length - 1];
-    return lastItem;
+    return accounts[accounts.length - 1];
   },
 
   deleteAccount(num) {

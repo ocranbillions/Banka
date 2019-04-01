@@ -1,21 +1,22 @@
 import { Router } from 'express';
 import AccountController from '../controllers/accountController';
 
-
 const router = Router();
 
-// Handles request for all accounts
+// HANDLES REQUEST FOR GETTING ALL ACCOUNTS
 router.get('/', (req, res) => {
-  const results = AccountController.getAccounts();
+  const accounts = AccountController.getAccounts();
+
   return res.json({
-    data: results,
+    data: accounts,
     status: 200,
   });
 });
 
-// Handles request for single account
-router.get('/:acct_number', (req, res) => {
-  const account = AccountController.getSingleAccount(req.params.acct_number);
+
+// HANDLES REQUEST FOR GETTING A SINGLE ACCOUNT
+router.get('/:number', (req, res) => {
+  const account = AccountController.getSingleAccount(req.params.number);
 
   if (account === undefined) {
     return res.status(404).json({
@@ -30,7 +31,8 @@ router.get('/:acct_number', (req, res) => {
   });
 });
 
-// Handles request for creating an account
+
+// HANDLES REQUEST FOR CREATING AN ACCOUNT
 router.post('/', (req, res) => {
   const result = AccountController.addAccount(req.body);
 
@@ -44,15 +46,34 @@ router.post('/', (req, res) => {
 
   // Return newly created account
   const newAccount = result;
-  return res.json({
+  return res.status(201).json({
     data: newAccount,
-    status: 200,
+    status: 201,
   });
 });
 
 
-router.patch('/:acct_number', (req, res) => {
-  const result = AccountController.changeAccountStatus(req.params.acct_number, req.body);
+// HANDLES REQUEST FOR DELETING AN ACCOUNT
+router.delete('/:number', (req, res) => {
+  const result = AccountController.deleteAccount(req.params.number);
+
+  if (result === 404) {
+    return res.status(404).json({
+      errorMessage: 'The account with the given number was not found',
+      status: 404,
+    });
+  }
+  // Deleted item was returned
+  return res.status(202).json({
+    message: 'Account successfully deleted',
+    status: 202,
+  });
+});
+
+
+// HANDLES REQUEST FOR CHANGING ACCOUNT STATUS
+router.patch('/:number', (req, res) => {
+  const result = AccountController.changeAccountStatus(req.params.number, req.body);
 
   if (result === 404) {
     return res.status(404).json({
@@ -70,27 +91,9 @@ router.patch('/:acct_number', (req, res) => {
 
   // Status was successfuly changed
   const account = result;
-
-  return res.json({
-    accountNumber: account.accountNumber,
-    accounStatus: account.status,
-  });
-});
-
-
-router.delete('/:acct_number', (req, res) => {
-  const result = AccountController.deleteAccount(req.params.acct_number);
-
-  if (result === 404) {
-    return res.status(404).json({
-      errorMessage: 'The account with the given number was not found',
-      status: 404,
-    });
-  }
-  // Deleted item was returned
-  return res.json({
-    message: 'Account successfully deleted',
-    status: 200,
+  return res.status(201).json({
+    data: account,
+    message: 'Account status succesfully changed',
   });
 });
 

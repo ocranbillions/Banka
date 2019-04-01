@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-use-before-define */
 import gulp from 'gulp';
 import watch from 'gulp-watch';
 import concatCss from 'gulp-concat-css';

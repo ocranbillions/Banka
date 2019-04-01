@@ -7,16 +7,14 @@ import server from '../app';
 
 chai.use(chaiHttp);
 
-const PREFIX = '/api/v1';
-
 const should = chai.should();
 
 describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   // Test case for getting all accounts
-  describe(`GET ${PREFIX}/accounts`, () => {
+  describe('GET /api/v1/accounts', () => {
     it('Should get all accounts', () => {
       chai.request(server)
-        .get(`${PREFIX}/accounts/`)
+        .get('/api/v1/accounts/')
         .end((err, res) => {
           res.body.should.have.property('data');
           res.body.should.have.property('status');
@@ -26,10 +24,10 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   });
 
   // Test case for getting a single account
-  describe(`GET ${PREFIX}/accounts/:acct_number`, () => {
+  describe('GET /api/v1/accounts/:number', () => {
     it('Should get a single account', () => {
       chai.request(server)
-        .get(`${PREFIX}/accounts/7785412532`)
+        .get('/api/v1/accounts/7785412532')
         .end((err, res) => {
           res.body.should.have.property('data');
           res.body.should.have.property('status');
@@ -39,7 +37,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   });
 
   // Test case for creating an account
-  describe(`POST ${PREFIX}/accounts`, () => {
+  describe('POST /api/v1/accounts', () => {
     it('Should create an account', () => {
       const newAccount = {
         firstName: 'Samuel',
@@ -55,39 +53,38 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
         .end((err, res) => {
           res.body.should.have.property('data');
           res.body.should.have.property('status');
-          res.should.have.status(200);
+          res.should.have.status(201);
         });
     });
   });
 
-  // Delete an account
-  describe(`DELETE ${PREFIX}/accounts/:acct_number`, () => {
+  // Test case for deleting an account
+  describe('DELETE /api/v1/accounts/:number', () => {
     it('Should delete an account', () => {
       chai.request(server)
         .delete('/api/v1/accounts/1221125232')
         .end((err, res) => {
           res.body.should.have.property('status');
           res.body.should.have.property('message').eql('Account successfully deleted');
-          res.should.have.status(200);
+          res.should.have.status(202);
         });
     });
   });
 
-  // // Change account status
-  // describe(`PATCH ${PREFIX}/accounts/:acct_number`, () => {
-  //   it('Should change an account status', () => {
-  //     const acct = {
-  //       accountNumber: 7785412532,
-  //       status: 'active',
-  //     };
-  //     chai.request(server)
-  //       .patch('/api/v1/accounts/7785412532')
-  //       .send(acct)
-  //       .end((err, res) => {
-  //         res.body.should.have.property('data');
-  //         res.body.should.have.property('status');
-  //         res.should.have.status(200);
-  //       });
-  //   });
-  // });
+  // Test case for changing an account status
+  describe('PATCH /api/v1/accounts/:number', () => {
+    it('Should change an account status', () => {
+      const formData = {
+        status: 'dormant',
+      };
+      chai.request(server)
+        .patch('/api/v1/accounts/7785412532')
+        .send(formData)
+        .end((err, res) => {
+          res.body.should.have.property('data');
+          res.body.should.have.property('message').eql('Account status succesfully changed');
+          res.should.have.status(201);
+        });
+    });
+  });
 });
