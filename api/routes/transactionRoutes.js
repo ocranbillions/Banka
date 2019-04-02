@@ -14,15 +14,22 @@ router.get('/', (req, res) => {
 });
 
 
-// // HANDLES REQUEST FOR GETTING ALL TRANSACTIONS ON A SPECIFIED ACCOUNT
-// router.get('/:number', (req, res) => {
-// const accountTransactions = TransactionController.getAccountTransactions(req.params.number);
+// HANDLES REQUEST FOR GETTING ALL TRANSACTIONS ON A SPECIFIED ACCOUNT
+router.get('/:number', (req, res) => {
+  const result = TransactionController.getAccountTransactions(req.params.number);
 
-//   return res.json({
-//     data: accountTransactions,
-//     staus: 200,
-//   });
-// });
+  if (result === 204) {
+    return res.status(200).json({
+      message: 'No transactions yet on this account.',
+      status: 204,
+    });
+  }
+
+  return res.json({
+    data: result,
+    status: 200,
+  });
+});
 
 // HANDLES CREDIT REQUESTS
 router.post('/:number/credit', (req, res) => {
