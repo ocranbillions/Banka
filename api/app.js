@@ -4,7 +4,8 @@ import bodyParser from 'body-parser';
 
 // routes
 import accountRoutes from './routes/accountRoutes';
-
+// import clientTransactionRoutes from './routes/clientTransactionRoutes';
+import transactionRoutes from './routes/transactionRoutes';
 
 const server = express();
 server.use(bodyParser.json());
@@ -16,6 +17,10 @@ server.get('/', (req, res) => {
 
 // Handles all account routes
 server.use('/api/v1/accounts', accountRoutes);
+
+// Handles all transactions routes
+// server.use('/api/v1/client-transactions', clientTransactionRoutes);
+server.use('/api/v1/transactions', transactionRoutes);
 
 
 const port = process.env.PORT || 1000;

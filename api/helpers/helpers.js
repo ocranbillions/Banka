@@ -14,6 +14,16 @@ const Helpers = {
     return Joi.validate(formData, schema);
   },
 
+  validateTransaction(transaction) {
+    const schema = {
+      transactionType: Joi.string().min(5).required(),
+      amount: Joi.number().min(100).required(), // Joi not validating number properly
+      cashier: Joi.number().min(2).required(),
+    };
+
+    return Joi.validate(transaction, schema);
+  },
+
   // Next helper method
 
 };
