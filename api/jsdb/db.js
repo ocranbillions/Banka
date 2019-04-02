@@ -83,6 +83,31 @@ export default {
       newBalance: 35000.00,
       status: 'completed',
     },
+    {
+      transactionId: 4,
+      createdOn: '12-02-2019 14:53:02',
+      transactionType: 'credit',
+      accountNumber: 1221125232,
+      owner: 2,
+      amount: 6000.00,
+      cashier: 5,
+      oldBalance: 25000.00,
+      newBalance: 35000.00,
+      status: 'completed',
+    },
+    {
+      transactionId: 5,
+      createdOn: '12-02-2019 14:53:02',
+      transactionType: 'debit',
+      accountNumber: 1221125232,
+      owner: 2,
+      amount: 10000.00,
+      cashier: 2,
+      oldBalance: 25000.00,
+      newBalance: 35000.00,
+      status: 'completed',
+    },
+
   ],
 
   users: [

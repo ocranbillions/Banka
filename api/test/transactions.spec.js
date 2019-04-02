@@ -22,18 +22,18 @@ describe('TEST ALL TRANSACTIONS ENDPOINTS', () => {
     });
   });
 
-  // // Test case for getting a single account
-  // describe('GET /api/v1/accounts/:number', () => {
-  //   it('Should get a single account', () => {
-  //     chai.request(server)
-  //       .get('/api/v1/accounts/7785412532')
-  //       .end((err, res) => {
-  //         res.body.should.have.property('data');
-  //         res.body.should.have.property('status');
-  //         res.should.have.status(200);
-  //       });
-  //   });
-  // });
+  // Test case to get all transactions for a specific account
+  describe('GET /api/v1/transactions/:number', () => {
+    it('Should get all transaction for an account', () => {
+      chai.request(server)
+        .get('/api/v1/transactions/7785412532')
+        .end((err, res) => {
+          res.body.should.have.property('data');
+          res.body.should.have.property('status');
+          res.should.have.status(200);
+        });
+    });
+  });
 
   describe('POST transactions/:number/credit', () => {
     it('Should be able to credit an account', () => {
