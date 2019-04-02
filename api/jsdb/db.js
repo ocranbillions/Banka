@@ -134,7 +134,7 @@ export default {
       email: 'theophilus@yahoo.com',
       firstName: 'Theophilus',
       lastName: 'Akor',
-      password: 'secret',
+      password: 'secretTP',
       type: 'client',
       isAdmin: 0,
     },
