@@ -26,9 +26,10 @@ describe('TEST ALL TRANSACTIONS ENDPOINTS', () => {
   describe('GET /api/v1/transactions/:number', () => {
     it('Should get all transaction for an account', () => {
       chai.request(server)
-        .get('/api/v1/transactions/7785412532')
+        .get('/api/v1/transactions/1221125232')
         .end((err, res) => {
           res.body.should.have.property('data');
+          res.body.data[0].should.have.property('transactionId');
           res.body.should.have.property('status');
           res.should.have.status(200);
         });

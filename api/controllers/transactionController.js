@@ -12,11 +12,15 @@ const TransactionController = {
     return transactions;
   },
 
-  // getAccountTransactions(number) {
-  //   // perform magic here
+  getAccountTransactions(number) {
+    const accountNumber = parseInt(number, BASE);
+    const accountTransactions = transactions.filter(acct => acct.accountNumber === accountNumber);
 
-  //   return magic;
-  // },
+    // No content
+    if (accountTransactions.length < 1) return 204;
+
+    return accountTransactions;
+  },
 
   creditAccount(number, creditInfo) {
     const accountNumber = parseInt(number, BASE);
