@@ -4,6 +4,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../app';
+import { equal } from 'assert';
 
 chai.use(chaiHttp);
 
@@ -23,7 +24,7 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
         .send(loginDetails)
         .end((err, res) => {
           res.body.should.have.property('data');
-          res.body.should.have.property('status');
+          res.body.data.should.have.property('email').eql('theophilus@yahoo.com');
           res.should.have.status(201);
         });
     });
@@ -44,7 +45,7 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
         .send(signupDetails)
         .end((err, res) => {
           res.body.should.have.property('data');
-          res.body.should.have.property('status');
+          res.body.data.should.have.property('email').eql('mikeBrid@gmail.com');
           res.should.have.status(201);
         });
     });
