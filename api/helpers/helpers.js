@@ -35,6 +35,19 @@ const Helpers = {
     return Joi.validate(client, schema);
   },
 
+  validateNewStaff(staff) {
+    const schema = {
+      firstName: Joi.string().min(3).required(),
+      lastName: Joi.string().min(3).required(),
+      email: Joi.string().min(10).required(),
+      password: Joi.string().min(5).required(),
+      type: Joi.string().min(5).required(),
+      isAdmin: Joi.string().min(1).required(),
+    };
+
+    return Joi.validate(staff, schema);
+  },
+
   // Next helper method
 
 };
