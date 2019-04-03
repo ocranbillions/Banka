@@ -27,7 +27,7 @@ server.use('/api/v1/accounts', accountRoutes);
 // Handles all transactions routes
 server.use('/api/v1/transactions', transactionRoutes);
 
-const port = process.env.PORT || 1000;
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
   console.log(`server is listening on port ${port}!`);
 });
