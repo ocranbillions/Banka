@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --require @babel/register api/test/*.js --exit",
-    "start": "nodemon --exec babel-node ./api/app.js"
+    "dev": "nodemon --exec babel-node ./api/app.js",
+    "start": "babel-node api/app.js"
   },
   "author": "@ocranbillions",
   "license": "MIT",
