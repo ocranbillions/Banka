@@ -12,7 +12,7 @@ const server = express();
 server.use(bodyParser.json());
 
 server.get('/', (req, res) => {
-  res.send('Welcome to mobileBank');
+  res.send('Welcome to Banka!');
 });
 
 // Handles auth routes

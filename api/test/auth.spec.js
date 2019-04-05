@@ -4,7 +4,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../app';
-import { equal } from 'assert';
 
 chai.use(chaiHttp);
 
@@ -15,8 +14,8 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
   describe('POST /api/v1/auth/signin', () => {
     it('Should signin a user', () => {
       const loginDetails = {
-        email: 'theophilus@yahoo.com',
-        password: 'secretTP',
+        email: 'wasboy@yahoo.com',
+        password: 'wasboy123',
       };
 
       chai.request(server)
@@ -24,7 +23,8 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
         .send(loginDetails)
         .end((err, res) => {
           res.body.should.have.property('data');
-          res.body.data.should.have.property('email').eql('theophilus@yahoo.com');
+          res.body.data.should.have.property('email').eql('wasboy@yahoo.com');
+          res.body.data.should.have.property('token');
           res.should.have.status(201);
         });
     });
@@ -46,6 +46,7 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
         .end((err, res) => {
           res.body.should.have.property('data');
           res.body.data.should.have.property('email').eql('mikeBrid@gmail.com');
+          res.body.data.should.have.property('token');
           res.should.have.status(201);
         });
     });

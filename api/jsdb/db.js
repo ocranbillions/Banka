@@ -116,7 +116,6 @@ export default {
       email: 'sammiestt@gmail.com',
       firstName: 'Samuel',
       lastName: 'Ocran',
-      password: 'secret',
       type: 'client',
       isAdmin: 0,
     },
@@ -125,18 +124,24 @@ export default {
       email: 'davido@yahoo.com',
       firstName: 'David',
       lastName: 'Osaro',
-      password: 'secret',
       type: 'staff',
       isAdmin: 1,
     },
     {
       id: 3,
-      email: 'theophilus@yahoo.com',
-      firstName: 'Theophilus',
-      lastName: 'Akor',
-      password: 'secretTP',
+      email: 'wasboy@yahoo.com',
+      firstName: 'Wasiu',
+      lastName: 'Oladimeji',
       type: 'client',
       isAdmin: 0,
     },
   ],
+
+  usersLogins: [
+    {
+      email: 'wasboy@yahoo.com',
+      hash: '$2a$10$xROrgTLa4b3YMWrtsK1suuWFxDxSdF9ADJaCMruAgPPoW7PnLsdXu', // wasboy123
+    },
+  ],
+
 };

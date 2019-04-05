@@ -1,9 +1,10 @@
+import bcrypt from 'bcrypt-nodejs';
 import db from '../jsdb/db';
 import User from '../models/UserModel';
 import helpers from '../helpers/helpers';
 
-
 const { users } = db;
+const { usersLogins } = db;
 const BASE = 10;
 
 const UserController = {
@@ -18,19 +19,25 @@ const UserController = {
     return result;
   },
 
-  addStaff(reqBody) {
-    const result = helpers.validateNewStaff(reqBody);
+  addStaff(staff) {
+    const result = helpers.validateNewStaff(staff);
     if (result.error) return result;
 
-    const user = users.find(u => u.email === reqBody.email);
+    const user = users.find(u => u.email === staff.email);
     // Create new staff if not exit
     if (user === undefined) {
-      const newStaff = new User(reqBody);
-
+      const newStaff = new User(staff);
       newStaff.id = users.length + 1;
-      newStaff.type = reqBody.type;
-      newStaff.isAdmin = reqBody.isAdmin;
+      newStaff.type = staff.type;
+      newStaff.isAdmin = staff.isAdmin;
+
       users.push(newStaff);
+
+      const hashedPassword = bcrypt.hashSync(staff.password);
+      usersLogins.push({
+        email: newStaff.email,
+        hash: hashedPassword,
+      });
 
       // Return newly created account
       return users[users.length - 1];

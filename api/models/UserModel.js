@@ -3,7 +3,6 @@ class User {
     this.email = newUser.email;
     this.firstName = newUser.firstName;
     this.lastName = newUser.lastName;
-    this.password = newUser.password;
     this.type = 'client';
     this.isAdmin = 0;
   }
