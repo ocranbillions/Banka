@@ -1,4 +1,8 @@
 import Joi from 'joi';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const Helpers = {
   validateNewAccount(formData) {
@@ -46,6 +50,15 @@ const Helpers = {
     };
 
     return Joi.validate(staff, schema);
+  },
+
+  createToken(id) {
+    const token = jwt.sign(
+      { id },
+      process.env.SECRET,
+      { expiresIn: '1h' },
+    );
+    return token;
   },
 
   // Next helper method
