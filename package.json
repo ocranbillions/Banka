@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --require @babel/register api/test/*.js --exit",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "dev": "nodemon --exec babel-node ./api/app.js",
     "start": "babel-node api/app.js"
   },
