@@ -1,6 +1,6 @@
 --- 
 after_success: 
-  - "npm run coveralls"
+  - "npm run coverage"
 cache: 
   directories: 
     - node_modules
@@ -9,5 +9,4 @@ node_js:
   - stable
 script: 
   - "npm test"
-  - "npm run coveralls"
 
