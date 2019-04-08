@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
   // Bad request, error in user inputs
   if (result.error) {
     return res.status(400).json({
-      message: result.error.message,
+      errorMessage: result.error.message,
       status: 400,
     });
   }
