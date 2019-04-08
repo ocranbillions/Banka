@@ -1,4 +1,3 @@
-
 import bcrypt from 'bcrypt-nodejs';
 import db from '../jsdb/db';
 import User from '../models/UserModel';
