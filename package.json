@@ -4,8 +4,8 @@
   "description": "A light-weight banking application",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --require @babel/register mocha api/test/*.js --exit",
-    "coveralls": "nyc --require @babel/register --reporter=lcov --reporter=text-lcov npm test",
+    "test": "nyc --reporter=html --reporter=text --require @babel/register mocha api/test/*.js --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "nodemon --exec babel-node ./api/app.js",
     "start": "babel-node api/app.js"
   },
