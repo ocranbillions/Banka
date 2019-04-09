@@ -27,48 +27,88 @@
 			</div>
 		</div>
 	</nav>
-	<main class="padding-top-big padding-bottom-big wrapper">
-		<section class="login-section">
-			<h1 class="heading-1">Secure Login</h1>
-			<div>
-				<form action="" class="login_form margin-bottom-small">
-					<div class="form__group">
-						<label for="email" class="form__label">Email</label>
-						<input type="email" class="form__input" placeholder="email" id="email">
+	<main class="padding-top-big padding-bottom-big">
+		<div class="wrapper">
+			<section class="login-section">
+				<h1 class="heading-1">Secure Login</h1>
+				<div>
+					<form action="" class="login_form margin-bottom-small">
+						<div class="form__group">
+							<label for="email" class="form__label">Email</label>
+							<input type="email" class="form__input" placeholder="email" id="email">
+						</div>
+
+						<div class="form__group">
+							<label for="password" class="form__label">Password</label>
+							<input type="password" class="form__input" placeholder="password" id="password">
+						</div>
+
+
+						<div class="form__group form-radio">
+							Client<input type="radio" name="user" value="client" checked>
+							Cashier<input type="radio" name="user" value="cashier">
+							Admin<input type="radio" name="user" value="admin">
+						</div>
+
+						<button type="submit" class="btn btn-blue login-btn">Login</button>
+					</form>
+
+					<div class="align-center">
+						<p class=""><a href="./pages/signup.html" class="">Create an account</a></p>
+						<p><a href="#" class="">Forgot password?</a></p>
 					</div>
-
-					<div class="form__group">
-						<label for="password" class="form__label">Password</label>
-						<input type="password" class="form__input" placeholder="password" id="password">
-					</div>
-
-
-					<div class="form__group form-radio">
-						Client<input type="radio" name="user" value="client" checked>
-						Cashier<input type="radio" name="user" value="cashier">
-						Admin<input type="radio" name="user" value="admin">
-					</div>
-
-					<button type="submit" class="btn btn-blue login-btn">Login</button>
-				</form>
-
-				<div class="align-center">
-					<p class=""><a href="./pages/signup.html" class="">Create an account</a></p>
-					<p><a href="#" class="">Forgot password?</a></p>
 				</div>
-			</div>
-		</section>
+			</section>
+		</div>
 	</main>
 
-	<footer class="wrapper">
-		<div class="foot_contents absolute-center">
-			<div class="logo-container">
-				<a href="#" class="logo logo-white">Banka</a>
+	<footer>
+		<div class="wrapper">
+			<div class="floor">
+				<div class="logo-container margin-bottom-small">
+					<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
+				</div>
 			</div>
-			<P>MEDIA ICONS</P>
-			<p class="copyright"> © 2019 Banka PLC. RC 554422. All Rights Reserved.</p>
-			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
+			<div class="foot_contents">
+				<div class="foot_menu">
+					<div class="copyw">
+						<h4>2019 Banka!</h4>
+						<p><a href="">User Agreement</a></p>
+						<p><a href="">General Inquiry</a></p>
+						<p><a href="">World Bank Group</a></p>
+					</div>
+					<div class="quick-inks">
+						<h4>QUICK LINKS</h4>
+						<p><a href="">For Clients</a></p>
+						<p><a href="">For Investors</a></p>
+						<p><a href="">For Media</a></p>
+						<p><a href="">For Stakeholders</a></p>
+						<p><a href="">For Job Seekers</a></p>
+					</div>
+					<div class="accountability">
+						<h4>ACCOUNTABILITY</h4>
+						<p><a href="">Disclosed Projects</a></p>
+						<p><a href="">Compliance Advisor Ombudsman</a></p>
+						<p><a href="">Independent Evaluation</a></p>
+						<p><a href="">Group</a></p>
+						<p><a href="">Personal Data Privacy</a></p>
+						<p><a href="">Policy</a></p>
+					</div>
+				</div>
+				<div class="foot_social">
+					<h4>FOLLOW US ON SOCIAL MEDIA!</h4>
+					<img src="./assets//images/media-icons/facebook.svg" alt="">
+					<img src="./assets//images/media-icons/twitter.svg" alt="">
+					<img src="./assets//images/media-icons/instagram.svg" alt="">
+					<img src="./assets//images/media-icons/youtube.svg" alt="">
+					<img src="./assets//images/media-icons/medium.svg" alt="">
+					<img src="./assets//images/media-icons/linkedin.svg" alt="">
+					<img src="./assets//images/media-icons/snapchat.svg" alt="">
+				</div>
+			</div>
 		</div>
+		</div>
+
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"

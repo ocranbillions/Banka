@@ -1,5 +1,5 @@
 nav {
-  background: var(--dark);
+  background: var(--dark2);
   padding-bottom: 0.5rem;
 }
 
@@ -11,10 +11,10 @@ nav {
 .logo {
   font-size: 4.5rem;
   display: block;
-  border-bottom: 2px solid var(--primary-color-light);
+  border-bottom: 2px solid var(--primary-color);
 }
 .logo i {
-  color: var(--primary-color-light);
+  color: var(--primary-color);
 }
 
 .nav-links a:hover {
