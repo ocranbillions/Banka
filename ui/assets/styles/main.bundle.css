@@ -9,6 +9,8 @@
 
 :root {
   --primary-color: #144499;
+  --primary-color-light: #2196f3;
+  --dark: #222632;
 }
 
 html {
@@ -29,6 +31,11 @@ a {
 .wrapper {
   max-width: 120rem;
   margin: 0px auto;
+}
+
+main {
+  /* background: var(--primary-color-light); */
+  background: Malibu;
 }
 
 .heading-1 {
@@ -127,6 +134,14 @@ a {
   padding-top: 1.5rem;
 }
 
+.padding-top-big {
+  padding-top: 9rem;
+}
+
+.padding-bottom-big {
+  padding-bottom: 9rem;
+}
+
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -139,21 +154,33 @@ a {
 }
 
 nav {
-  border-bottom: 1px solid var(--primary-color);
+  background: var(--dark);
+  padding-bottom: 0.5rem;
 }
 
 .logo-container {
-  display: inline-block;
-  /* padding: 1rem; */
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .logo {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
+  display: block;
+  border-bottom: 2px solid var(--primary-color-light);
+}
+
+.logo i {
+  color: var(--primary-color-light);
 }
 
 .nav-links a:hover {
-  color: white;
-  background: var(--primary-color);
+  color: var(--primary-color-light);
+  text-decoration: underline;
+}
+
+.nav-links a {
+  text-transform: uppercase;
+  font-size: 1.5rem;
 }
 
 .list,
@@ -177,7 +204,8 @@ nav {
   }
 
   .logo {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    display: inline-block;
   }
 
   .float-right {
@@ -188,6 +216,7 @@ nav {
   .list li {
     display: inline-block;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
   }
 
   .list {
@@ -195,7 +224,7 @@ nav {
   }
 
   .list li a {
-    padding: 0.3rem 0.5rem;
+    padding: 0.3rem 1.3rem;
   }
 
   nav .btn {
@@ -203,6 +232,19 @@ nav {
     border: none;
     display: block;
   }
+
+  .nav-links a {
+    text-transform: uppercase;
+    font-size: 1.35rem;
+  }
+
+  .last-link {
+    display: block;
+  }
+}
+
+nav a {
+  color: white;
 }
 
 .btn {
@@ -433,3 +475,14 @@ footer p {
     /* transform: translate(0%, 0%); */
   }
 }
+
+/* .display-table {
+  display: table;
+  width: 100%;
+}
+.cell,
+.cell {
+  display: table-cell;
+  border: 1px solid black;
+  height: 100%;
+} */

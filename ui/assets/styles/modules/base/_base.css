@@ -8,6 +8,8 @@
 }
 :root {
   --primary-color: #144499;
+  --primary-color-light: #2196f3;
+  --dark: #222632;
 }
 
 html {
@@ -28,6 +30,12 @@ a {
 .wrapper {
   max-width: 120rem;
   margin: 0px auto;
+}
+
+main {
+  /* background: var(--primary-color-light); */
+
+  background: Malibu;
 }
 
 .heading-1 {

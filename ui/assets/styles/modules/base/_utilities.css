@@ -48,6 +48,13 @@
   padding-top: 1.5rem;
 }
 
+.padding-top-big {
+  padding-top: 9rem;
+}
+.padding-bottom-big {
+  padding-bottom: 9rem;
+}
+
 .absolute-center {
   position: absolute;
   top: 50%;
