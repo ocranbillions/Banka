@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../assets//styles/icon-font.css.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
 	<title>myBANK - my transactions</title>
 </head>
@@ -13,7 +15,7 @@
 <body>
 
 	<nav>
-		<div class="clearfix wrapper">
+		<div class="clearfix">
 			<div class="logo-container margin-bottom-small">
 				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
@@ -21,28 +23,33 @@
 				<ul class="list">
 					<li><a href="./client.dashboard.html">Dashboard</a></li>
 					<li><a href="./client.transactions.html">Transactions</a></li>
-					<li><a href="#" class="new-acct">Create New Account</a></li>
+					<li><a href="#" class="new-acct">New Account</a></li>
 				</ul>
-				<a href="../index.html" class="last-link float-right">LogOut</a>
+				<a href="../index.html" class="last-link float-right"><i class="fas fa-sign-out-alt"></i> LogOut</a>
 			</div>
 		</div>
 	</nav>
 
-	<main class="wrapper">
-		<section class="clearfix">
-			<div class="side_nav float-left">
-				<h3 class="heading-3 align-center mt-8">Welcome John</h3>
+	<main class="">
+		<section class="flex-container">
+			<div class="side_nav">
+				<div class="user-info">
+					<img src="../assets/images/profilepic.JPG" alt="">
+					<h3 class="heading-3">Samuel Ocran</h3>
+					<span>samuel@gmail.com</span>
+				</div>
+
 				<ul class="">
-					<li><a href="./client.dashboard.html">Dashboard</a></li>
-					<li><a href="./client.transactions.html">Transactions</a></li>
-					<li><a href="#" class="new-acct">Create New Account</a></li>
-					<li><a href="#">Account Settings</a></li>
-					<li><a href="#">Quick Links</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="../index.html">Log out</a></li>
+					<li><a href="./client.dashboard.html" class=""><i class="fas fa-home"></i> Dashboard</a></li>
+					<li><a href="./client.transactions.html"> <i class="fas fa-dollar-sign"></i> Transactions</a></li>
+					<li><a href="#" class="new-acct"><i class="fas fa-folder-open"></i> New Account</a></li>
+					<li><a href="#"><i class="fas fa-tools"></i> Settings</a></li>
+					<li><a href="#"><i class="fas fa-external-link-square-alt"></i> Quick Links</a></li>
+					<li><a href="#"><i class="far fa-question-circle"></i> FAQ</a></li>
+					<li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
 				</ul>
 			</div>
-			<div class="account-list float-left">
+			<div class="account-list">
 				<h1 class="heading-1">Transactions on 0132152333</h1>
 
 				<div class="trans-column padding-top-small">
@@ -50,7 +57,7 @@
 					<div class="trans-block">
 						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
 						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong>N10,000</strong></span></p>
+							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
 							<p>Type: <span class="trans-type">Deposit</span></p>
 							<p>Date: <span class="trans-date">just now</span></p>
 							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
@@ -62,7 +69,7 @@
 					<div class="trans-block">
 						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
 						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong>N14,000</strong></span></p>
+							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
@@ -75,7 +82,7 @@
 					<div class="trans-block">
 						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
 						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong>N14,000</strong></span></p>
+							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
@@ -86,9 +93,9 @@
 						</div>
 					</div>
 					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
+						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
 						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong>N14,000</strong></span></p>
+							<p class=""><span class="trans-amount"><strong class="green">N14,000</strong></span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
@@ -99,9 +106,9 @@
 						</div>
 					</div>
 					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
+						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
 						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong>N14,000</strong></span></p>
+							<p class=""><span class="trans-amount"><strong class="green">N14,000</strong></span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
@@ -120,7 +127,7 @@
 	</main>
 
 	<footer>
-		<div class="wrapper">
+		<div class="">
 			<div class="logo-container margin-bottom-small">
 				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>

@@ -25,6 +25,8 @@ body {
   font-family: "Varela Round", sans-serif;
   /* padding: 0.5rem; */
   /* background: #f5f5f5; */
+  /* background: yellowgreen; */
+  /* padding: 1rem; */
 }
 
 main {
@@ -35,6 +37,7 @@ main {
   /* background: #ff7730; */
   /* background-image: linear-gradient(to right bottom, #ff7830af, #ffbb008c); */
   /* background: greenyellow; */
+  padding-right: 1rem;
 }
 
 a {
@@ -61,22 +64,22 @@ a {
 }
 
 .bg-green {
-  background: green;
+  background: yellowgreen;
 }
 
 .bg-red {
-  background: red;
+  background: orangered;
 }
 
 .bg-orange {
   background: orange;
 }
 .green {
-  color: green;
+  color: yellowgreen;
 }
 
 .red {
-  color: red;
+  color: orangered;
 }
 
 @media only screen and (max-width: 900px) {

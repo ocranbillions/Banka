@@ -6,6 +6,8 @@
 @import "./modules/pages/_signin.css";
 @import "./modules/pages/_signup.css";
 @import "./modules/components/_form.css";
+@import "./modules/layout/_main-content.css";
+@import "./modules/layout/_sidenav.css";
 @import "./modules/pages/_account-list.css";
 @import "./modules/components/_table.css";
 @import "./modules/components/_transactions.css";

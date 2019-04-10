@@ -1,6 +1,8 @@
 nav {
   background: var(--dark2);
   padding-bottom: 0.5rem;
+
+  padding-right: 1rem;
 }
 
 .logo-container {
@@ -25,6 +27,10 @@ nav {
 .nav-links a {
   text-transform: uppercase;
   font-size: 1.5rem;
+}
+
+.nav-links a:hover {
+  color: greenyellow;
 }
 .list,
 .list li {
