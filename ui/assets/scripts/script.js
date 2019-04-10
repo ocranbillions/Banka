@@ -20,23 +20,28 @@ $('.login-btn').on('click', () => {
 // Popup account details when admin/staff selects an account
 $('.acc-list td a').on('click', () => {
 	$('.popup-acc-details').css('visibility', 'visible');
+	$('.popup_close').css('float', 'right');
 });
 
 $('.btn-process').on('click', () => {
 	$('.popup-transaction').css('visibility', 'visible');
+	$('.popup_close').css('float', 'right');
 });
 
 $('.deposit, .withdraw').on('click', () => {
 	$('.client-request-modal').css('visibility', 'visible');
+	$('.popup_close').css('float', 'right');
 });
 
 
 $('.new-acct').on('click', () => {
 	$('.new-acct-popup').css('visibility', 'visible');
+	$('.popup_close').css('float', 'right');
 });
 
 $('.new-staff').on('click', () => {
 	$('.pop-create-staff').css('visibility', 'visible');
+	$('.popup_close').css('float', 'right');
 });
 
 

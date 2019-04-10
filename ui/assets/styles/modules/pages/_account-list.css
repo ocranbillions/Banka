@@ -1,27 +1,9 @@
-.side_nav {
-  width: 20%;
-  padding-top: 2rem;
-}
-
-.side_nav ul {
-  list-style-type: none;
-}
-.side_nav li a {
-  display: block;
-  padding: 1rem;
-  border: 1px solid var(--primary-color);
-  margin: 1rem;
-  border-radius: 1rem;
-}
 .account-list {
   width: 80%;
+  overflow: auto;
 }
 
 @media only screen and (max-width: 600px) {
-  .side_nav {
-    display: none;
-  }
-
   .account-list {
     width: 100%;
   }

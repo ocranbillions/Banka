@@ -19,6 +19,10 @@
 .mt-8 {
   margin-top: 8rem;
 }
+
+.mb-8 {
+  margin-bottom: 8rem;
+}
 .margin-bottom-small {
   margin-bottom: 1.5rem;
 }
@@ -48,6 +52,13 @@
   padding-top: 1.5rem;
 }
 
+.padding-top-big {
+  padding-top: 9rem;
+}
+.padding-bottom-big {
+  padding-bottom: 9rem;
+}
+
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -57,4 +68,8 @@
 
 .align-center {
   text-align: center;
+}
+
+.active-page {
+  background: yellowgreen;
 }

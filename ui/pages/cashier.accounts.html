@@ -5,38 +5,49 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../assets//styles/icon-font.css.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
 	<title>myBANK - Accounts</title>
 </head>
 
 <body>
-
-	<nav class="clearfix wrapper">
-		<div class="logo-container margin-top-small">
-			<a href="./account-list.html" class="logo">mobileBANK</a>
-		</div>
-		<div class="float-right margin-top-small nav-links">
-			<ul class="list">
-				<li><a href="./cashier.transactions.html">Client Requets</a></li>
-				<li><a href="./cashier.accounts.html">View Accounts</a></li>
-				<li><a href="../index.html">Log out</a></li>
-			</ul>
-		</div>
-	</nav>
-	<main class="wrapper margin-top-small">
-		<section class="account-list-section clearfix">
-			<div class="side_nav float-left">
-				<h3 class="heading-3 align-center mt-8">Cashier Dashboard</h3>
-				<ul class="">
+	<nav>
+		<div class="clearfix">
+			<div class="logo-container margin-bottom-small">
+				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
+			</div>
+			<div class="nav-links clearfix">
+				<ul class="list">
 					<li><a href="./cashier.transactions.html">Client Requets</a></li>
 					<li><a href="./cashier.accounts.html">View Accounts</a></li>
-					<li><a href="#">Account Settings</a></li>
-					<li><a href="#">Quick Links</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="../index.html">Log out</a></li>
+				</ul>
+				<a href="../index.html" class="last-link float-right"><i class="fas fa-sign-out-alt"></i>LogOut</a>
+			</div>
+		</div>
+	</nav>
+
+	<main class="">
+		<section class="account-list-section flex-container">
+			<div class="side_nav">
+				<div class="user-info">
+					<img src="../assets/images/profilepic.JPG" alt="">
+					<h3 class="heading-3">Olawale James</h3>
+					<span>oj@gmail.com</span>
+				</div>
+
+				<ul class="">
+					<li><a href="./cashier.transactions.html" class=""><i class="fas fa-money-bill-wave"></i> Client Request</a>
+					</li>
+					<li><a href="./cashier.accounts.html"> <i class="fas fa-users"></i> View Accounts</a></li>
+					<li><a href="#"><i class="fas fa-tools"></i> Settings</a></li>
+					<li><a href="#"><i class="fas fa-external-link-square-alt"></i> Quick Links</a></li>
+					<li><a href="#"><i class="far fa-question-circle"></i> FAQ</a></li>
+					<li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
 				</ul>
 			</div>
-			<div class="account-list float-left">
+			<div class="account-list">
 				<h1 class="heading-1">Select User Account</h1>
 				<div class="table_container">
 					<table>
@@ -104,6 +115,23 @@
 								<td><a href="#6654258925" class="status">Dormant</a></td>
 								<td><a href="#6654258925" class="balance">45.00</a></td>
 							</tr>
+							<tr>
+								<td><a href="#4195552236" class="acc-no">4195552236</a></td>
+								<td><a href="#4195552236" class="created-on">24-06-2004</a></td>
+								<td><a href="#4195552236" class="owner">Mike Stevens</a></td>
+								<td><a href="#4195552236" class="type">Current</a></td>
+								<td><a href="#4195552236" class="status">Active</a></td>
+								<td><a href="#4195552236" class="balance">4,500,000.00</a></td>
+							</tr>
+
+							<tr>
+								<td><a href="#6654258925" class="acc-no">6654258925</a></td>
+								<td><a href="#6654258925" class="created-on">13-01-2012</a></td>
+								<td><a href="#6654258925" class="owner">Adebayo Adeola</a></td>
+								<td><a href="#6654258925" class="type">Savings</a></td>
+								<td><a href="#6654258925" class="status">Dormant</a></td>
+								<td><a href="#6654258925" class="balance">45.00</a></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -114,16 +142,51 @@
 
 	</main>
 
-	<footer class="wrapper margin-top-big">
-		<div class="foot_contents absolute-center">
-			<div class="logo-container">
-				<a href="#" class="logo logo-white">mobileBANK</a>
+	<footer>
+		<div class="">
+			<div class="logo-container margin-bottom-small">
+				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
-			<P>MEDIA ICONS</P>
-			<p class="copyright"> © 2019 mobileBank PLC. RC 554422. All Rights Reserved.</p>
-			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
-		</div>
+
+			<div class="foot_contents">
+				<div class="foot_menu">
+					<div class="copyw">
+						<h4>2019 Banka!</h4>
+						<p><a href="">User Agreement</a></p>
+						<p><a href="">General Inquiry</a></p>
+						<p><a href="">World Bank Group</a></p>
+					</div>
+					<div class="quick-inks">
+						<h4>QUICK LINKS</h4>
+						<p><a href="">For Clients</a></p>
+						<p><a href="">For Investors</a></p>
+						<p><a href="">For Media</a></p>
+						<p><a href="">For Stakeholders</a></p>
+						<p><a href="">For Job Seekers</a></p>
+					</div>
+					<div class="accountability">
+						<h4>ACCOUNTABILITY</h4>
+						<p><a href="">Disclosed Projects</a></p>
+						<p><a href="">Compliance Advisor Ombudsman</a></p>
+						<p><a href="">Independent Evaluation</a></p>
+						<p><a href="">Group</a></p>
+						<p><a href="">Personal Data Privacy</a></p>
+						<p><a href="">Policy</a></p>
+					</div>
+				</div>
+				<div class="foot_social">
+					<h4>FOLLOW US ON SOCIAL MEDIA!</h4>
+					<img src="../assets/images/media-icons/facebook.svg" alt="">
+					<img src="../assets/images/media-icons/twitter.svg" alt="">
+					<img src="../assets/images/media-icons/instagram.svg" alt="">
+					<img src="../assets/images/media-icons/youtube.svg" alt="">
+					<img src="../assets/images/media-icons/medium.svg" alt="">
+					<img src="../assets/images/media-icons/linkedin.svg" alt="">
+					<img src="../assets/images/media-icons/snapchat.svg" alt="">
+				</div>
+			</div>
 	</footer>
+
 	<!-- HIDDEN MODAL -->
 	<section class="popup popup-acc-details">
 		<div class="popup_content clearfix">

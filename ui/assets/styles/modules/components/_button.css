@@ -1,7 +1,7 @@
 .btn {
   display: inline-block;
   padding: 0.5rem;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--dark2);
   border-radius: 0.5rem;
 }
 
@@ -10,6 +10,6 @@
 }
 
 .btn-blue {
-  background: var(--primary-color);
+  background: var(--dark2);
   color: white;
 }

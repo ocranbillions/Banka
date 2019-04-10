@@ -5,91 +5,138 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../assets//styles/icon-font.css.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
 	<title>myBANK - my accounts</title>
 </head>
 
 <body>
-	<nav class="clearfix wrapper">
-		<div class="logo-container margin-top-small">
-			<a href="#" class="logo">mobileBANK</a>
-		</div>
-		<div class="float-right margin-top-small nav-links">
-			<ul class="list">
-				<li><a href="./client.dashboard.html">Dashboard</a></li>
-				<li><a href="./client.transactions.html">Transactions</a></li>
-				<li><a href="#" class="new-acct">Create New Account</a></li>
-				<li><a href="../index.html">Log out</a></li>
-			</ul>
+
+	<nav>
+		<div class="clearfix">
+			<div class="logo-container margin-bottom-small">
+				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
+			</div>
+			<div class="nav-links clearfix">
+				<ul class="list">
+					<li><a href="./client.dashboard.html" class="">Dashboard</a></li>
+					<li><a href="./client.transactions.html">Transactions</a></li>
+					<li><a href="#" class="new-acct">New Account</a></li>
+				</ul>
+				<a href="../index.html" class="last-link float-right"><i class="fas fa-sign-out-alt"></i> LogOut</a>
+			</div>
 		</div>
 	</nav>
-	<main class="wrapper margin-top-small">
-		<section class="clearfix">
-			<div class="side_nav float-left">
-				<h3 class="heading-3 align-center mt-8">Welcome John</h3>
-				<ul class="">
-					<li><a href="./client.dashboard.html">Dashboard</a></li>
-					<li><a href="./client.transactions.html">Transactions</a></li>
-					<li><a href="#" class="new-acct">Create New Account</a></li>
-					<li><a href="#">Account Settings</a></li>
-					<li><a href="#">Quick Links</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="../index.html">Log out</a></li>
-				</ul>
-			</div>
-			<div class="account-list float-left">
-				<h1 class="heading-1">My Accounts</h1>
 
-				<div class="profile-section padding-top-small">
-					<div class="account margin-bottom-small">
-						<p class="heading-3"><span class="">0132152333 </span> - <span class="green">Active</span></p>
-						<div class="account-details">
-							<p class="margin-bottom-small">Available Balance: N255,000.00</p>
-							<p class="margin-bottom-small">Make a transaction</p>
-							<a href="#" class="btn bg-green deposit">Deposit</a>
-							<a href="#" class="btn bg-red withdraw">Withdraw</a>
-							<a href="./client.history.html" class="btn ">View Account history</a>
-						</div>
+	<main>
+		<div class="">
+			<section class="flex-container">
+				<div class="side_nav">
+					<div class="user-info">
+						<img src="../assets/images/profilepic.JPG" alt="">
+						<h3 class="heading-3">Samuel Ocran</h3>
+						<span>samuel@gmail.com</span>
 					</div>
 
-					<div class="account margin-bottom-small">
-						<p class="heading-3"><span class="">2541536521 </span> - <span class="green">Active</span></p>
-						<div class="account-details">
-							<p class="margin-bottom-small">Available Balance: N20,150.00</p>
-							<p class="margin-bottom-small">Make a transaction</p>
-							<a href="#" class="btn bg-green deposit">Deposit</a>
-							<a href="#" class="btn bg-red withdraw">Withdraw</a>
-							<a href="./client.history.html" class="btn ">View Account history</a>
-						</div>
-					</div>
-
-					<div class="account margin-bottom-small">
-						<p class="heading-3"><span class="">0132152333 </span> - <span class="red">Dormant</span></p>
-						<div class="account-details">
-							<p class="margin-bottom-small">Available Balance: N255,000.00</p>
-							<p class="margin-bottom-small">Make a transaction</p>
-							<a href="#" class="btn bg-green deposit">Deposit</a>
-							<a href="#" class="btn bg-red withdraw">Withdraw</a>
-							<a href="./client.history.html" class="btn ">View Account history</a>
-						</div>
-					</div>
-
+					<ul class="">
+						<li><a href="./client.dashboard.html" class=""><i class="fas fa-home"></i> Dashboard</a></li>
+						<li><a href="./client.transactions.html"> <i class="fas fa-dollar-sign"></i> Transactions</a></li>
+						<li><a href="#" class="new-acct"><i class="fas fa-folder-open"></i> New Account</a></li>
+						<li><a href="#"><i class="fas fa-tools"></i> Settings</a></li>
+						<li><a href="#"><i class="fas fa-external-link-square-alt"></i> Quick Links</a></li>
+						<li><a href="#"><i class="far fa-question-circle"></i> FAQ</a></li>
+						<li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+					</ul>
 				</div>
-			</div>
-		</section>
+				<div class="account-list">
+					<h1 class="heading-1">My Accounts</h1>
+
+					<div class="profile-section padding-top-small">
+						<div class="account margin-bottom-small">
+							<p class="heading-3"><span class="">0132152333 </span> - <span class="green">Active</span></p>
+							<div class="account-details">
+								<p class="margin-bottom-small">Available Balance: N255,000.00</p>
+								<p class="margin-bottom-small">Type: Savings</p>
+								<a href="#" class="btn deposit">Deposit</a>
+								<a href="#" class="btn withdraw">Withdraw</a>
+								<a href="./client.history.html" class="btn ">Account history</a>
+							</div>
+						</div>
+
+						<div class="account margin-bottom-small">
+							<p class="heading-3"><span class="">2541536521 </span> - <span class="green">Active</span></p>
+							<div class="account-details">
+								<p class="margin-bottom-small">Available Balance: N20,150.00</p>
+								<p class="margin-bottom-small">Type: Current</p>
+								<a href="#" class="btn deposit">Deposit</a>
+								<a href="#" class="btn withdraw">Withdraw</a>
+								<a href="./client.history.html" class="btn ">Account history</a>
+							</div>
+						</div>
+
+						<div class="account margin-bottom-small">
+							<p class="heading-3"><span class="">0132152333 </span> - <span class="red">Dormant</span></p>
+							<div class="account-details">
+								<p class="margin-bottom-small">Available Balance: N2,000.00</p>
+								<p class="margin-bottom-small">Type: Savings</p>
+								<a href="#" class="btn deposit">Deposit</a>
+								<a href="#" class="btn withdraw">Withdraw</a>
+								<a href="./client.history.html" class="btn ">Account history</a>
+							</div>
+						</div>
 
 
+					</div>
+				</div>
+			</section>
+		</div>
 	</main>
 
-	<footer class="wrapper margin-top-big">
-		<div class="foot_contents absolute-center">
-			<div class="logo-container">
-				<a href="#" class="logo logo-white">mobileBANK</a>
+	<footer>
+		<div class="">
+			<div class=" logo-container margin-bottom-small">
+				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
-			<P>MEDIA ICONS</P>
-			<p class="copyright"> © 2019 mobileBank PLC. RC 554422. All Rights Reserved.</p>
-			<p class="t&c">Terms & Conditions Privacy Policy Sitemap</p>
-		</div>
+
+			<div class="foot_contents">
+				<div class="foot_menu">
+					<div class="copyw">
+						<h4>2019 Banka!</h4>
+						<p><a href="">User Agreement</a></p>
+						<p><a href="">General Inquiry</a></p>
+						<p><a href="">World Bank Group</a></p>
+					</div>
+					<div class="quick-inks">
+						<h4>QUICK LINKS</h4>
+						<p><a href="">For Clients</a></p>
+						<p><a href="">For Investors</a></p>
+						<p><a href="">For Media</a></p>
+						<p><a href="">For Stakeholders</a></p>
+						<p><a href="">For Job Seekers</a></p>
+					</div>
+					<div class="accountability">
+						<h4>ACCOUNTABILITY</h4>
+						<p><a href="">Disclosed Projects</a></p>
+						<p><a href="">Compliance Advisor Ombudsman</a></p>
+						<p><a href="">Independent Evaluation</a></p>
+						<p><a href="">Group</a></p>
+						<p><a href="">Personal Data Privacy</a></p>
+						<p><a href="">Policy</a></p>
+					</div>
+				</div>
+				<div class="foot_social">
+					<h4>FOLLOW US ON SOCIAL MEDIA!</h4>
+					<img src="../assets/images/media-icons/facebook.svg" alt="">
+					<img src="../assets/images/media-icons/twitter.svg" alt="">
+					<img src="../assets/images/media-icons/instagram.svg" alt="">
+					<img src="../assets/images/media-icons/youtube.svg" alt="">
+					<img src="../assets/images/media-icons/medium.svg" alt="">
+					<img src="../assets/images/media-icons/linkedin.svg" alt="">
+					<img src="../assets/images/media-icons/snapchat.svg" alt="">
+				</div>
+			</div>
 	</footer>
 
 	<!-- HIDDEN MODALs -->
@@ -145,6 +192,7 @@
 		</div>
 
 	</section>
+
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
