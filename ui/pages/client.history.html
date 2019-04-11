@@ -9,21 +9,22 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
-	<title>myBANK - my transactions</title>
+	<title>Banka! - History</title>
 </head>
 
 <body>
 
 	<nav>
-		<div class="clearfix">
+		<div class="clearfix wrapper">
 			<div class="logo-container margin-bottom-small">
 				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
 			<div class="nav-links clearfix">
 				<ul class="list">
 					<li><a href="./client.dashboard.html">Dashboard</a></li>
-					<li><a href="./client.transactions.html">Transactions</a></li>
-					<li><a href="#" class="new-acct">New Account</a></li>
+					<li><a href="./client.history.html">History</a></li>
+					<li><a href="#" class="fill_teller">Teller</a></li>
+					<li><a href="#" class="new-acct">Create New Account</a></li>
 				</ul>
 				<a href="../index.html" class="last-link float-right"><i class="fas fa-sign-out-alt"></i> LogOut</a>
 			</div>
@@ -31,7 +32,7 @@
 	</nav>
 
 	<main class="">
-		<section class="flex-container">
+		<section class="flex-container wrapper">
 			<div class="side_nav">
 				<div class="user-info">
 					<img src="../assets/images/profilepic.JPG" alt="">
@@ -41,7 +42,9 @@
 
 				<ul class="">
 					<li><a href="./client.dashboard.html" class=""><i class="fas fa-home"></i> Dashboard</a></li>
-					<li><a href="./client.transactions.html"> <i class="fas fa-dollar-sign"></i> Transactions</a></li>
+					<li><a href="./client.history.html"> <i class="fas fa-dollar-sign"></i> History</a></li>
+					<li><a href="#" class="fill_teller"> <i class="fas fa-money-bill"></i></i> Teller</a>
+					</li>
 					<li><a href="#" class="new-acct"><i class="fas fa-folder-open"></i> New Account</a></li>
 					<li><a href="#"><i class="fas fa-tools"></i> Settings</a></li>
 					<li><a href="#"><i class="fas fa-external-link-square-alt"></i> Quick Links</a></li>
@@ -50,7 +53,15 @@
 				</ul>
 			</div>
 			<div class="account-list">
-				<h1 class="heading-1">Transactions on 0132152333</h1>
+				<div class="select_account align-center margin-bottom-small">
+					<h1 class="heading-1">History</h1>
+					<select class="btn">
+						<option value="0162456854">0162456854</option>
+						<option value="2255412365">2255412365</option>
+						<option value="4112121523">4112121523</option>
+					</select>
+					<a href="#" class="btn btn-blue">Load</a>
+				</div>
 
 				<div class="trans-column padding-top-small">
 
@@ -58,11 +69,14 @@
 						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
+							<p>Account number: <span class="trans-account">0162456854</span></p>
+							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Deposit</span></p>
-							<p>Date: <span class="trans-date">just now</span></p>
+							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
 							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N34,000.00</span></p>
-							<p>Status: <span class="status">Pending Cashier's Action</span></p>
+							<p>New balance: <span class="new-bal">N44,000.00</span></p>
+							<p>Status: <span class="status">Completed</span></p>
+							<p>Cashier: <span class="status"><strong>James Olawale</strong></span></p>
 						</div>
 					</div>
 
@@ -70,6 +84,7 @@
 						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
+							<p>Account number: <span class="trans-account">0162456854</span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
@@ -79,43 +94,49 @@
 							<p>Cashier: <span class="status"><strong>David Balogun</strong></span></p>
 						</div>
 					</div>
+
+					<div class="trans-block">
+						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
+						<div class="trans-details">
+							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
+							<p>Account number: <span class="trans-account">0162456854</span></p>
+							<p>Transaction ID: <span class="trans-id">3444</span></p>
+							<p>Type: <span class="trans-type">Deposit</span></p>
+							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
+							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
+							<p>New balance: <span class="new-bal">N44,000.00</span></p>
+							<p>Status: <span class="status">Completed</span></p>
+							<p>Cashier: <span class="status"><strong>James Olawale</strong></span></p>
+						</div>
+					</div>
+
 					<div class="trans-block">
 						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
+							<p>Account number: <span class="trans-account">0162456854</span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
 							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
 							<p>New balance: <span class="new-bal">N44,000.00</span></p>
 							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>David Balogun</strong></span></p>
+							<p>Cashier: <span class="status"><strong>James Olawale</strong></span></p>
 						</div>
 					</div>
+
 					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
+						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
 						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="green">N14,000</strong></span></p>
+							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
+							<p>Account number: <span class="trans-account">0162456854</span></p>
 							<p>Transaction ID: <span class="trans-id">3444</span></p>
 							<p>Type: <span class="trans-type">Withdrawal</span></p>
 							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
 							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
 							<p>New balance: <span class="new-bal">N44,000.00</span></p>
 							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>David Balogun</strong></span></p>
-						</div>
-					</div>
-					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
-						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="green">N14,000</strong></span></p>
-							<p>Transaction ID: <span class="trans-id">3444</span></p>
-							<p>Type: <span class="trans-type">Withdrawal</span></p>
-							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
-							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N44,000.00</span></p>
-							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>David Balogun</strong></span></p>
+							<p>Cashier: <span class="status"><strong>Yusuf Temitope</strong></span></p>
 						</div>
 					</div>
 				</div>
@@ -127,7 +148,7 @@
 	</main>
 
 	<footer>
-		<div class="">
+		<div class="wrapper">
 			<div class="logo-container margin-bottom-small">
 				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
@@ -173,18 +194,19 @@
 
 	<!-- HIDDEN MODALs -->
 	<section>
-		<div class="popup client-request-modal">
+		<div class="popup teller_popup">
 			<div class="popup_content clearfix">
 				<div class="popup_close float-right"><a href="">X</a></div>
 
 				<div class="transaction">
-					<p class="green"><span>Make your request</span></p>
-					<p class="account_number"><input type="number" class="enter-amount"> </p>
+					<p class="green"><span>Submit your request</span></p>
+					<p class="amount">Account: <input type="number" class="account_number"> </p>
+					<p class="amount">Amount: <input type="number" class="enter-amount"> </p>
 
 				</div>
 				<div class="action">
-					<p class="credit"><a href="./client.transactions.html" class="btn">Deposit</a></p>
-					<p class="debit"><a href="./client.transactions.html" class="btn">Withdraw</a></p>
+					<span class="credit"><a href="./client.history.html" class="btn btn-blue">Deposit</a></span>
+					<span class="debit"><a href="./client.history.html" class="btn btn-blue">Withdraw</a></span>
 				</div>
 			</div>
 		</div>
