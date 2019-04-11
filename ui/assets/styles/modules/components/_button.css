@@ -13,3 +13,7 @@
   background: var(--dark2);
   color: white;
 }
+
+.account-details .btn-blue {
+  color: white;
+}

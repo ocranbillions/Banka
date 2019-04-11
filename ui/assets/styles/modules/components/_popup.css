@@ -23,7 +23,7 @@
 }
 
 /* Cashier  */
-.popup_content .transaction .enter-amount {
+.popup_content .transaction .enter-amount .account_number {
   width: 40%;
   display: inline-block;
   margin: 0 auto;
@@ -37,4 +37,8 @@
 .pop-create-staff .popup_content form,
 .new-acct-popup .popup_content form {
   border: none;
+}
+
+.teller_popup .popup_content {
+  text-align: left;
 }
