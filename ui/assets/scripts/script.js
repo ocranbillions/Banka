@@ -4,7 +4,7 @@ $('.login-btn').on('click', () => {
 	const radioValue = $("input[name='user']:checked").val();
 	if (radioValue === 'cashier') {
 		// Cashier landing page
-		$('.login-section form').attr('action', './pages/cashier.transactions.html');
+		$('.login-section form').attr('action', './pages/cashier.tellers.html');
 
 	} else if (radioValue === 'client') {
 		// Client landing page
@@ -23,13 +23,13 @@ $('.acc-list td a').on('click', () => {
 	$('.popup_close').css('float', 'right');
 });
 
-$('.btn-process').on('click', () => {
+$('.debit, .credit').on('click', () => {
 	$('.popup-transaction').css('visibility', 'visible');
 	$('.popup_close').css('float', 'right');
 });
 
-$('.deposit, .withdraw').on('click', () => {
-	$('.client-request-modal').css('visibility', 'visible');
+$('.fill_teller').on('click', () => {
+	$('.teller_popup').css('visibility', 'visible');
 	$('.popup_close').css('float', 'right');
 });
 

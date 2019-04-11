@@ -73,3 +73,13 @@
 .active-page {
   background: yellowgreen;
 }
+
+/* .flex-col input {
+  width: 100px;
+  height: 50px;
+}
+@media only screen and (max-width: 450px) {
+  .flex-col {
+    flex-direction: column;
+  }
+} */

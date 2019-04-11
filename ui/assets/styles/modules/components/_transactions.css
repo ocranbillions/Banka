@@ -24,3 +24,22 @@
   letter-spacing: 2px;
   padding: 1rem;
 }
+
+.teller-content-container {
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-wrap: wrap; */
+}
+.teller-content-container .teller-item {
+  flex: 1;
+  text-align: center;
+}
+@media only screen and (max-width: 700px) {
+  .teller-content-container {
+    flex-direction: column;
+  }
+
+  .teller-content-container .teller-item {
+    text-align: left;
+  }
+}

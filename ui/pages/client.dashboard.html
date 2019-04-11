@@ -9,20 +9,21 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
-	<title>myBANK - my accounts</title>
+	<title>Banka! - Dashboard</title>
 </head>
 
 <body>
 
 	<nav>
-		<div class="clearfix">
+		<div class="clearfix wrapper">
 			<div class="logo-container margin-bottom-small">
 				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
 			<div class="nav-links clearfix">
 				<ul class="list">
 					<li><a href="./client.dashboard.html" class="">Dashboard</a></li>
-					<li><a href="./client.transactions.html">Transactions</a></li>
+					<li><a href="./client.history.html">History</a></li>
+					<li><a href="#" class="fill_teller">Teller</a></li>
 					<li><a href="#" class="new-acct">New Account</a></li>
 				</ul>
 				<a href="../index.html" class="last-link float-right"><i class="fas fa-sign-out-alt"></i> LogOut</a>
@@ -31,7 +32,7 @@
 	</nav>
 
 	<main>
-		<div class="">
+		<div class="wrapper">
 			<section class="flex-container">
 				<div class="side_nav">
 					<div class="user-info">
@@ -42,7 +43,9 @@
 
 					<ul class="">
 						<li><a href="./client.dashboard.html" class=""><i class="fas fa-home"></i> Dashboard</a></li>
-						<li><a href="./client.transactions.html"> <i class="fas fa-dollar-sign"></i> Transactions</a></li>
+						<li><a href="./client.history.html"> <i class="fas fa-dollar-sign"></i> History</a></li>
+						<li><a href="#" class="fill_teller"> <i class="fas fa-money-bill"></i></i> Teller</a>
+						</li>
 						<li><a href="#" class="new-acct"><i class="fas fa-folder-open"></i> New Account</a></li>
 						<li><a href="#"><i class="fas fa-tools"></i> Settings</a></li>
 						<li><a href="#"><i class="fas fa-external-link-square-alt"></i> Quick Links</a></li>
@@ -54,36 +57,33 @@
 					<h1 class="heading-1">My Accounts</h1>
 
 					<div class="profile-section padding-top-small">
-						<div class="account margin-bottom-small">
+						<div class="account margin-bottom-small f-item">
 							<p class="heading-3"><span class="">0132152333 </span> - <span class="green">Active</span></p>
 							<div class="account-details">
 								<p class="margin-bottom-small">Available Balance: N255,000.00</p>
 								<p class="margin-bottom-small">Type: Savings</p>
-								<a href="#" class="btn deposit">Deposit</a>
-								<a href="#" class="btn withdraw">Withdraw</a>
-								<a href="./client.history.html" class="btn ">Account history</a>
+								<a href="#" class="btn fill_teller btn-blue margin-bottom-small">Fill Teller</a>
+								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
 							</div>
 						</div>
 
-						<div class="account margin-bottom-small">
+						<div class="account margin-bottom-small f-item">
 							<p class="heading-3"><span class="">2541536521 </span> - <span class="green">Active</span></p>
 							<div class="account-details">
 								<p class="margin-bottom-small">Available Balance: N20,150.00</p>
 								<p class="margin-bottom-small">Type: Current</p>
-								<a href="#" class="btn deposit">Deposit</a>
-								<a href="#" class="btn withdraw">Withdraw</a>
-								<a href="./client.history.html" class="btn ">Account history</a>
+								<a href="#" class="btn fill_teller btn-blue margin-bottom-small">Fill Teller</a>
+								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
 							</div>
 						</div>
 
-						<div class="account margin-bottom-small">
+						<div class="account margin-bottom-small f-item">
 							<p class="heading-3"><span class="">0132152333 </span> - <span class="red">Dormant</span></p>
 							<div class="account-details">
 								<p class="margin-bottom-small">Available Balance: N2,000.00</p>
 								<p class="margin-bottom-small">Type: Savings</p>
-								<a href="#" class="btn deposit">Deposit</a>
-								<a href="#" class="btn withdraw">Withdraw</a>
-								<a href="./client.history.html" class="btn ">Account history</a>
+								<a href="#" class="btn margin-bottom-small">Fill Teller</a>
+								<a href="./client.history.html" class="btn margin-bottom-small">Account history</a>
 							</div>
 						</div>
 
@@ -95,7 +95,7 @@
 	</main>
 
 	<footer>
-		<div class="">
+		<div class="wrapper">
 			<div class=" logo-container margin-bottom-small">
 				<a href="#" class="logo">Ban<i>ka</i><i class="icon-basic-home"></i> </a>
 			</div>
@@ -141,18 +141,19 @@
 
 	<!-- HIDDEN MODALs -->
 	<section>
-		<div class="popup client-request-modal">
+		<div class="popup teller_popup">
 			<div class="popup_content clearfix">
 				<div class="popup_close float-right"><a href="">X</a></div>
 
 				<div class="transaction">
-					<p class="green"><span>Make your request</span></p>
-					<p class="account_number"><input type="number" class="enter-amount"> </p>
+					<p class="green"><span>Submit your request</span></p>
+					<p class="">Account: <input type="number" class="account_number"> </p>
+					<p class="amount">Amount: <input type="number" class="enter-amount"> </p>
 
 				</div>
 				<div class="action">
-					<p class="credit"><a href="./client.transactions.html" class="btn">Deposit</a></p>
-					<p class="debit"><a href="./client.transactions.html" class="btn">Withdraw</a></p>
+					<span class="credit"><a href="./client.history.html" class="btn btn-blue">Deposit</a></span>
+					<span class="debit"><a href="./client.history.html" class="btn btn-blue">Withdraw</a></span>
 				</div>
 			</div>
 		</div>

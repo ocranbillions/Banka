@@ -174,6 +174,16 @@ a {
   background: yellowgreen;
 }
 
+/* .flex-col input {
+  width: 100px;
+  height: 50px;
+}
+@media only screen and (max-width: 450px) {
+  .flex-col {
+    flex-direction: column;
+  }
+} */
+
 nav {
   background: var(--dark2);
   padding-bottom: 0.5rem;
@@ -286,6 +296,10 @@ nav a {
 
 .btn-blue {
   background: var(--dark2);
+  color: white;
+}
+
+.account-details .btn-blue {
   color: white;
 }
 
@@ -459,6 +473,27 @@ tr:nth-child(even) {
   padding: 1rem;
 }
 
+.teller-content-container {
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-wrap: wrap; */
+}
+
+.teller-content-container .teller-item {
+  flex: 1;
+  text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+  .teller-content-container {
+    flex-direction: column;
+  }
+
+  .teller-content-container .teller-item {
+    text-align: left;
+  }
+}
+
 .popup {
   height: 100vh;
   width: 100%;
@@ -485,7 +520,7 @@ tr:nth-child(even) {
 
 /* Cashier  */
 
-.popup_content .transaction .enter-amount {
+.popup_content .transaction .enter-amount .account_number {
   width: 40%;
   display: inline-block;
   margin: 0 auto;
@@ -501,13 +536,38 @@ tr:nth-child(even) {
   border: none;
 }
 
+.teller_popup .popup_content {
+  text-align: left;
+}
+
+.profile-section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 .account {
   background: #f5f5f5;
   padding: 2rem;
+  border: 2px solid var(--primary-color2);
 }
 
 .account-details a {
   color: black;
+}
+
+@media only screen and (max-width: 900px) {
+  .profile-section {
+    font-size: 15px;
+  }
+}
+
+/* Make items same size */
+
+.f-item {
+  margin: 10px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 footer {
