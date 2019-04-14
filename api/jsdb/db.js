@@ -147,7 +147,7 @@ export default {
   tellers: [
     {
       amount: 20000,
-      account: 5623541235,
+      account: 1221125232,
       transactionType: 'credit',
       date: '05-3-2019 12:52:44',
       status: 'pending',
