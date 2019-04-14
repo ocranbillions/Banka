@@ -38,7 +38,19 @@ router.post('/:number/credit', (req, res) => {
   // Bad request, error in user inputs
   if (result.error) {
     return res.status(400).json({
-      message: result.error.message,
+      errorMessage: result.error.message,
+      status: 400,
+    });
+  }
+  if (result === 404) {
+    return res.status(400).json({
+      errorMessage: 'Error in Account Number or Teller number, please check inputs',
+      status: 400,
+    });
+  }
+  if (result === 'processed') {
+    return res.status(400).json({
+      errorMessage: 'This teller is already processed',
       status: 400,
     });
   }
@@ -59,17 +71,30 @@ router.post('/:number/debit', (req, res) => {
   // Bad request, error in user inputs
   if (result.error) {
     return res.status(400).json({
-      message: result.error.message,
+      errorMessage: result.error.message,
+      status: 400,
+    });
+  }
+  if (result === 404) {
+    return res.status(400).json({
+      errorMessage: 'Error in Account Number or Teller number, please check inputs',
       status: 400,
     });
   }
   // Insufficient funds
   if (result === 406) {
     return res.status(406).json({
-      message: 'You don not have sufficient funds for this transaction.',
+      errorMessage: 'You don not have sufficient funds for this transaction.',
       status: 406,
     });
   }
+  if (result === 'processed') {
+    return res.status(400).json({
+      errorMessage: 'This teller is already processed',
+      status: 400,
+    });
+  }
+
   // Return new transaction
   const newTransaction = result;
   return res.status(201).json({
