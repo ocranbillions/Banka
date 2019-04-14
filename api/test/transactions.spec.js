@@ -42,13 +42,13 @@ describe('TEST ALL TRANSACTIONS ENDPOINTS', () => {
         amount: 2500,
         transactionType: 'credit',
         cashier: 5,
+        tellerNumber: 1,
       };
       chai.request(server)
-        .post('/api/v1/transactions/9586523412/credit')
+        .post('/api/v1/transactions/5623541235/credit')
         .send(transaction)
         .end((err, res) => {
           res.body.should.have.property('data');
-          // res.body.data.should.have.property('newBalance');
           res.should.have.status(201);
         });
     });
@@ -60,7 +60,8 @@ describe('TEST ALL TRANSACTIONS ENDPOINTS', () => {
       const transaction = {
         amount: 12000,
         transactionType: 'debit',
-        cashier: 5,
+        cashier: 2,
+        tellerNumber: 2,
       };
       chai.request(server)
         .post('/api/v1/transactions/7785412532/debit')
@@ -74,16 +75,17 @@ describe('TEST ALL TRANSACTIONS ENDPOINTS', () => {
 
     it('Should NOT BE able to debit an account with insufficient funds', () => {
       const transaction = {
-        amount: 1000000,
+        amount: 5000000,
         transactionType: 'debit',
         cashier: 2,
+        tellerNumber: 3,
       };
       chai.request(server)
-        .post('/api/v1/transactions/5623541235/debit')
+        .post('/api/v1/transactions/9586523412/debit')
         .send(transaction)
         .end((err, res) => {
-          res.body.should.have.property('message');
-          res.body.should.have.property('message').eql('You don not have sufficient funds for this transaction.');
+          res.body.should.have.property('errorMessage');
+          res.body.should.have.property('errorMessage').eql('You don not have sufficient funds for this transaction.');
           res.should.have.status(406);
         });
     });

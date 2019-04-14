@@ -4,7 +4,7 @@ import helpers from '../helpers/helpers';
 
 const { transactions } = db;
 const { accounts } = db;
-const BASE = 10;
+const { tellers } = db;
 
 const TransactionController = {
 
@@ -13,7 +13,7 @@ const TransactionController = {
   },
 
   getAccountTransactions(number) {
-    const accountNumber = parseInt(number, BASE);
+    const accountNumber = parseInt(number, 10);
     const accountTransactions = transactions.filter(acct => acct.accountNumber === accountNumber);
 
     // No content
@@ -23,53 +23,75 @@ const TransactionController = {
   },
 
   creditAccount(number, creditInfo) {
-    const accountNumber = parseInt(number, BASE);
+    const accountNumber = parseInt(number, 10);
+    const account = accounts.find(acct => acct.accountNumber === accountNumber);
+    if (account === undefined) return 404;
 
-    // Lookup account
-    const index = accounts.findIndex(acct => acct.accountNumber === accountNumber);
-    if (index === -1) return 404;
 
     // Validate inputs
     const result = helpers.validateTransaction(creditInfo);
     if (result.error) return result;
 
-    // Get old balance and update account
-    const oldBalance = accounts[index].balance;
-    accounts[index].balance = oldBalance + creditInfo.amount;
+    // Check client's submitted teller
+    const teller = tellers.find(t => t.tellerNumber === creditInfo.tellerNumber);
+    if (teller === undefined) return 404;
 
-    // Create/Post transaction
-    const transaction = new Transaction(accounts[index], oldBalance, creditInfo);
-    transaction.transactionId = transactions.length + 1;
-    transactions.push(transaction);
 
-    return transactions[transactions.length - 1]; // Return transaction
+    // Proceed only if client's submitted teller is not already processed
+    // (So we don't credit the client twice)
+    if (teller.status !== 'processed') {
+      const oldBalance = account.balance;
+      account.balance = oldBalance + creditInfo.amount;
+
+      // Create/Post transaction
+      const transaction = new Transaction(account, oldBalance, creditInfo);
+      transaction.transactionId = transactions.length + 1;
+      transactions.push(transaction);
+
+      // Change teller status to 'processed'
+      helpers.updateTellerStatus(creditInfo.tellerNumber);
+
+      return transactions[transactions.length - 1]; // Return transaction
+    }
+
+    // The teller number is alredy processed
+    return 'processed';
   },
 
 
   debitAccount(number, debitInfo) {
-    const accountNumber = parseInt(number, BASE);
-
-    // Lookup account
-    const index = accounts.findIndex(acct => acct.accountNumber === accountNumber);
-    if (index === -1) return 404;
+    const accountNumber = parseInt(number, 10);
+    const account = accounts.find(acct => acct.accountNumber === accountNumber);
+    if (account === undefined) return 404;
 
     // Validate inputs
     const result = helpers.validateTransaction(debitInfo);
     if (result.error) return result;
 
-    // Insufficient funds? Reject!
-    if (accounts[index].balance < debitInfo.amount) return 406;
+    // Check client's submitted teller
+    const teller = tellers.find(t => t.tellerNumber === debitInfo.tellerNumber);
+    if (teller === undefined) return 404;
 
-    // Get old balance and update account
-    const oldBalance = accounts[index].balance;
-    accounts[index].balance = oldBalance + (-debitInfo.amount);
+    // Check client's balance. reject if insufficent
+    if (account.balance < debitInfo.amount) return 406;
 
-    // Create/Post transaction
-    const transaction = new Transaction(accounts[index], oldBalance, debitInfo);
-    transaction.transactionId = transactions.length + 1;
-    transactions.push(transaction);
+    // Proceed only if client's submitted teller is not already processed
+    if (teller.status !== 'processed') {
+      // Get old balance and update account
+      const oldBalance = account.balance;
+      account.balance = oldBalance + (-debitInfo.amount);
 
-    return transactions[transactions.length - 1]; // Return transaction
+      // Create/Post transaction
+      const transaction = new Transaction(account, oldBalance, debitInfo);
+      transaction.transactionId = transactions.length + 1;
+      transactions.push(transaction);
+
+      helpers.updateTellerStatus(debitInfo.tellerNumber);
+
+      return transactions[transactions.length - 1]; // Return transaction
+    }
+    // The teller number is alredy processed
+    return 'processed';
   },
 
 };

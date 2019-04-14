@@ -144,4 +144,30 @@ export default {
     },
   ],
 
+  tellers: [
+    {
+      amount: 20000,
+      account: 5623541235,
+      transactionType: 'credit',
+      date: '05-3-2019 12:52:44',
+      status: 'pending',
+      tellerNumber: 1,
+    },
+    {
+      amount: 10000,
+      account: 7785412532,
+      transactionType: 'debit',
+      date: '20-3-2019 12:52:44',
+      status: 'pending',
+      tellerNumber: 2,
+    },
+    {
+      amount: 5000000,
+      account: 9586523412,
+      transactionType: 'debit',
+      date: '20-3-2019 12:52:44',
+      status: 'pending',
+      tellerNumber: 3,
+    },
+  ],
 };
