@@ -1,7 +1,7 @@
 // Navitage user to a different landing page based on their role
 
 $('.login-btn').on('click', () => {
-	const radioValue = $("input[name='user']:checked").val();
+	const radioValue = $("#email").val();
 	if (radioValue === 'cashier') {
 		// Cashier landing page
 		$('.login-section form').attr('action', './pages/cashier.tellers.html');

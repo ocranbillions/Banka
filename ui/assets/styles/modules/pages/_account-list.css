@@ -1,10 +1,11 @@
 .account-list {
   width: 80%;
   overflow: auto;
+  padding-bottom: 3rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 755px) {
   .account-list {
-    width: 100%;
+    margin: 0px auto;
   }
 }
