@@ -1,6 +1,7 @@
 .account-list {
   width: 80%;
   overflow: auto;
+  padding-bottom: 3rem;
 }
 
 @media only screen and (max-width: 755px) {

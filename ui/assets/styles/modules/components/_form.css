@@ -35,3 +35,10 @@ button {
   margin: 0.5rem;
   background: pink;
 }
+
+input {
+  padding-left: 0.5rem;
+  border-radius: 0;
+  background: var(--primary-color-light2);
+  border: 0px;
+}

@@ -255,7 +255,6 @@ nav a {
 .btn {
   display: inline-block;
   padding: 0.5rem;
-  /* border: 1px solid var(--dark2); */
   border-radius: 0.5rem;
 }
 
@@ -319,6 +318,13 @@ button {
   width: 1.3rem;
   margin: 0.5rem;
   background: pink;
+}
+
+input {
+  padding-left: 0.5rem;
+  border-radius: 0;
+  background: var(--primary-color-light2);
+  border: 0px;
 }
 
 .main-section-flex {
@@ -414,6 +420,7 @@ button {
 .account-list {
   width: 80%;
   overflow: auto;
+  padding-bottom: 3rem;
 }
 
 @media only screen and (max-width: 755px) {
