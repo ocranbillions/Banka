@@ -4,32 +4,25 @@ import UserController from '../controllers/userController';
 const router = Router();
 
 // HANDLES REQUEST FOR GETTING ALL USERS
-router.get('/', (req, res) => {
-  const users = UserController.getUsers();
-
-  return res.json({
-    data: users,
-    status: 200,
-  });
-});
+router.get('/', UserController.getUsers);
 
 
 // HANDLES REQUEST FOR GETTING A SINGLE USER
-router.get('/:number', (req, res) => {
-  const user = UserController.getSingleUser(req.params.number);
+router.get('/:number', UserController.getSingleUser);
+// const user = UserController.getSingleUser(req.params.number);
 
-  if (user === undefined) {
-    return res.status(404).json({
-      errorMessage: 'The user with the given number was not found',
-      status: 404,
-    });
-  }
-  // Return retrived user
-  return res.json({
-    data: user,
-    status: 200,
-  });
-});
+// if (user === undefined) {
+//   return res.status(404).json({
+//     errorMessage: 'The user with the given number was not found',
+//     status: 404,
+//   });
+// }
+// // Return retrived user
+// return res.json({
+//   data: user,
+//   status: 200,
+// });
+// });
 
 
 // // HANDLES REQUEST FOR CREATING A NEW STAFF
