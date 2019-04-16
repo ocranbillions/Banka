@@ -25,7 +25,6 @@ button {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  /* border: 1px dashed blue; */
   background: inherit;
 }
 
@@ -34,4 +33,5 @@ button {
   height: 1.3rem;
   width: 1.3rem;
   margin: 0.5rem;
+  background: pink;
 }

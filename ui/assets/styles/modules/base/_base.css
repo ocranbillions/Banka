@@ -7,12 +7,11 @@
 }
 :root {
   --primary-color: greenyellow;
-  --primary-color3: #ff7730;
   --primary-color2: #144499;
-  --primary-color-light: #2196f3;
+  --primary-color-light: #565695;
+  --primary-color-light2: #aeaed1;
   --dark: #222632;
-  --dark2: #144499;
-  --dark3: #28b485;
+  --dark2: #343477;
 }
 
 html {
@@ -70,14 +69,6 @@ a {
   color: orangered;
 }
 
-@media only screen and (max-width: 900px) {
-  html {
-    /* font-size: 52.5%; */
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  html {
-    /* font-size: 57.5%; */
-  }
+.white {
+  color: white;
 }

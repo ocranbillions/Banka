@@ -1,6 +1,6 @@
 .profile-section {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -14,15 +14,12 @@
   color: black;
 }
 
+.f-item {
+  width: 290px;
+}
+
 @media only screen and (max-width: 900px) {
   .profile-section {
     font-size: 15px;
   }
-}
-
-/* Make items same size */
-.f-item {
-  margin: 10px;
-  flex-grow: 1;
-  flex-basis: 0;
 }

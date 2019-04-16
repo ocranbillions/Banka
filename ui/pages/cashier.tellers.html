@@ -31,25 +31,23 @@
 	</nav>
 
 	<main class="">
-		<section class="account-list-section flex-container wrapper">
+		<section class="account-list-section main-section-flex">
 			<div class="side_nav">
-				<div class="user-info">
+				<div class="user-info margin-bottom-small">
 					<img src="../assets/images/profilepic.JPG" alt="">
 					<h3 class="heading-3">Olawale James</h3>
 					<span>oj@gmail.com</span>
 				</div>
-
-				<ul class="">
-					<li><a href="./cashier.tellers.html" class=""><i class="fas fa-money-bill-wave"></i> Tellers</a>
-					<li><a href="./cashier.transactions.html" class=""><i class="fas fa-comments-dollar"></i> Transactions</a>
-					</li>
-					<li><a href="./cashier.accounts.html"> <i class="fas fa-users"></i> Accounts</a></li>
-					<li><a href="#"><i class="fas fa-tools"></i> Settings</a></li>
-					<li><a href="#"><i class="fas fa-external-link-square-alt"></i> Quick Links</a></li>
-					<li><a href="#"><i class="far fa-question-circle"></i> FAQ</a></li>
-					<li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
-				</ul>
+				<a href="./cashier.tellers.html"><span class="icon"><i class="fas fa-money-bill-wave"></i></span>Tellers</a>
+				<a href="./cashier.transactions.html"><span class="icon"><i
+							class="fas fa-comments-dollar"></i></span>Transactions</a>
+				<a href="./cashier.accounts.html"><span class="icon"> <i class="fas fa-users"></i> </span>Accounts</a>
+				<a href="#"><span class="icon"><i class="fas fa-tools"></i> </span>Settings</a>
+				<a href="#"><span class="icon"><i class="fas fa-external-link-square-alt"></i> </span>Quick Links</a>
+				<a href="#"><span class="icon"><i class="far fa-question-circle"></i> </span>FAQ</a>
+				<a href="../index.html"><span class="icon"><i class="fas fa-sign-out-alt"></i> </span>Log out</a>
 			</div>
+
 			<div class="account-list">
 				<div class="select_account margin-bottom-small">
 					<h1 class="margin-top-small">Tellers</h1>
@@ -60,14 +58,28 @@
 					</select>
 					<a href="#" class="btn btn-blue">Load</a>
 				</div>
-				<a href="#" class="debit bg-red btn">Debit</a>
-				<a href="#" class="credit bg-green btn">Credit</a>
+				<a href="#" class="debit bg-red btn white">Debit</a>
+				<a href="#" class="credit bg-green btn white">Credit</a>
 
 				<div class="trans-column padding-top-small">
+
+					<div class="trans-block trans-table-title">
+						<div class="trans-details teller-content-container">
+							<p class="teller-item"><span class="trans-amount"><strong>Amount</strong></span></p>
+							<p class="teller-item"><span class="trans-account"><strong>Account</strong></span></p>
+							<p class="teller-item"><span class="trans-owner"><strong>Owner</strong></span></p>
+							<p class="teller-item"><span class="trans-type"><strong>Type</strong></span></p>
+							<p class="teller-item"><span class="trans-date"><strong>Date</strong></span></p>
+							<p class="teller-item"><span class="status"><strong>Status</strong></span></p>
+							<p class="teller-item"><span class="teller_number"><strong>TellerNo</strong></span></p>
+						</div>
+					</div>
+
 					<div class="trans-block">
 						<div class="trans-details teller-content-container">
 							<p class="teller-item"><span class="trans-amount"><strong class="red">N10,000</strong></span></p>
 							<p class="teller-item"><span class="trans-account">0162456854</span></p>
+							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
 							<p class="teller-item"><span class="trans-type">Withdrawal</span></p>
 							<p class="teller-item"><span class="trans-date">09-4-2019 12:33:23</span></p>
 							<p class="teller-item"><span class="status">Pending</span></p>
@@ -79,6 +91,7 @@
 						<div class="trans-details teller-content-container">
 							<p class="teller-item"><span class="trans-amount"><strong class="green">N8,000</strong></span></p>
 							<p class="teller-item"><span class="trans-account">0162456854</span></p>
+							<p class="teller-item"><span class="trans-owner">Michael Oluwole</span></p>
 							<p class="teller-item"><span class="trans-type">Deposit</span></p>
 							<p class="teller-item"><span class="trans-date">09-4-2019 12:45:23</span></p>
 							<p class="teller-item"><span class="status">Pending</span></p>
@@ -90,6 +103,7 @@
 						<div class="trans-details teller-content-container">
 							<p class="teller-item"><span class="trans-amount"><strong class="red">N10,000</strong></span></p>
 							<p class="teller-item"><span class="trans-account">2152365420</span></p>
+							<p class="teller-item"><span class="trans-owner">Shola Jacobs</span></p>
 							<p class="teller-item"><span class="trans-type">Withdrawal</span></p>
 							<p class="teller-item"><span class="trans-date">09-4-2019 12:33:23</span></p>
 							<p class="teller-item"><span class="status">Pending</span></p>
@@ -101,6 +115,7 @@
 						<div class="trans-details teller-content-container">
 							<p class="teller-item"><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
 							<p class="teller-item"><span class="trans-account">7521222321</span></p>
+							<p class="teller-item"><span class="trans-owner">Femi Johnson</span></p>
 							<p class="teller-item"><span class="trans-type">Deposit</span></p>
 							<p class="teller-item"><span class="trans-date">09-4-2019 12:33:23</span></p>
 							<p class="teller-item"><span class="status">Pending</span></p>
@@ -112,6 +127,7 @@
 						<div class="trans-details teller-content-container">
 							<p class="teller-item"><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
 							<p class="teller-item"><span class="trans-account">1212121141</span></p>
+							<p class="teller-item"><span class="trans-owner">Kola Ajayi</span></p>
 							<p class="teller-item"><span class="trans-type">Deposit</span></p>
 							<p class="teller-item"><span class="trans-date">09-4-2019 12:33:23</span></p>
 							<p class="teller-item"><span class="status">Processed</span></p>
@@ -121,19 +137,9 @@
 
 					<div class="trans-block">
 						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
-							<p class="teller-item"><span class="trans-account">1201232323</span></p>
-							<p class="teller-item"><span class="trans-type">Deposit</span></p>
-							<p class="teller-item"><span class="trans-date">09-4-2019 12:33:23</span></p>
-							<p class="teller-item"><span class="status">Procssed</span></p>
-							<p class="teller-item"><span class="teller_number">125</span></p>
-						</div>
-					</div>
-
-					<div class="trans-block">
-						<div class="trans-details teller-content-container">
 							<p class="teller-item"><span class="trans-amount"><strong class="red">N10,000</strong></span></p>
 							<p class="teller-item"><span class="trans-account">0162456854</span></p>
+							<p class="teller-item"><span class="trans-owner">Bode Tony</span></p>
 							<p class="teller-item"><span class="trans-type">Withdrawal</span></p>
 							<p class="teller-item"><span class="trans-date">09-4-2019 12:33:23</span></p>
 							<p class="teller-item"><span class="status">Processed</span></p>

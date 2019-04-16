@@ -23,7 +23,6 @@ nav {
 }
 
 .nav-links a:hover {
-  color: var(--primary-color-light);
   text-decoration: underline;
 }
 
@@ -31,9 +30,6 @@ nav {
   font-size: 1.35rem;
 }
 
-.nav-links a:hover {
-  color: greenyellow;
-}
 .list,
 .list li {
   display: inline-block;

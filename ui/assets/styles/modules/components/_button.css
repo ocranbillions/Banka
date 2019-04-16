@@ -1,7 +1,7 @@
 .btn {
   display: inline-block;
   padding: 0.5rem;
-  border: 1px solid var(--dark2);
+  /* border: 1px solid var(--dark2); */
   border-radius: 0.5rem;
 }
 
