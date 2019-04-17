@@ -1,61 +1,62 @@
-import bcrypt from 'bcrypt-nodejs';
-import db from '../jsdb/db';
-import User from '../models/UserModel';
-import helpers from '../helpers/helpers';
-
-const { users } = db;
-const { usersLogins } = db;
-const BASE = 10;
+import UserServices from '../services/userServices';
 
 const UserController = {
 
-  getUsers() {
-    return users;
+  async getUsers(req, res) {
+    const users = await UserServices.getUsers();
+    return res.json({
+      data: users,
+      status: 200,
+    });
   },
 
-  getSingleUser(id) {
-    const userId = parseInt(id, BASE);
-    const result = users.find(u => u.id === userId);
-    return result;
-  },
+  async getSingleUser(req, res) {
+    const result = await UserServices.getSingleUser(req.params.id);
 
-  addStaff(staff) {
-    const result = helpers.validateNewStaff(staff);
-    if (result.error) return result;
-
-    const user = users.find(u => u.email === staff.email);
-    // Create new staff if not exit
-    if (user === undefined) {
-      const newStaff = new User(staff);
-      newStaff.id = users.length + 1;
-      newStaff.type = staff.type;
-      newStaff.isAdmin = staff.isAdmin;
-
-      users.push(newStaff);
-
-      const hashedPassword = bcrypt.hashSync(staff.password);
-      usersLogins.push({
-        email: newStaff.email,
-        hash: hashedPassword,
+    if (result.rows < 1) {
+      return res.status(404).json({
+        errorMessage: 'The user with the given number was not found',
+        status: 404,
       });
-
-      // Return newly created account
-      return users[users.length - 1];
     }
-
-    // Rejected: Email already taken
-    return 406;
+    // Return retrived user
+    const user = result.rows;
+    return res.json({
+      data: user,
+      status: 200,
+    });
   },
 
-  deleteUser(id) {
-    const userId = parseInt(id, BASE);
-    const index = users.findIndex(u => u.id === userId);
+  async addStaff(req, res) {
+    const result = await UserServices.addStaff(req.body);
 
-    // NOTE: findIndex returns -1 if item not found
-    if (index === -1) return 404;
+    if (result.rowCount > 0) {
+      return res.status(406).json({
+        errorMessage: 'Email already taken',
+        status: 406,
+      });
+    }
+    // Return newly created staff
+    const newStaff = result;
+    return res.status(201).json({
+      data: newStaff,
+      status: 201,
+    });
+  },
 
-    const deletedUser = users.splice(index, 1);
-    return deletedUser;
+  async deleteUser(req, res) {
+    const result = await UserServices.deleteUser(req.params.userId);
+
+    if (result.rowCount < 1) {
+      return res.status(404).json({
+        errorMessage: 'The user with the given number was not found',
+        status: 404,
+      });
+    }
+    return res.status(200).json({
+      message: 'User successfully deleted',
+      status: 200,
+    });
   },
 
 };
