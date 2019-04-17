@@ -70,7 +70,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
       const formData = {
         status: 'dormant',
       };
-      const res = await chai.request(server).patch(`/api/v1/accounts/${accNum}`).send(formData);
+      const res = await chai.request(server).patch('/api/v1/accounts/5421214520').send(formData);
       res.body.should.have.property('data');
       res.should.have.status(201);
     });
