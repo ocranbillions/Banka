@@ -1,6 +1,6 @@
 /* eslint-disable no-else-return */
 /* eslint-disable no-console */
-import polyfill from '@babel/polyfill';
+// import polyfill from '@babel/polyfill';
 import dbServices from '../db/index';
 
 const { db } = dbServices;

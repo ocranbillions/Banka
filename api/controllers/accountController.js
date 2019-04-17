@@ -1,58 +1,71 @@
-import db from '../jsdb/db';
-import helpers from '../helpers/helpers';
-import Account from '../models/AccountModel';
-
-const { accounts } = db;
-const RADIX = 10;
+import AccountServices from '../services/accountServices';
 
 const AccountController = {
 
-  getAccounts() {
-    return accounts;
+  async getAccounts(req, res) {
+    const accounts = await AccountServices.getAccounts();
+    return res.json({
+      data: accounts,
+      status: 200,
+    });
   },
 
-  getSingleAccount(num) {
-    const accountNumber = parseInt(num, RADIX);
-    const result = accounts.find(acct => acct.accountNumber === accountNumber);
-    return result;
+  async getSingleAccount(req, res) {
+    const result = await AccountServices.getSingleAccount(req.params.number);
+
+    if (result.rows < 1) {
+      return res.status(404).json({
+        errorMessage: 'The account with the given number was not found',
+        status: 404,
+      });
+    }
+    // Return retrived account
+    const account = result.rows;
+    return res.json({
+      data: account,
+      status: 200,
+    });
   },
 
-  addAccount(reqBody) {
-    const result = helpers.validateNewAccount(reqBody);
-    if (result.error) return result;
-
-    const newAccount = new Account(reqBody);
-
-    newAccount.id = accounts.length + 1;
-    accounts.push(newAccount);
+  async addAccount(req, res) {
+    const result = await AccountServices.addAccount(req.body);
 
     // Return newly created account
-    return accounts[accounts.length - 1];
+    const newAccount = result;
+    return res.status(201).json({
+      data: newAccount,
+      status: 201,
+    });
   },
 
-  deleteAccount(num) {
-    const accountNumber = parseInt(num, RADIX);
-    const index = accounts.findIndex(acct => acct.accountNumber === accountNumber);
+  async deleteAccount(req, res) {
+    const result = await AccountServices.deleteAccount(req.params.number);
 
-    // NOTE: findIndex returns -1 if item not found
-    if (index === -1) return 404;
-
-    const deletedAccount = accounts.splice(index, 1);
-    return deletedAccount;
+    if (result.rowCount < 1) {
+      return res.status(404).json({
+        errorMessage: 'The account with the given number was not found',
+        status: 404,
+      });
+    }
+    return res.status(200).json({
+      message: 'Account successfully deleted',
+      status: 200,
+    });
   },
 
-  changeAccountStatus(num, reqBody) {
-    const accountNumber = parseInt(num, RADIX);
-    const index = accounts.findIndex(acct => acct.accountNumber === accountNumber);
+  async changeAccountStatus(req, res) {
+    const result = await AccountServices.changeAccountStatus(req.params.number, req.body.status);
 
-    if (index === -1) return 404; // Account not found
-    if (reqBody.status !== 'active' && reqBody.status !== 'dormant') return 401; // Bad request
-
-    // Change status
-    accounts[index].status = reqBody.status;
-
-    // Return account
-    return accounts[index];
+    if (!result) {
+      return res.status(404).json({
+        errorMessage: 'Account not found',
+        status: 404,
+      });
+    }
+    return res.status(201).json({
+      data: result,
+      status: 201,
+    });
   },
 
 };
