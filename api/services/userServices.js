@@ -25,7 +25,7 @@ const UserController = {
   async addStaff(staff) {
     const checkUser = 'SELECT * FROM users WHERE email=$1';
 
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve) => {
       const user = db.query(checkUser, [staff.email]);
       resolve(user);
     });

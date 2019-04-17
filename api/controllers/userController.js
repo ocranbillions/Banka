@@ -55,7 +55,7 @@ const UserController = {
     }
     return res.status(200).json({
       message: 'User successfully deleted',
-      status: 202,
+      status: 200,
     });
   },
 
