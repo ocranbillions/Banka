@@ -47,9 +47,9 @@ const AccountController = {
         status: 404,
       });
     }
-    return res.status(200).json({
+    return res.status(202).json({
       message: 'Account successfully deleted',
-      status: 200,
+      status: 202,
     });
   },
 
@@ -58,7 +58,7 @@ const AccountController = {
 
     if (!result) {
       return res.status(404).json({
-        errorMessage: 'Account not found',
+        errorMessage: 'The account with the given number was not found',
         status: 404,
       });
     }

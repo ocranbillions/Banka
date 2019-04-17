@@ -25,13 +25,13 @@ const Validations = {
     const schema = {
       owner: Joi.number().min(1).required(),
       type: Joi.string().min(5).required(),
-      openingBalance: Joi.number().min(1000).required(),
+      openingBalance: Joi.number().min(1).required(),
     };
     const result = Joi.validate(req.body, schema);
     if (result.error) {
       return res.status(400).json({
         status: 400,
-        error: result.error.message,
+        errorMessage: result.error.message,
       });
     }
     return next();
