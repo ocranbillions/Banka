@@ -1,5 +1,6 @@
 node_modules/
 coverage/
 .nyc_output/
-api/db/.env
+api/db/env
 .env
+new/
