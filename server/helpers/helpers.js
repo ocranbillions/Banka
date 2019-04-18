@@ -6,18 +6,6 @@ import db from '../jsdb/db';
 dotenv.config();
 
 const Helpers = {
-  validateNewAccount(formData) {
-    // Define requirements
-    const schema = {
-      firstName: Joi.string().min(3).required(),
-      lastName: Joi.string().min(3).required(),
-      email: Joi.string().min(10).required(),
-      type: Joi.string().min(5).required(),
-      openingBalance: Joi.number().min(1000).required(),
-    };
-
-    return Joi.validate(formData, schema);
-  },
 
   validateTransaction(transaction) {
     const schema = {
@@ -70,6 +58,9 @@ const Helpers = {
     return Joi.validate(tellerInfo, schema);
   },
 
+  generateAccountNumber() {
+    return Math.floor(1000000000 + Math.random() * 9000000000);
+  },
   // Next helper method
 
 };

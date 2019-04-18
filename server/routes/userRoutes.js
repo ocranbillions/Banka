@@ -4,11 +4,9 @@ import validations from '../middlewares/validations';
 
 const router = Router();
 
-
 router.get('/', UserController.getUsers);
 router.get('/:id', UserController.getSingleUser);
 router.post('/', validations.validateNewStaff, UserController.addStaff);
 router.delete('/:userId', UserController.deleteUser);
-
 
 export default router;

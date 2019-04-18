@@ -4,11 +4,11 @@
   "description": "A light-weight banking application",
   "main": "app.js",
   "scripts": {
-    "mochatest": "mocha --require @babel/register --require @babel/polyfill --timeout 15000 api/test/*.js --exit",
-    "test": "nyc --reporter=html --reporter=text --require @babel/register --require @babel/polyfill mocha --timeout 15000 api/test/*.js --exit",
+    "mochatest": "mocha --require @babel/register --require @babel/polyfill --timeout 15000 server/test/*.js --exit",
+    "test": "nyc --reporter=html --reporter=text --require @babel/register --require @babel/polyfill mocha --timeout 15000 server/test/*.js --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "dev": "nodemon --exec babel-node ./api/app.js",
-    "start": "babel-node api/app.js"
+    "dev": "nodemon --exec babel-node ./server/app.js",
+    "start": "babel-node server/app.js"
   },
   "author": "@ocranbillions",
   "license": "MIT",

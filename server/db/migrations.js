@@ -1,16 +1,16 @@
 const createTables = `
-  DROP TABLE IF EXISTS accounts cascade;
-  DROP TABLE IF EXISTS users cascade;
-  DROP TABLE IF EXISTS logins cascade;
-  DROP TABLE IF EXISTS tellers cascade;
-  DROP TABLE IF EXISTS transactions cascade;
+  DROP TABLE IF EXISTS accounts;
+  DROP TABLE IF EXISTS users;
+  DROP TABLE IF EXISTS logins;
+  DROP TABLE IF EXISTS tellers;
+  DROP TABLE IF EXISTS transactions;
 
   CREATE TABLE IF NOT EXISTS
   accounts(
     id SERIAL PRIMARY KEY,
     accountNumber BIGINT NOT NULL,
     createdON TIMESTAMP,
-    owner INT NOT NULL,
+    owner INT REFERENCES users(id) ON DELETE CASCADE,
     type VARCHAR(128) NOT NULL,
     balance FLOAT NOT NULL,
     status VARCHAR(128) NOT NULL
