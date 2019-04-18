@@ -21,7 +21,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   });
 
   // // Test case for getting a single account
-  describe('GET /api/v1/accounts/:number', () => {
+  describe('GET /api/v1/accounts/:accountNumber', () => {
     it('Should get a single account', async () => {
       const res = await chai.request(server).get('/api/v1/accounts/9821372168');
       res.body.should.have.property('data');
@@ -65,7 +65,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   });
 
   // // Test case for changing an account status
-  describe('PATCH /api/v1/accounts/:number', () => {
+  describe('PATCH /api/v1/accounts/:accountNumber', () => {
     it('Should change an account status', async () => {
       const formData = {
         status: 'dormant',
@@ -86,7 +86,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   });
 
   // Test case for deleting an account
-  describe('DELETE /api/v1/accounts/:number', () => {
+  describe('DELETE /api/v1/accounts/:accountNumber', () => {
     it('Should delete an account', async () => {
       const res = await chai.request(server).delete(`/api/v1/accounts/${accNum}`);
       res.body.should.have.property('status');

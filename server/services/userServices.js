@@ -36,7 +36,7 @@ const UserController = {
     } else {
       const insertQuery = `INSERT INTO users(email, firstName, lastName, type, isAdmin) 
                               VALUES ($1,$2,$3,$4,$5) RETURNING *`;
-      const result = await db.query(insertQuery, [staff.email, staff.firstName, staff.lastName, 'staff', true]);
+      const result = await db.query(insertQuery, [staff.email, staff.firstName, staff.lastName, 'staff', false]);
 
       return result.rows[0];
     }

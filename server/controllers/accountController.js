@@ -11,7 +11,7 @@ const AccountController = {
   },
 
   async getSingleAccount(req, res) {
-    const result = await AccountServices.getSingleAccount(req.params.number);
+    const result = await AccountServices.getSingleAccount(req.params.accountNumber);
 
     if (result.rows < 1) {
       return res.status(404).json({
@@ -39,7 +39,7 @@ const AccountController = {
   },
 
   async deleteAccount(req, res) {
-    const result = await AccountServices.deleteAccount(req.params.number);
+    const result = await AccountServices.deleteAccount(req.params.accountNumber);
 
     if (result.rowCount < 1) {
       return res.status(404).json({
@@ -54,7 +54,7 @@ const AccountController = {
   },
 
   async changeAccountStatus(req, res) {
-    const result = await AccountServices.changeAccountStatus(req.params.number, req.body.status);
+    const result = await AccountServices.changeAccountStatus(req.params.accountNumber, req.body.status);
 
     if (!result) {
       return res.status(404).json({
