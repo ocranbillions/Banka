@@ -1,61 +1,45 @@
-import bcrypt from 'bcrypt-nodejs';
-import db from '../jsdb/db';
-import User from '../models/UserModel';
+import bcrypt from 'bcrypt';
 import helpers from '../helpers/helpers';
-
-
-const { users } = db;
-const { usersLogins } = db;
+import AuthServices from '../services/authServices';
 
 const AuthController = {
-  signIn(person) {
-    if (person.email === '' || person.password === '') return 400;
 
-    const userLogin = usersLogins.find(u => u.email === person.email);
-    if (userLogin === undefined) return 406; // Rejected: No such user
+  async signUp(req, res) {
+    const result = await AuthServices.signUp(req.body);
 
-    if (bcrypt.compareSync(person.password, userLogin.hash)) {
-      const userInfo = users.find(u => u.email === person.email);
-
-      // Return user with token
-      const token = helpers.createToken(userInfo.id);
-      return {
-        token,
-        ...userInfo,
-      };
+    if (result.name === 'error') {
+      return res.status(400).json({
+        errorMessage: 'Email already used',
+        status: 400,
+      });
     }
 
-    return 406; // Rejected: Incorrect password
+    const newUser = result;
+    const token = helpers.createToken(newUser.id);
+
+    return res.status(201).json({
+      data: { token, ...newUser },
+      status: 201,
+    });
   },
 
-  signUp(person) {
-    const result = helpers.validateNewClient(person);
-    if (result.error) return result;
+  async signIn(req, res) {
+    const result = await AuthServices.signIn(req.body);
 
-    const user = users.find(u => u.email === person.email);
-    // Create new user if not exit
-    if (user === undefined) {
-      const newUser = new User(person);
-      newUser.id = users.length + 1;
-
-      users.push(newUser);
-
-      const hashedPassword = bcrypt.hashSync(person.password);
-      usersLogins.push({
-        email: newUser.email,
-        hash: hashedPassword,
+    // Wrong email or wrong password?
+    if (result.rows < 1 || !bcrypt.compareSync(req.body.password, result.rows[0].password)) {
+      return res.status(400).json({
+        errorMessage: 'Incorrect login information',
+        status: 400,
       });
-
-      // Get new client and return with token
-      const token = helpers.createToken(users[users.length - 1].id);
-      return {
-        token,
-        ...users[users.length - 1],
-      };
     }
 
-    // Rejected: Email already taken
-    return 406;
+    const user = result.rows[0];
+    const token = helpers.createToken(user.id);
+    return res.status(201).json({
+      data: { token, ...user },
+      status: 201,
+    });
   },
 };
 

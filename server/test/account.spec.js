@@ -23,7 +23,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   // // Test case for getting a single account
   describe('GET /api/v1/accounts/:accountNumber', () => {
     it('Should get a single account', async () => {
-      const res = await chai.request(server).get('/api/v1/accounts/9821372168');
+      const res = await chai.request(server).get('/api/v1/accounts/4194194410');
       res.body.should.have.property('data');
       res.body.should.have.property('status');
       res.should.have.status(200);
@@ -41,9 +41,9 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   describe('POST /api/v1/accounts', () => {
     it('Should create an account', async () => {
       const newAccount = {
-        owner: 12,
+        owneremail: 'williams@yahoo.com',
         type: 'savings',
-        openingBalance: 500.00,
+        openingBalance: 5000.00,
       };
       const res = await chai.request(server).post('/api/v1/accounts/').send(newAccount);
       res.body.should.have.property('data');
@@ -54,7 +54,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
 
     it('Should NOT create an account with incomplete form data', async () => {
       const newAccount = {
-        owner: '',
+        owneremail: '',
         type: 'savings',
         openingBalance: '67500.00',
       };

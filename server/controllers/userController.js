@@ -30,9 +30,9 @@ const UserController = {
   async addStaff(req, res) {
     const result = await UserServices.addStaff(req.body);
 
-    if (result.rowCount > 0) {
+    if (result.name === 'error') {
       return res.status(406).json({
-        errorMessage: 'Email already taken',
+        errorMessage: 'Email already used',
         status: 406,
       });
     }
