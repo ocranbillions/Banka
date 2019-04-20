@@ -42,3 +42,10 @@
 .teller_popup .popup_content {
   text-align: left;
 }
+.popup_close:hover {
+  cursor: pointer;
+}
+.popup_close {
+  text-align: right;
+  font-size: 2rem;
+}

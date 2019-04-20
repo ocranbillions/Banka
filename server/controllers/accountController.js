@@ -27,6 +27,23 @@ const AccountController = {
     });
   },
 
+  async getAccountsByOwnerEmail(req, res) {
+    const result = await AccountServices.getAccountsByOwnerEmail(req.params.owneremail);
+
+    if (result.rows < 1) {
+      return res.status(404).json({
+        errorMessage: 'No accounts for this user yet',
+        status: 404,
+      });
+    }
+    // Return retrived account
+    const accounts = result.rows;
+    return res.json({
+      data: accounts,
+      status: 200,
+    });
+  },
+
   async addAccount(req, res) {
     const result = await AccountServices.addAccount(req.body);
 
@@ -63,7 +80,10 @@ const AccountController = {
       });
     }
     return res.status(201).json({
-      data: result,
+      data: {
+        accountNumber: parseInt(result.accountnumber, 10),
+        status: result.status,
+      },
       status: 201,
     });
   },

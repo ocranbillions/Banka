@@ -1,8 +1,6 @@
 import moment from 'moment';
 import helpers from '../helpers/helpers';
-import dbServices from '../db/index';
-
-const { db } = dbServices;
+import db from '../db/index';
 
 const AccountController = {
 
@@ -13,24 +11,29 @@ const AccountController = {
     return result.rows;
   },
 
-  async getSingleAccount(num) {
+  async getSingleAccount(accountNum) {
     const searchQuery = 'SELECT * FROM accounts WHERE accountnumber=$1';
-    const accountNum = parseInt(num, 10);
-
     const result = await db.query(searchQuery, [accountNum]);
     return result;
   },
+
+  async getAccountsByOwnerEmail(email) {
+    const searchQuery = 'SELECT * FROM accounts WHERE owneremail=$1';
+    const result = await db.query(searchQuery, [email]);
+    return result;
+  },
+
 
   async addAccount(reqBody) {
     const num = helpers.generateAccountNumber();
     const date = moment(new Date());
     const status = 'active';
-    const { owner, type, openingBalance } = reqBody;
+    const { owneremail, type, openingBalance } = reqBody;
 
-    const insertQuery = `INSERT INTO accounts(accountnumber, createdon, owner, type, balance, status) 
+    const insertQuery = `INSERT INTO accounts(accountnumber, createdon, owneremail, type, balance, status) 
     VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`;
 
-    const result = await db.query(insertQuery, [num, date, owner, type, openingBalance, status]);
+    const result = await db.query(insertQuery, [num, date, owneremail, type, openingBalance, status]);
     return result.rows[0];
   },
 

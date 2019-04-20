@@ -35,15 +35,14 @@ describe('TEST ALL /USER ENDPOINTS', () => {
 
   // // Test case for creating an user/staff (by Admin)
   let newUserId = 0;
-  describe('POST /api/v1/users', () => {
+  describe('POST/DELETE /api/v1/users', () => {
     it('Should create a new user/staff', async () => {
       const newStaff = {
         firstName: 'Shola',
         lastName: 'Stevens',
         email: 'shola_steve@gmail.com',
-        type: 'cashier',
+        isAdmin: true,
         password: 'secret',
-        isAdmin: '0',
       };
       const res = await chai.request(server).post('/api/v1/users/').send(newStaff);
       res.body.should.have.property('data');
@@ -51,10 +50,7 @@ describe('TEST ALL /USER ENDPOINTS', () => {
       res.should.have.status(201);
       newUserId = res.body.data.id;
     });
-  });
 
-  // Test case for deleting a user
-  describe('DELETE /api/v1/users/:userId', () => {
     it('Should delete a user', async () => {
       const res = await chai.request(server).delete(`/api/v1/users/${newUserId}`);
       res.body.should.have.property('status');

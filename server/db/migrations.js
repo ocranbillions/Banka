@@ -1,58 +1,59 @@
+/* eslint-disable no-console */
+import dotenv from 'dotenv';
+import { Pool } from 'pg';
+
 const createTables = `
-  DROP TABLE IF EXISTS accounts;
   DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS logins;
-  DROP TABLE IF EXISTS tellers;
+  DROP TABLE IF EXISTS accounts;
   DROP TABLE IF EXISTS transactions;
 
+  CREATE TABLE IF NOT EXISTS
+  users(
+    id SERIAL,
+    email VARCHAR(128) NOT NULL UNIQUE,
+    firstName VARCHAR(128) NOT NULL,
+    lastName VARCHAR(128) NOT NULL,
+    type VARCHAR(128) NOT NULL,
+    isAdmin BOOLEAN NOT NULL,
+    password VARCHAR(128) NOT NULL
+  );
   CREATE TABLE IF NOT EXISTS
   accounts(
     id SERIAL PRIMARY KEY,
     accountNumber BIGINT NOT NULL,
     createdON TIMESTAMP,
-    owner INT REFERENCES users(id) ON DELETE CASCADE,
+    ownerEmail VARCHAR(128) NOT NULL,
     type VARCHAR(128) NOT NULL,
     balance FLOAT NOT NULL,
     status VARCHAR(128) NOT NULL
   );
   CREATE TABLE IF NOT EXISTS
-  users(
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(128) NOT NULL,
-    firstName VARCHAR(128) NOT NULL,
-    lastName VARCHAR(128) NOT NULL,
-    type VARCHAR(128) NOT NULL,
-    isAdmin BOOLEAN NOT NULL
-  );
-  CREATE TABLE IF NOT EXISTS
-  logins(
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(128) NOT NULL,
-    hash VARCHAR(128) NOT NULL
-  );
-  CREATE TABLE IF NOT EXISTS
-  tellers(
-    id SERIAL PRIMARY KEY,
-    amount FLOAT NOT NULL,
-    accountNumber BIGINT NOT NULL,
-    owner VARCHAR(128) NOT NULL,
-    transactionType VARCHAR(128) NOT NULL,
-    date TIMESTAMP,
-    status VARCHAR(128) NOT NULL,
-    ownerId INT
-  );
-  CREATE TABLE IF NOT EXISTS
   transactions(
     id SERIAL PRIMARY KEY,
     createdOn TIMESTAMP,
-    transactionType VARCHAR(128) NOT NULL,        
+    type VARCHAR(128) NOT NULL,        
     accountNumber BIGINT NOT NULL,
     amount FLOAT NOT NULL,
     cashier INT NOT NULL,
     oldBalance FLOAT NOT NULL,
-    newBalance FLOAT NOT NULL,
-    status VARCHAR(128)
+    newBalance FLOAT NOT NULL
   );
 `;
 
-export default createTables;
+dotenv.config();
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+pool.on('connect', () => {
+  console.log('db connection established');
+});
+
+async function migrate() {
+  await pool.query(createTables);
+  console.log('creating tables...');
+  pool.end();
+}
+
+migrate();
+export default migrate;

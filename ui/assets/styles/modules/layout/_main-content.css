@@ -8,3 +8,13 @@
     justify-content: space-around;
   }
 }
+
+.pagination-flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination-flex-container div {
+  background: var(--dark2);
+  color: white;
+}

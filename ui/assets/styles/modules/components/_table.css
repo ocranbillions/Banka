@@ -13,7 +13,7 @@ table {
 }
 
 tr:nth-child(even) {
-  background: rgb(226, 221, 221);
+  background: rgb(179, 172, 172);
 }
 
 @media only screen and (max-width: 900px) {
