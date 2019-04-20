@@ -7,7 +7,7 @@ const AuthServices = {
 
   async signUp(user) {
     const insertQuery = `INSERT INTO users(email, firstName, lastName, type, isAdmin, password) 
-                              VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`;
+                              VALUES ($1,$2,$3,$4,$5,$6) RETURNING id, email, firstName, lastName, type, isAdmin`;
 
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(user.password, salt);

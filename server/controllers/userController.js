@@ -20,9 +20,27 @@ const UserController = {
       });
     }
     // Return retrived user
-    const user = result.rows;
+    const user = result.rows[0];
     return res.json({
       data: user,
+      status: 200,
+    });
+  },
+
+
+  async getAccountsByOwnerEmail(req, res) {
+    const result = await UserServices.getAccountsByOwnerEmail(req.params.owneremail);
+
+    if (result.rows < 1) {
+      return res.status(404).json({
+        errorMessage: 'No accounts for this user yet',
+        status: 404,
+      });
+    }
+    // Return retrived account
+    const accounts = result.rows;
+    return res.json({
+      data: accounts,
       status: 200,
     });
   },

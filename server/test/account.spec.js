@@ -36,6 +36,13 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
     });
   });
 
+  it('Should get all transactions on an account', async () => {
+    const res = await chai.request(server).get('/api/v1/accounts/1212452132/transactions');
+    res.body.should.have.property('data');
+    res.body.should.have.property('status');
+    res.should.have.status(200);
+  });
+
   // // Test case for creating an account
   let accNum;
   describe('POST /api/v1/accounts', () => {

@@ -17,12 +17,11 @@ const AccountController = {
     return result;
   },
 
-  async getAccountsByOwnerEmail(email) {
-    const searchQuery = 'SELECT * FROM accounts WHERE owneremail=$1';
-    const result = await db.query(searchQuery, [email]);
+  async getAccountTransactions(accountNum) {
+    const searchQuery = 'SELECT * FROM transactions WHERE accountnumber=$1';
+    const result = await db.query(searchQuery, [accountNum]);
     return result;
   },
-
 
   async addAccount(reqBody) {
     const num = helpers.generateAccountNumber();
@@ -45,10 +44,15 @@ const AccountController = {
 
   async changeAccountStatus(num, status) {
     const updateQuery = 'UPDATE accounts SET status=$1 WHERE accountnumber=$2 RETURNING *';
-
     const result = await db.query(updateQuery, [status, num]);
     return result.rows[0];
   },
+
+  async updateAccountBalance(newBalace, accountNumber) {
+    const updateQuery = 'UPDATE accounts SET balance=$1 WHERE accountnumber=$2 RETURNING *';
+    const result = await db.query(updateQuery, [newBalace, accountNumber]);
+    return result.rows[0];
+  }
 
 };
 
