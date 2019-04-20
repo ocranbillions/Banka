@@ -24,7 +24,6 @@
 				<ul class="list">
 					<li><a href="./client.dashboard.html" class="">Dashboard</a></li>
 					<li><a href="./client.history.html">History</a></li>
-					<li><a href="#" class="fill_teller">Teller</a></li>
 					<li><a href="#" class="new-acct">New Account</a></li>
 					<a href="../index.html" class="last-link"><i class="fas fa-sign-out-alt"></i> LogOut</a>
 				</ul>
@@ -45,8 +44,6 @@
 					<a href="./client.dashboard.html" class="active"><span class="icon"><i
 								class="fas fa-home"></i></span>Dashboard</a>
 					<a href="./client.history.html"><span class="icon"><i class="fas fa-dollar-sign"></i></span>History</a>
-					<a href="#" class="fill_teller"><span class="icon"> <i class="fas fa-money-bill"></i></i>
-						</span>Teller</a>
 					<a href="#" class="new-acct"><span class="icon"><i class="fas fa-folder-open"></i> </span>New
 						Account</a>
 					<a href="#"><span class="icon"><i class="fas fa-tools"></i> </span>Settings</a>
@@ -63,7 +60,6 @@
 							<div class="account-details">
 								<p class="margin-bottom-small">Available Balance: N255,000.00</p>
 								<p class="margin-bottom-small">Type: Savings</p>
-								<a href="#" class="btn fill_teller btn-blue margin-bottom-small">Fill Teller</a>
 								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
 							</div>
 						</div>
@@ -73,7 +69,6 @@
 							<div class="account-details">
 								<p class="margin-bottom-small">Available Balance: N20,150.00</p>
 								<p class="margin-bottom-small">Type: Current</p>
-								<a href="#" class="btn fill_teller btn-blue margin-bottom-small">Fill Teller</a>
 								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
 							</div>
 						</div>
@@ -83,8 +78,7 @@
 							<div class="account-details">
 								<p class="margin-bottom-small">Available Balance: N2,000.00</p>
 								<p class="margin-bottom-small">Type: Savings</p>
-								<a href="#" class="btn margin-bottom-small">Fill Teller</a>
-								<a href="./client.history.html" class="btn margin-bottom-small">Account history</a>
+								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
 							</div>
 						</div>
 					</div>
@@ -132,65 +126,43 @@
 	</footer>
 
 	<!-- HIDDEN MODALs -->
-	<section>
-		<div class="popup teller_popup">
-			<div class="popup_content clearfix">
-				<div class="popup_close float-right"><a href="">X</a></div>
+	<div class="popup new-acct-popup">
+		<div class="popup_content">
+			<div class="popup_close">X</div>
+			<div>
+				<form action="./client.dashboard.html" class="login_form margin-bottom-small">
+					<div class="form__group">
+						<label for="fname" class="form__label">First Name</label>
+						<input type="text" class="form__input" placeholder="First Name" id="fname">
+					</div>
+					<div class="form__group">
+						<label for="lname" class="form__label">Last Name</label>
+						<input type="text" class="form__input" placeholder="Last Name" id="lname">
+					</div>
+					<div class="form__group">
+						<label for="email" class="form__label">Email</label>
+						<input type="email" class="form__input" placeholder="email" id="email">
+					</div>
 
-				<div class="transaction">
-					<p class="green"><span>Submit your request</span></p>
-					<p class="">Account: <input type="number" class="account_number"> </p>
-					<p class="amount">Amount: <input type="number" class="enter-amount"> </p>
+					<div class="form__group">
+						<label for="openingbal" class="form__label">Opening balance</label>
+						<input type="number" class="form__input" id="openingbal">
+					</div>
 
-				</div>
-				<div class="action">
-					<span class="credit"><a href="./client.history.html" class="btn btn-blue">Deposit</a></span>
-					<span class="debit"><a href="./client.history.html" class="btn btn-blue">Withdraw</a></span>
-				</div>
+					<div class="form__group form-radio">
+						Savings<input type="radio" name="account-type" value="saving" checked>
+						Current<input type="radio" name="account-type" value="current">
+					</div>
+
+					<button type="submit" class="btn btn-blue">Create Account</button>
+				</form>
 			</div>
 		</div>
-
-		<div class="popup new-acct-popup">
-			<div class="popup_content clearfix">
-				<div class="popup_close float-right"><a href="">X</a></div>
-				<div>
-					<form action="./client.dashboard.html" class="login_form margin-bottom-small">
-						<div class="form__group">
-							<label for="fname" class="form__label">First Name</label>
-							<input type="text" class="form__input" placeholder="First Name" id="fname">
-						</div>
-						<div class="form__group">
-							<label for="lname" class="form__label">Last Name</label>
-							<input type="text" class="form__input" placeholder="Last Name" id="lname">
-						</div>
-						<div class="form__group">
-							<label for="email" class="form__label">Email</label>
-							<input type="email" class="form__input" placeholder="email" id="email">
-						</div>
-
-						<div class="form__group">
-							<label for="openingbal" class="form__label">Opening balance</label>
-							<input type="number" class="form__input" id="openingbal">
-						</div>
-
-						<div class="form__group form-radio">
-							Savings<input type="radio" name="account-type" value="saving" checked>
-							Current<input type="radio" name="account-type" value="current">
-						</div>
-
-						<button type="submit" class="btn btn-blue">Create Account</button>
-					</form>
-				</div>
-			</div>
-		</div>
+	</div>
 
 	</section>
 
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-	<script src="../assets/scripts/script.js"></script>
+	<script src="../assets/scripts/client.js"></script>
 
 </body>
 

@@ -27,7 +27,7 @@
 
 .teller-content-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .teller-content-container .teller-item {
   flex: 1;

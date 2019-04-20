@@ -77,3 +77,30 @@
 .flexbox-container {
   display: flex;
 }
+
+.margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.center-text {
+  text-align: center;
+}
+
+.view-account {
+  border: 2px solid var(--dark2);
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.view-account:hover {
+  cursor: pointer;
+}
+
+.box-shadow {
+  box-shadow: 0 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
+}
+
+.box-shadow-1 {
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+}
