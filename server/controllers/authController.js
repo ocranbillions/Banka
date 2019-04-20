@@ -36,8 +36,14 @@ const AuthController = {
 
     const user = result.rows[0];
     const token = helpers.createToken(user.id);
+    const {
+      id, email, firstname, lastname, type, isadmin,
+    } = user;
+
     return res.status(201).json({
-      data: { token, ...user },
+      data: {
+        token, id, email, firstname, lastname, type, isadmin,
+      },
       status: 201,
     });
   },

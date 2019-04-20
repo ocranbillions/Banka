@@ -27,19 +27,19 @@ const AccountController = {
     });
   },
 
-  async getAccountsByOwnerEmail(req, res) {
-    const result = await AccountServices.getAccountsByOwnerEmail(req.params.owneremail);
+  async getAccountTransactions(req, res) {
+    const result = await AccountServices.getAccountTransactions(req.params.accountNumber);
 
     if (result.rows < 1) {
       return res.status(404).json({
-        errorMessage: 'No accounts for this user yet',
+        errorMessage: 'The account with the given number was not found',
         status: 404,
       });
     }
     // Return retrived account
-    const accounts = result.rows;
+    const account = result.rows;
     return res.json({
-      data: accounts,
+      data: account,
       status: 200,
     });
   },

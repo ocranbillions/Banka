@@ -6,21 +6,27 @@ import db from '../db/index';
 const UserController = {
 
   async getUsers() {
-    const searchQuery = 'SELECT * FROM users';
+    const searchQuery = 'SELECT id, email, firstName, lastName, type, isAdmin FROM users';
     const result = await db.query(searchQuery);
 
     return result.rows;
   },
 
   async getSingleUser(id) {
-    const searchQuery = 'SELECT * FROM users WHERE id=$1';
+    const searchQuery = 'SELECT id, email, firstName, lastName, type, isAdmin FROM users WHERE id=$1';
     const result = await db.query(searchQuery, [id]);
+    return result;
+  },
+
+  async getAccountsByOwnerEmail(email) {
+    const searchQuery = 'SELECT * FROM accounts WHERE owneremail=$1';
+    const result = await db.query(searchQuery, [email]);
     return result;
   },
 
   async addStaff(staff) {
     const insertQuery = `INSERT INTO users(email, firstName, lastName, type, isAdmin, password) 
-                              VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`;
+                              VALUES ($1,$2,$3,$4,$5,$6) RETURNING id, email, firstName, lastName, type, isAdmin`;
 
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(staff.password, salt);

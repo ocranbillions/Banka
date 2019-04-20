@@ -14,7 +14,7 @@ const Validations = {
     if (result.error) {
       return res.status(400).json({
         status: 400,
-        error: result.error.message,
+        errorMessage: result.error.message,
       });
     }
     return next();
@@ -57,6 +57,22 @@ const Validations = {
     const schema = {
       email: Joi.string().min(10).required(),
       password: Joi.string().min(5).required(),
+    };
+    const result = Joi.validate(req.body, schema);
+    if (result.error) {
+      return res.status(400).json({
+        status: 400,
+        errorMessage: result.error.message,
+      });
+    }
+    return next();
+  },
+
+  validateTransaction(req, res, next) {
+    const schema = {
+      type: Joi.string().min(5).required(),
+      amount: Joi.number().min(1).required(),
+      cashier: Joi.number().min(1).required(),
     };
     const result = Joi.validate(req.body, schema);
     if (result.error) {
