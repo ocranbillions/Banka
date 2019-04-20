@@ -17,16 +17,15 @@ The tools listed below are needed to run this application:
 - Access endpoints on **localhost:3000**
 
 ### How it works
-- Customer sign's up
-- creates a bank account(s) with some initial deposit
-- Every transaction starts from the client's end.
-- Client fills the teller and submits it. At this stage the teller status is 'pending'
-- Cashier can view all tellers submitted by all customers
-- To initiate a transaction, the cashier copies the information on a given teller (accNum, amount, transactionType, tellerNum)
-- The cashier then makes the transaction based on the information from the teller. If its a credit transaction with valid account number, the cashier post the transaction to the client's account. Then updates the teller status to 'processed'
-- The client can then see his/account updated
-
-NOTE: Without the client submitting a teller, a transaction can't take place. So to test the the credit/debit trasactions endpoints, a teller has to be submited first.
+- Customer sign up and create as many bank accounts as they want
+- But must visit the bank for deposit/withdrawal
+- Customer can view their account history 
+- Cashier can place debit/credit transactions on customer's account
+- Cashier can view all customers accounts
+- Admin creates staff account for each new cashier
+- Admin can delete any account. Can also place account status on dormant or active.
+- Accounts created by admin can be of type admin or just regular staff
+- If type is admin, the newly created account has all admin prividelges; account creation, deletion, and changing of account status
 
 
 ### Endpoints
@@ -39,8 +38,6 @@ NOTE: Without the client submitting a teller, a transaction can't take place. So
 | GET  |get details of an account | /api/v1/accounts/:number | * |
 | DELETE  |Delete a bank account | /api/v1/accounts/:number | admin |
 | PATCH  |change bank account status | /api/v1/accounts/:number | admin |
-| POST |submit a teller to cashier | /api/v1/teller | client |
-| GET  |get all tellers submited by clients | /api/v1/teller | cashier |
 | POST |Credit an account | /api/v1/transactions/:number/credit | cashier |
 | POST |Debit an account | /api/v1/transactions/:number/debit | cashier |
 | GET|Get account history| /api/v1/transactions/:number | cashier + client |
