@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import bodyParser from 'body-parser';
+import debug from 'debug';
 
 // routes
 import accountRoutes from './routes/accountRoutes';
@@ -29,7 +30,8 @@ server.use('/api/v1/transactions', transactionRoutes);
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
-  console.log(`server is listening on port ${port}!`);
+  // console.log(`server is listening on port ${port}!`);
+  debug('server')(`server is listening on port ${port}!`);
 });
 
 // Export for testing

@@ -6,14 +6,22 @@ import chaiHttp from 'chai-http';
 import server from '../app';
 
 chai.use(chaiHttp);
-
 const should = chai.should();
 
+let adminToken;
 describe('TEST ALL ACCOUNT ENDPOINTS', () => {
+  it('login staff', async () => {
+    const adminLogin = {
+      email: 'mikejones@gmail.com',
+      password: 'somesecret',
+    };
+    const res = await chai.request(server).post('/api/v1/auth/signin').send(adminLogin);
+    adminToken = res.body.data.token;
+  });
   // Test case for getting all accounts
   describe('GET /api/v1/accounts', () => {
     it('Should get all accounts', async () => {
-      const res = await chai.request(server).get('/api/v1/accounts/');
+      const res = await chai.request(server).get('/api/v1/accounts/').set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('data');
       res.body.should.have.property('status');
       res.should.have.status(200);
@@ -23,21 +31,21 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   // // Test case for getting a single account
   describe('GET /api/v1/accounts/:accountNumber', () => {
     it('Should get a single account', async () => {
-      const res = await chai.request(server).get('/api/v1/accounts/4194194410');
+      const res = await chai.request(server).get('/api/v1/accounts/4194194410').set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('data');
       res.body.should.have.property('status');
       res.should.have.status(200);
     });
 
     it('Should NOT get an invalid account number', async () => {
-      const res = await chai.request(server).get('/api/v1/accounts/77854');
+      const res = await chai.request(server).get('/api/v1/accounts/77854').set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('errorMessage').eql('The account with the given number was not found');
       res.should.have.status(404);
     });
   });
 
   it('Should get all transactions on an account', async () => {
-    const res = await chai.request(server).get('/api/v1/accounts/1212452132/transactions');
+    const res = await chai.request(server).get('/api/v1/accounts/9852136521/transactions').set('Authorization', `Bearer ${adminToken}`);
     res.body.should.have.property('data');
     res.body.should.have.property('status');
     res.should.have.status(200);
@@ -52,7 +60,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
         type: 'savings',
         openingBalance: 5000.00,
       };
-      const res = await chai.request(server).post('/api/v1/accounts/').send(newAccount);
+      const res = await chai.request(server).post('/api/v1/accounts/').set('Authorization', `Bearer ${adminToken}`).send(newAccount);
       res.body.should.have.property('data');
       res.body.should.have.property('status');
       res.should.have.status(201);
@@ -65,7 +73,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
         type: 'savings',
         openingBalance: '67500.00',
       };
-      const res = await chai.request(server).post('/api/v1/accounts/').send(newAccount);
+      const res = await chai.request(server).post('/api/v1/accounts/').set('Authorization', `Bearer ${adminToken}`).send(newAccount);
       res.body.should.have.property('errorMessage');
       res.should.have.status(400);
     });
@@ -77,7 +85,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
       const formData = {
         status: 'dormant',
       };
-      const res = await chai.request(server).patch('/api/v1/accounts/5421214520').send(formData);
+      const res = await chai.request(server).patch('/api/v1/accounts/5421214520').set('Authorization', `Bearer ${adminToken}`).send(formData);
       res.body.should.have.property('data');
       res.should.have.status(201);
     });
@@ -86,7 +94,7 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
       const formData = {
         status: 'dormant',
       };
-      const res = await chai.request(server).patch('/api/v1/accounts/54546546544646').send(formData);
+      const res = await chai.request(server).patch('/api/v1/accounts/54546546544646').set('Authorization', `Bearer ${adminToken}`).send(formData);
       res.body.should.have.property('errorMessage').eql('The account with the given number was not found');
       res.should.have.status(404);
     });
@@ -95,14 +103,14 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
   // Test case for deleting an account
   describe('DELETE /api/v1/accounts/:accountNumber', () => {
     it('Should delete an account', async () => {
-      const res = await chai.request(server).delete(`/api/v1/accounts/${accNum}`);
+      const res = await chai.request(server).delete(`/api/v1/accounts/${accNum}`).set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('status');
       res.body.should.have.property('message').eql('Account successfully deleted');
       res.should.have.status(202);
     });
 
     it('Should NOT delete an invalid acccount', async () => {
-      const res = await chai.request(server).delete('/api/v1/accounts/5232');
+      const res = await chai.request(server).delete('/api/v1/accounts/5232').set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('errorMessage').eql('The account with the given number was not found');
       res.should.have.status(404);
     });

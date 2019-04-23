@@ -8,9 +8,19 @@ import server from '../app';
 chai.use(chaiHttp);
 const should = chai.should();
 
+let adminToken;
 describe('TEST ALL /USER ENDPOINTS', () => {
+  it('login staff', async () => {
+    const adminLogin = {
+      email: 'mikejones@gmail.com',
+      password: 'somesecret',
+    };
+    const res = await chai.request(server).post('/api/v1/auth/signin').send(adminLogin);
+    adminToken = res.body.data.token;
+  });
+
   it('Should get all users', async () => {
-    const res = await chai.request(server).get('/api/v1/users/');
+    const res = await chai.request(server).get('/api/v1/users/').set('Authorization', `Bearer ${adminToken}`);
     res.body.should.have.property('data');
     res.body.should.have.property('status');
     res.should.have.status(200);
@@ -18,15 +28,15 @@ describe('TEST ALL /USER ENDPOINTS', () => {
 
 
   it('Should get a single user', async () => {
-    const res = await chai.request(server).get('/api/v1/users/1');
+    const res = await chai.request(server).get('/api/v1/users/1').set('Authorization', `Bearer ${adminToken}`);
     res.body.should.have.property('status');
     res.should.have.status(200);
     res.body.should.have.property('data');
   });
 
 
-  it('Should get a single user', async () => {
-    const res = await chai.request(server).get('/api/v1/users/sam@aol.com/accounts');
+  it('Should accounts owned by a user', async () => {
+    const res = await chai.request(server).get('/api/v1/users/joe@gmail.com/accounts').set('Authorization', `Bearer ${adminToken}`);
     res.body.should.have.property('status');
     res.should.have.status(200);
     res.body.should.have.property('data');
@@ -44,7 +54,7 @@ describe('TEST ALL /USER ENDPOINTS', () => {
         isAdmin: true,
         password: 'secret',
       };
-      const res = await chai.request(server).post('/api/v1/users/').send(newStaff);
+      const res = await chai.request(server).post('/api/v1/users/').set('Authorization', `Bearer ${adminToken}`).send(newStaff);
       res.body.should.have.property('data');
       res.body.should.have.property('status');
       res.should.have.status(201);
@@ -59,13 +69,13 @@ describe('TEST ALL /USER ENDPOINTS', () => {
         isAdmin: true,
         password: 'secret',
       };
-      const res = await chai.request(server).post('/api/v1/users/').send(newStaff);
+      const res = await chai.request(server).post('/api/v1/users/').set('Authorization', `Bearer ${adminToken}`).send(newStaff);
       res.body.should.have.property('errorMessage');
       res.should.have.status(400);
     });
 
     it('Should delete a user', async () => {
-      const res = await chai.request(server).delete(`/api/v1/users/${newUserId}`);
+      const res = await chai.request(server).delete(`/api/v1/users/${newUserId}`).set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('status');
       res.body.should.have.property('message').eql('User successfully deleted');
       res.should.have.status(200);
