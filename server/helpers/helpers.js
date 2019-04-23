@@ -4,11 +4,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const Helpers = {
-  createToken(id) {
+  createToken(email, type, isadmin) {
     const token = jwt.sign(
-      { id },
+      { email, type, isadmin },
       process.env.SECRET,
-      { expiresIn: '1h' },
+      { expiresIn: '7days' },
     );
     return token;
   },

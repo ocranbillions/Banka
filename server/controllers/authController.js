@@ -15,7 +15,7 @@ const AuthController = {
     }
 
     const newUser = result;
-    const token = helpers.createToken(newUser.id);
+    const token = helpers.createToken(newUser.email, newUser.type, newUser.isadmin);
 
     return res.status(201).json({
       data: { token, ...newUser },
@@ -35,7 +35,7 @@ const AuthController = {
     }
 
     const user = result.rows[0];
-    const token = helpers.createToken(user.id);
+    const token = helpers.createToken(user.email, user.type, user.isadmin);
     const {
       id, email, firstname, lastname, type, isadmin,
     } = user;

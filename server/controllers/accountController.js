@@ -3,7 +3,7 @@ import AccountServices from '../services/accountServices';
 const AccountController = {
 
   async getAccounts(req, res) {
-    const accounts = await AccountServices.getAccounts();
+    const accounts = await AccountServices.getAccounts(req.query);
     return res.json({
       data: accounts,
       status: 200,

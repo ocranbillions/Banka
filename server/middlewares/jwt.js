@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-  isLoggedIn: (req, res, next) => {
+  isLoggedIn(req, res, next) {
     if (!req.headers.authorization) {
       return res.status(403).json({
         status: 403,
@@ -22,7 +22,7 @@ export default {
     try {
       const decoded = jwt.verify(token, process.env.SECRET);
       req.userData = decoded;
-      next();
+      return next();
     } catch (error) {
       return res.status(401).json({
         status: 401,
@@ -31,29 +31,33 @@ export default {
     }
   },
 
-  // isAdmin: (req, res, next) => {
-  //   if (!req.headers.authorization) {
-  //     return res.status(403).json({
-  //       status: 403,
-  //       error: 'You are not logged in!',
-  //     });
-  //   }
+  denyClient(req, res, next) {
+    if (req.userData.type === 'client') {
+      return res.status(403).json({
+        status: 403,
+        errorMessage: 'Clients can\'t access this route',
+      });
+    }
+    return next();
+  },
 
-  //   const token = req.headers.authorization.split(' ')[1];
-  //   if (!token) {
-  //     return res.status(401).json({
-  //       status: 401,
-  //       error: 'Please provide a valid token',
-  //     });
-  //   }
-  //   const decoded = jwt.verify(token, process.env.SECRET);
-  //   const isadmin = decoded.isAdmin;
-  //   if (isadmin === 'true') {
-  //     return next();
-  //   }
-  //   return res.status(401).json({
-  //     status: 401,
-  //     error: 'Unauthorized access',
-  //   });
-  // },
+  isAdmin(req, res, next) {
+    if (req.userData.isadmin === false) {
+      return res.status(403).json({
+        status: 403,
+        errorMessage: 'You are not an admin',
+      });
+    }
+    return next();
+  },
+
+  isCashier(req, res, next) {
+    if (req.userData.type !== 'staff') {
+      return res.status(403).json({
+        status: 403,
+        errorMessage: 'The requested page can only be accessed by a staff',
+      });
+    }
+    return next();
+  },
 };

@@ -4,10 +4,17 @@ import db from '../db/index';
 
 const AccountController = {
 
-  async getAccounts() {
-    const searchQuery = 'SELECT * FROM accounts';
-    const result = await db.query(searchQuery);
+  async getAccounts(query) {
+    let searchQuery;
+    if (query.status) {
+      const { status } = query;
+      searchQuery = 'SELECT * FROM accounts WHERE status=$1';
+      const result = await db.query(searchQuery, [status]);
+      return result.rows;
+    }
 
+    searchQuery = 'SELECT * FROM accounts';
+    const result = await db.query(searchQuery);
     return result.rows;
   },
 
