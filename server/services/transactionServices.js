@@ -1,7 +1,8 @@
 import moment from 'moment';
-import db from '../db/index';
+import dbServices from '../db/config';
 import AccountServices from './accountServices';
 
+const { db } = dbServices;
 
 const TransactionServices = {
 

@@ -5,7 +5,7 @@ import Auth from '../middlewares/jwt';
 
 const router = Router();
 
-router.get('/', Auth.isLoggedIn, Auth.denyClient, AccountController.getAccounts);
+router.get('/', Auth.isLoggedIn, Auth.denyNonStaff, AccountController.getAccounts);
 router.post('/', Auth.isLoggedIn, validations.validateNewAccount, AccountController.addAccount);
 router.get('/:accountNumber', Auth.isLoggedIn, AccountController.getSingleAccount);
 router.get('/:accountNumber/transactions', Auth.isLoggedIn, AccountController.getAccountTransactions);

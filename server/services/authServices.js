@@ -1,7 +1,9 @@
 /* eslint-disable no-else-return */
 /* eslint-disable no-console */
 import bcrypt from 'bcrypt';
-import db from '../db/index';
+import dbServices from '../db/config';
+
+const { db } = dbServices;
 
 const AuthServices = {
 

@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import bodyParser from 'body-parser';
-import debug from 'debug';
 import cors from 'cors';
-import morgan from 'morgan';
 import swagger from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 
@@ -17,7 +15,6 @@ const server = express();
 server.use(cors());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: false }));
-server.use(morgan('tiny'));
 
 // swagger
 server.use('/api-docs', swagger.serve, swagger.setup(swaggerDocument));
@@ -41,7 +38,7 @@ server.use('/api/v1/transactions', transactionRoutes);
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
-  debug('server')(`server is listening on port ${port}!`);
+  console.log(`server is listening on port ${port}!`);
 });
 
 // Export for testing
