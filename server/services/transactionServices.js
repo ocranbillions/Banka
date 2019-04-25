@@ -24,15 +24,16 @@ const TransactionServices = {
 
     const date = moment(new Date());
     const oldbalance = resp.rows[0].balance;
+    const amount = parseFloat(transaction.amount);
     let newbalance;
 
     switch (transaction.type) {
       case 'debit':
-        newbalance = oldbalance + (-transaction.amount);
-        if (newbalance < transaction.amount) return 'Insufficient funds';
+        newbalance = oldbalance + (-amount);
+        if (newbalance < amount) return 'Insufficient funds';
         break;
       case 'credit':
-        newbalance = oldbalance + transaction.amount;
+        newbalance = oldbalance + amount;
         break;
       default:
         return 'Wrong transaction type';
@@ -43,7 +44,7 @@ const TransactionServices = {
     const insertQuery = `INSERT INTO transactions(createdon, type, accountnumber, amount, cashier, oldbalance, newbalance) 
     VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`;
 
-    const result = await db.query(insertQuery, [date, transaction.type, accountNum, transaction.amount, transaction.cashier, oldbalance, newbalance]);
+    const result = await db.query(insertQuery, [date, transaction.type, accountNum, amount, transaction.cashier, oldbalance, newbalance]);
     return result.rows[0];
   },
 

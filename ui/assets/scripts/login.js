@@ -10,7 +10,5 @@ loginBtn.addEventListener('click', () => {
     loginForm.setAttribute('action', './pages/cashier.transactions.html');
   } else if (userType === 'admin') {
     loginForm.setAttribute('action', './pages/admin.accounts.html');
-  } else {
-    alert('Login as \'client\', \'cashier\' or \'admin\'');
-  }
+  } 
 });

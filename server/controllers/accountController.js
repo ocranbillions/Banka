@@ -2,6 +2,14 @@ import AccountServices from '../services/accountServices';
 
 const AccountController = {
 
+
+  /**
+   *
+   *
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   */
   async getAccounts(req, res) {
     const accounts = await AccountServices.getAccounts(req.query);
     return res.json({
@@ -10,6 +18,14 @@ const AccountController = {
     });
   },
 
+
+  /**
+   *
+   *
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   */
   async getSingleAccount(req, res) {
     const result = await AccountServices.getSingleAccount(req.params.accountNumber);
 
@@ -71,6 +87,13 @@ const AccountController = {
   },
 
   async changeAccountStatus(req, res) {
+    if (req.body.status !== 'active' && req.body.status !== 'dormant') {
+      return res.status(400).json({
+        errorMessage: 'Status can only be active or dormant',
+        status: 400,
+      });
+    }
+
     const result = await AccountServices.changeAccountStatus(req.params.accountNumber, req.body.status);
 
     if (!result) {
