@@ -35,6 +35,8 @@ The tools listed below are needed to run this application:
 | POST   | signin user | /api/v1/auth/signin | * |
 |  POST | create new bank account   | /api/v1/accounts/    | client   |
 | GET  |fetch all accounts | /api/v1/accounts/ | cashier + admin |
+| GET  |fetch all active accounts | /api/v1/accounts/?status=active/ | cashier + admin |
+| GET  |fetch all dormant accounts | /api/v1/accounts/?status=dormant/ | cashier + admin |
 | GET  |get details of an account | /api/v1/accounts/:number | * |
 | DELETE  |Delete a bank account | /api/v1/accounts/:number | admin |
 | PATCH  |change bank account status | /api/v1/accounts/:number | admin |
@@ -46,8 +48,8 @@ The tools listed below are needed to run this application:
 | POST|create new staff account| /api/v1/users/ | admin |
 | DELETE|Delete staff| /api/v1/users/id | admin |
 
-### Postman documentation
-https://documenter.getpostman.com/view/6617895/S1ENzz72
+### Swagger documentation
+https://my-banka.herokuapp.com/api-docs/
 ### Running the tests
 Run `npm test` in the root folder.
 

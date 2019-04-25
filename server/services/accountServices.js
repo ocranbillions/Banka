@@ -1,6 +1,8 @@
 import moment from 'moment';
 import helpers from '../helpers/helpers';
-import db from '../db/index';
+import dbServices from '../db/config';
+
+const { db } = dbServices;
 
 const AccountController = {
 

@@ -63,7 +63,7 @@ const UserController = {
   },
 
   async deleteUser(req, res) {
-    const result = await UserServices.deleteUser(req.params.userId);
+    const result = await UserServices.deleteUser(req.params.id);
 
     if (result.rowCount < 1) {
       return res.status(404).json({
@@ -80,3 +80,4 @@ const UserController = {
 };
 
 export default UserController;
+

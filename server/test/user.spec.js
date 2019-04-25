@@ -9,7 +9,9 @@ chai.use(chaiHttp);
 const should = chai.should();
 
 let adminToken;
-describe('TEST ALL /USER ENDPOINTS', () => {
+let clientToken;
+describe('USERS', () => {
+  // Get an admin token
   it('login staff', async () => {
     const adminLogin = {
       email: 'mikejones@gmail.com',
@@ -18,14 +20,45 @@ describe('TEST ALL /USER ENDPOINTS', () => {
     const res = await chai.request(server).post('/api/v1/auth/signin').send(adminLogin);
     adminToken = res.body.data.token;
   });
-
-  it('Should get all users', async () => {
-    const res = await chai.request(server).get('/api/v1/users/').set('Authorization', `Bearer ${adminToken}`);
-    res.body.should.have.property('data');
-    res.body.should.have.property('status');
-    res.should.have.status(200);
+  // Get a client token
+  it('login non-staff', async () => {
+    const clientLogin = {
+      email: 'samo@gmail.com',
+      password: 'mysecret',
+    };
+    const res = await chai.request(server).post('/api/v1/auth/signin').send(clientLogin);
+    clientToken = res.body.data.token;
   });
 
+  describe('api/v1/users', () => {
+    it('Should get all users', async () => {
+      const res = await chai.request(server).get('/api/v1/users/').set('Authorization', `Bearer ${adminToken}`);
+      res.body.should.have.property('data');
+      res.body.should.have.property('status');
+      res.should.have.status(200);
+    });
+    it('Should NOT get access to /users if user is not logged in', async () => {
+      const res = await chai.request(server).get('/api/v1/users/');
+      res.body.should.have.property('errorMessage').eql('You must be logged in to access this route');
+      res.should.have.status(403);
+    });
+    it('Should NOT authenticate user with invalid token', async () => {
+      const res = await chai.request(server).get('/api/v1/users/').set('Authorization', '$INVALIDTOKEN');
+      res.body.should.have.property('errorMessage').eql('Invalid token');
+      res.should.have.status(401);
+    });
+    it('Should fail if it lacks valid authentication', async () => {
+      const res = await chai.request(server).get('/api/v1/users/').set('Authorization', 'Bearer $sometoken');
+      res.body.should.have.property('errorMessage').eql('Auth failed!');
+      res.should.have.status(401);
+    });
+
+    it('Should deny non-staff', async () => {
+      const res = await chai.request(server).get('/api/v1/users/').set('Authorization', `Bearer ${clientToken}`);
+      res.body.should.have.property('errorMessage').eql('Clients can\'t access this route');
+      res.should.have.status(403);
+    });
+  });
 
   it('Should get a single user', async () => {
     const res = await chai.request(server).get('/api/v1/users/1').set('Authorization', `Bearer ${adminToken}`);

@@ -8,24 +8,32 @@ import server from '../app';
 chai.use(chaiHttp);
 
 const should = chai.should();
-
-describe('TEST CASE FOR AUTH ROUTES', () => {
+let adminToken;
+let newUserId;
+describe('AUTH', () => {
+  it('login admin', async () => {
+    const adminLogin = {
+      email: 'mikejones@gmail.com',
+      password: 'somesecret',
+    };
+    const res = await chai.request(server).post('/api/v1/auth/signin').send(adminLogin);
+    adminToken = res.body.data.token;
+  });
   // Test-case for registering new user
   describe('POST /api/v1/auth/signup', () => {
-    let mikeEmail = Math.random().toString(36).substring(9);
-    mikeEmail += '@gmail.com';
     it('Should register a new user', async () => {
       const signupDetails = {
         firstName: 'Michael',
         lastName: 'Bridges',
-        email: mikeEmail,
+        email: 'michaelbridges2019@yahoo.com',
         password: 'secretMike',
       };
       const res = await chai.request(server).post('/api/v1/auth/signup').send(signupDetails);
       res.body.should.have.property('data');
-      res.body.data.should.have.property('email').eql(mikeEmail);
+      res.body.data.should.have.property('email').eql('michaelbridges2019@yahoo.com');
       res.body.data.should.have.property('token');
       res.should.have.status(201);
+      newUserId = res.body.data.id;
     });
 
     it('Should NOT register user with incomplete form data', async () => {
@@ -42,7 +50,7 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
   });
 
   // Test-case for signin in a user
-  describe('POST /api/v1/auth/signin', () => {
+  describe('/api/v1/auth/signin', () => {
     it('Should signin a user', async () => {
       const loginDetails = {
         email: 'samo@gmail.com',
@@ -73,6 +81,7 @@ describe('TEST CASE FOR AUTH ROUTES', () => {
       const res = await chai.request(server).post('/api/v1/auth/signin').send(loginDetails);
       res.body.should.have.property('errorMessage');
       res.should.have.status(400);
+      await chai.request(server).delete(`/api/v1/users/${newUserId}`).set('Authorization', `Bearer ${adminToken}`);
     });
   });
 });

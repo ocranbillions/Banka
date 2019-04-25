@@ -31,8 +31,8 @@ export default {
     }
   },
 
-  denyClient(req, res, next) {
-    if (req.userData.type === 'client') {
+  denyNonStaff(req, res, next) {
+    if (req.userData.type !== 'staff') {
       return res.status(403).json({
         status: 403,
         errorMessage: 'Clients can\'t access this route',

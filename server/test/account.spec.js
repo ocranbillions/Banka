@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 const should = chai.should();
 
 let adminToken;
-describe('TEST ALL ACCOUNT ENDPOINTS', () => {
+describe('ACCOUNTS', () => {
   it('login staff', async () => {
     const adminLogin = {
       email: 'mikejones@gmail.com',
@@ -18,17 +18,30 @@ describe('TEST ALL ACCOUNT ENDPOINTS', () => {
     const res = await chai.request(server).post('/api/v1/auth/signin').send(adminLogin);
     adminToken = res.body.data.token;
   });
-  // Test case for getting all accounts
-  describe('GET /api/v1/accounts', () => {
+
+  describe('api/v1/accounts', () => {
     it('Should get all accounts', async () => {
       const res = await chai.request(server).get('/api/v1/accounts/').set('Authorization', `Bearer ${adminToken}`);
       res.body.should.have.property('data');
       res.body.should.have.property('status');
       res.should.have.status(200);
     });
+    it('Should NOT get access /accounts if user is not logged in', async () => {
+      const res = await chai.request(server).get('/api/v1/accounts/');
+      res.body.should.have.property('errorMessage').eql('You must be logged in to access this route');
+      res.should.have.status(403);
+    });
+    it('Should NOT authenticate user with invalid token', async () => {
+      const res = await chai.request(server).get('/api/v1/accounts/').set('Authorization', '$INVALIDTOKEN');
+      res.body.should.have.property('errorMessage').eql('Invalid token');
+      res.should.have.status(401);
+    });
+    it('Should fail if it lacks valid authentication', async () => {
+      const res = await chai.request(server).get('/api/v1/accounts/').set('Authorization', 'Bearer $sometoken');
+      res.body.should.have.property('errorMessage').eql('Auth failed!');
+      res.should.have.status(401);
+    });
   });
-
-  // // Test case for getting a single account
   describe('GET /api/v1/accounts/:accountNumber', () => {
     it('Should get a single account', async () => {
       const res = await chai.request(server).get('/api/v1/accounts/4194194410').set('Authorization', `Bearer ${adminToken}`);

@@ -1,0 +1,725 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money",
+    "version": "1.0.0",
+    "title": "Banka"
+  },
+  "host": "my-banka.herokuapp.com",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "users",
+      "description": ""
+    },
+    {
+      "name": "accounts",
+      "description": ""
+    },
+    {
+      "name": "transactions",
+      "description": ""
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/auth/signup/": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Sign up",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "firstName",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lastName",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/auth/signin/": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Sign in",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Gets all users",
+        "description": "The endpoint uses a get request to retrieve all users",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Admin can create a new user (staff)",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "firstName",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lastName",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "isAdmin",
+            "in": "formData",
+            "required": true,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get a user by their id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Delete a specific user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/users/{owneremail}/accounts/": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get all accounts belonging to a user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "owneremail",
+            "in": "path",
+            "description": "user email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/accounts/": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Gets all bank accounts",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Users can create new bank accounts",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "owneremail",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "account type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "openingBalance",
+            "in": "formData",
+            "required": true,
+            "type": "number",
+            "format": "float"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/accounts?status=active/": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Gets all active bank accounts",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/accounts?status=dormant/": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Gets all dormant bank accounts",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountNumber}": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get an account by the number",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "description": "account number",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "account not found"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Delete a specific bank account",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "description": "account number",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Admin can change account status",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "description": "account number",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountNumber}/transactions/": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Get all transactions on an account",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "account not found"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/transactions/": {
+      "get": {
+        "tags": [
+          "transactions"
+        ],
+        "summary": "Gets all transactions",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/transactions/{id}": {
+      "get": {
+        "tags": [
+          "transactions"
+        ],
+        "summary": "Get a transaction by its id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "transaction ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/transactions/{accountNumber}/credit/": {
+      "post": {
+        "tags": [
+          "transactions"
+        ],
+        "summary": "Credit an account",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "transaction type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "required": true,
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "name": "cashier",
+            "in": "formData",
+            "description": "ID of cashier",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "account not found"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    },
+    "/transactions/{accountNumber}/debit/": {
+      "post": {
+        "tags": [
+          "transactions"
+        ],
+        "summary": "Debit an account",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "transaction type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "required": true,
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "name": "cashier",
+            "in": "formData",
+            "description": "ID of cashier",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "account not found"
+          }
+        },
+        "security": [
+          {
+            "Auth": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Auth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}
