@@ -13,4 +13,3 @@ describe('TEST ALL /USER ENDPOINTS', () => {
     res.should.have.status(200);
   });
 });
-//

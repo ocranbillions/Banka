@@ -23,8 +23,8 @@ describe('USERS', () => {
   // Get a client token
   it('login non-staff', async () => {
     const clientLogin = {
-      email: 'samo@gmail.com',
-      password: 'mysecret',
+      email: 'joe@gmail.com',
+      password: 'joeboy123',
     };
     const res = await chai.request(server).post('/api/v1/auth/signin').send(clientLogin);
     clientToken = res.body.data.token;
@@ -55,7 +55,7 @@ describe('USERS', () => {
 
     it('Should deny non-staff', async () => {
       const res = await chai.request(server).get('/api/v1/users/').set('Authorization', `Bearer ${clientToken}`);
-      res.body.should.have.property('errorMessage').eql('Clients can\'t access this route');
+      res.body.should.have.property('errorMessage').eql('Forbidden: The requested page can only be accessed by a staff');
       res.should.have.status(403);
     });
   });
@@ -89,6 +89,7 @@ describe('USERS', () => {
       };
       const res = await chai.request(server).post('/api/v1/users/').set('Authorization', `Bearer ${adminToken}`).send(newStaff);
       res.body.should.have.property('data');
+      res.body.data.email.should.equal('shola_steve@gmail.com');
       res.body.should.have.property('status');
       res.should.have.status(201);
       newUserId = res.body.data.id;

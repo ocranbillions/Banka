@@ -6,61 +6,130 @@ const { db } = dbServices;
 
 const AccountController = {
 
-  async getAccounts(query) {
-    let searchQuery;
-    if (query.status) {
-      const { status } = query;
-      searchQuery = 'SELECT * FROM accounts WHERE status=$1';
-      const result = await db.query(searchQuery, [status]);
+  /**
+  * @description get all accounts
+  * @param {object} urlQuery
+  * @returns {object} response object
+  */
+  async getAccounts(urlQuery) {
+    try {
+      let searchQuery;
+      if (urlQuery.status) {
+        const { status } = urlQuery;
+        searchQuery = 'SELECT * FROM accounts WHERE status=$1';
+        const result = await db.query(searchQuery, [status]);
+        return result.rows;
+      }
+
+      searchQuery = 'SELECT * FROM accounts';
+      const result = await db.query(searchQuery);
       return result.rows;
+    } catch (error) {
+      return 500;
     }
-
-    searchQuery = 'SELECT * FROM accounts';
-    const result = await db.query(searchQuery);
-    return result.rows;
   },
 
+  /**
+  * @description get an account
+  * @param {object} accountNum
+  * @returns {object} response object
+  */
   async getSingleAccount(accountNum) {
-    const searchQuery = 'SELECT * FROM accounts WHERE accountnumber=$1';
-    const result = await db.query(searchQuery, [accountNum]);
-    return result;
+    try {
+      const searchQuery = 'SELECT * FROM accounts WHERE accountnumber=$1';
+      const result = await db.query(searchQuery, [accountNum]);
+      return result;
+    } catch (error) {
+      return 500;
+    }
   },
 
+  /**
+  * @description get account transactions
+  * @param {object} accountNum
+  * @returns {object} response object
+  */
   async getAccountTransactions(accountNum) {
-    const searchQuery = 'SELECT * FROM transactions WHERE accountnumber=$1';
-    const result = await db.query(searchQuery, [accountNum]);
-    return result;
+    try {
+      const searchQuery = 'SELECT * FROM transactions WHERE accountnumber=$1';
+      const result = await db.query(searchQuery, [accountNum]);
+      return result;
+    } catch (error) {
+      return 500;
+    }
   },
 
-  async addAccount(reqBody) {
-    const num = helpers.generateAccountNumber();
-    const date = moment(new Date());
-    const status = 'active';
-    const { owneremail, type, openingBalance } = reqBody;
+  /**
+  * @description create new bank account
+  * @param {object} reqBody
+  * @param {object} userData
+  * @returns {object} response object
+  */
+  async createAccount(reqBody, userData) {
+    try {
+      const num = helpers.generateAccountNumber();
+      const date = moment(new Date());
+      const status = 'draft';
+      const { type, openingBalance } = reqBody;
+      const owneremail = userData.email;
 
-    const insertQuery = `INSERT INTO accounts(accountnumber, createdon, owneremail, type, balance, status) 
-    VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`;
+      const insertQuery = `INSERT INTO accounts(accountnumber, createdon, owneremail, type, balance, status) 
+      VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`;
 
-    const result = await db.query(insertQuery, [num, date, owneremail, type, openingBalance, status]);
-    return result.rows[0];
+      const result = await db.query(insertQuery,
+        [num, date, owneremail, type, openingBalance, status]);
+
+      return result.rows[0];
+    } catch (error) {
+      return error;
+    }
   },
 
+  /**
+  * @description delete an account
+  * @param {object} accountNum
+  * @returns {object} response object
+  */
   async deleteAccount(accountNum) {
-    const deleteQuery = 'DELETE FROM accounts WHERE accountnumber=$1';
-    const result = await db.query(deleteQuery, [accountNum]);
-    return result;
+    try {
+      const deleteQuery = 'DELETE FROM accounts WHERE accountnumber=$1';
+      const result = await db.query(deleteQuery, [accountNum]);
+      return result;
+    } catch (error) {
+      return 500;
+    }
   },
 
+  /**
+    * @description change account status
+    * @param {object} num account number
+    * @param {object} status new status
+    * @returns {object} response object
+    */
   async changeAccountStatus(num, status) {
-    const updateQuery = 'UPDATE accounts SET status=$1 WHERE accountnumber=$2 RETURNING *';
-    const result = await db.query(updateQuery, [status, num]);
-    return result.rows[0];
+    try {
+      const updateQuery = 'UPDATE accounts SET status=$1 WHERE accountnumber=$2 RETURNING *';
+      const result = await db.query(updateQuery, [status, num]);
+      return result.rows[0];
+    } catch (error) {
+      return 500;
+    }
   },
 
+  /**
+  * @description change account status
+  * @param {object} newBalace new balance after update
+  * @param {object} accountNumber account to be updated
+  * @returns {object} response object
+  */
   async updateAccountBalance(newBalace, accountNumber) {
-    const updateQuery = 'UPDATE accounts SET balance=$1 WHERE accountnumber=$2 RETURNING *';
-    const result = await db.query(updateQuery, [newBalace, accountNumber]);
-    return result.rows[0];
+    try {
+      const updateQuery = 'UPDATE accounts SET balance=$1 WHERE accountnumber=$2 RETURNING *';
+      const result = await db.query(updateQuery, [newBalace, accountNumber]);
+      return result.rows[0];
+    } catch (error) {
+      return 5000;
+    }
   }
 
 };

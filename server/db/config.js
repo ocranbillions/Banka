@@ -1,27 +1,52 @@
+/* eslint-disable require-jsdoc */
 /* eslint-disable no-console */
 import dotenv from 'dotenv';
 import { Pool } from 'pg';
 import migrationScript from './migration';
 
 dotenv.config();
-
 const db = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-db.on('connect', () => {
-  console.log('database connected');
-});
+async function createUserTable() {
+  try {
+    await db.query(migrationScript.createUserTable);
+  } catch (error) {
+    return error;
+  }
+}
 
-async function migrate() {
-  await db.query(migrationScript.createTables);
+async function createAccountTable() {
+  try {
+    await db.query(migrationScript.createAccountTable);
+  } catch (error) {
+    return error;
+  }
 }
+
+async function createTransactionTable() {
+  try {
+    await db.query(migrationScript.createTransactionTable);
+  } catch (error) {
+    return error;
+  }
+}
+
 async function seed() {
-  await db.query(migrationScript.seedTables);
+  try {
+    await db.query(migrationScript.seedTables);
+  } catch (error) {
+    return error;
+  }
 }
+
+
 module.exports = {
   db,
-  migrate,
+  createUserTable,
+  createAccountTable,
+  createTransactionTable,
   seed,
 };
 

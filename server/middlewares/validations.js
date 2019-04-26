@@ -3,66 +3,83 @@ import Joi from 'joi';
 const Validations = {
 
   validateNewStaff(req, res, next) {
-    const schema = {
-      firstName: Joi.string().min(3).required(),
-      lastName: Joi.string().min(3).required(),
-      email: Joi.string().min(10).required(),
+    const schema = Joi.object().keys({
+      firstName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
+        message: 'name requires alphabets only - min(2)',
+      })),
+      lastName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
+        message: 'name requires alphabets only - min(2)',
+      })),
+      email: Joi.string().regex(/\S+@\S+\.\S+/).min(2).error(() => ({
+        message: 'provide a valid email',
+      })),
       password: Joi.string().min(5).required(),
       isAdmin: Joi.boolean().required(),
-    };
-    const result = Joi.validate(req.body, schema);
+    });
+    const result = schema.validate(req.body, { abortEarly: false });
     if (result.error) {
+      const error = result.error.details.map(d => d.message);
       return res.status(400).json({
         status: 400,
-        errorMessage: result.error.message,
+        errorMessage: error,
       });
     }
     return next();
   },
 
   validateNewAccount(req, res, next) {
-    const schema = {
-      owneremail: Joi.string().min(5).required(),
-      type: Joi.string().min(5).required(),
-      openingBalance: Joi.number().min(1).required(),
-    };
-    const result = Joi.validate(req.body, schema);
+    const schema = Joi.object().keys({
+      type: Joi.string().valid('savings', 'current').required(),
+      openingBalance: Joi.number().min(1000).required(),
+    });
+    const result = schema.validate(req.body, { abortEarly: false });
     if (result.error) {
+      const error = result.error.details.map(d => d.message);
       return res.status(400).json({
         status: 400,
-        errorMessage: result.error.message,
+        errorMessage: error,
       });
     }
     return next();
   },
 
   validateSignUp(req, res, next) {
-    const schema = {
-      firstName: Joi.string().min(3).required(),
-      lastName: Joi.string().min(3).required(),
-      email: Joi.string().min(10).required(),
+    const schema = Joi.object().keys({
+      firstName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
+        message: 'name requires alphabets only - min(2)',
+      })),
+      lastName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
+        message: 'name requires alphabets only - min(2)',
+      })),
+      email: Joi.string().regex(/\S+@\S+\.\S+/).min(2).error(() => ({
+        message: 'provide a valid email',
+      })),
       password: Joi.string().min(5).required(),
-    };
-    const result = Joi.validate(req.body, schema);
+    });
+    const result = schema.validate(req.body, { abortEarly: false });
     if (result.error) {
+      const error = result.error.details.map(d => d.message);
       return res.status(400).json({
         status: 400,
-        errorMessage: result.error.message,
+        errorMessage: error,
       });
     }
     return next();
   },
 
   validateSingnIn(req, res, next) {
-    const schema = {
-      email: Joi.string().min(10).required(),
+    const schema = Joi.object().keys({
+      email: Joi.string().regex(/\S+@\S+\.\S+/).min(2).error(() => ({
+        message: 'provide a valid email',
+      })),
       password: Joi.string().min(5).required(),
-    };
-    const result = Joi.validate(req.body, schema);
+    });
+    const result = schema.validate(req.body, { abortEarly: false });
     if (result.error) {
+      const error = result.error.details.map(d => d.message);
       return res.status(400).json({
         status: 400,
-        errorMessage: result.error.message,
+        errorMessage: error,
       });
     }
     return next();
@@ -70,9 +87,7 @@ const Validations = {
 
   validateTransaction(req, res, next) {
     const schema = {
-      type: Joi.string().min(5).required(),
-      amount: Joi.number().min(1).required(),
-      cashier: Joi.number().min(1).required(),
+      amount: Joi.number().min(100).required(),
     };
     const result = Joi.validate(req.body, schema);
     if (result.error) {
