@@ -31,31 +31,21 @@ export default {
     }
   },
 
-  denyNonStaff(req, res, next) {
-    if (req.userData.type !== 'staff') {
-      return res.status(403).json({
-        status: 403,
-        errorMessage: 'Clients can\'t access this route',
-      });
-    }
-    return next();
-  },
-
   isAdmin(req, res, next) {
     if (req.userData.isadmin === false) {
       return res.status(403).json({
         status: 403,
-        errorMessage: 'You are not an admin',
+        errorMessage: 'Forbidden: You are not an admin',
       });
     }
     return next();
   },
 
-  isCashier(req, res, next) {
+  isStaff(req, res, next) {
     if (req.userData.type !== 'staff') {
       return res.status(403).json({
         status: 403,
-        errorMessage: 'The requested page can only be accessed by a staff',
+        errorMessage: 'Forbidden: The requested page can only be accessed by a staff',
       });
     }
     return next();

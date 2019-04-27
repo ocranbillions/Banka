@@ -19,7 +19,6 @@ server.use(bodyParser.urlencoded({ extended: false }));
 // swagger
 server.use('/api-docs', swagger.serve, swagger.setup(swaggerDocument));
 
-
 server.get('/', (req, res) => {
   res.send('Welcome to Banka!');
 });

@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import UserController from '../controllers/userController';
 import validations from '../middlewares/validations';
-import Auth from '../middlewares/jwt';
+import Auth from '../middlewares/auth';
 
 const router = Router();
 
-router.get('/', Auth.isLoggedIn, Auth.denyNonStaff, UserController.getUsers);
-router.get('/:id', Auth.isLoggedIn, UserController.getSingleUser);
+router.get('/', Auth.isLoggedIn, Auth.isStaff, UserController.getUsers);
+router.get('/:id', Auth.isLoggedIn, UserController.getUserByID);
 router.get('/:owneremail/accounts', Auth.isLoggedIn, UserController.getAccountsByOwnerEmail);
-router.post('/', Auth.isLoggedIn, Auth.isAdmin, validations.validateNewStaff, UserController.addStaff);
+router.post('/', Auth.isLoggedIn, Auth.isAdmin, validations.validateNewStaff, UserController.createStaff);
 router.delete('/:id', Auth.isLoggedIn, Auth.isAdmin, UserController.deleteUser);
 
 export default router;

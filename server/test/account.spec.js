@@ -69,12 +69,12 @@ describe('ACCOUNTS', () => {
   describe('POST /api/v1/accounts', () => {
     it('Should create an account', async () => {
       const newAccount = {
-        owneremail: 'williams@yahoo.com',
         type: 'savings',
         openingBalance: 5000.00,
       };
       const res = await chai.request(server).post('/api/v1/accounts/').set('Authorization', `Bearer ${adminToken}`).send(newAccount);
       res.body.should.have.property('data');
+      res.body.data.type.should.equal('savings');
       res.body.should.have.property('status');
       res.should.have.status(201);
       accNum = res.body.data.accountnumber;

@@ -121,8 +121,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Gets all users",
-        "description": "The endpoint uses a get request to retrieve all users",
+        "summary": "Only admin/staff can access this route",
         "consumes": [
           "application/json"
         ],
@@ -200,7 +199,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Get a user by their id",
+        "summary": "Admin/staff and authorized user can get their profile",
         "produces": [
           "application/json"
         ],
@@ -231,7 +230,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Delete a specific user",
+        "summary": "Admin can delete a user account",
         "produces": [
           "application/json"
         ],
@@ -261,7 +260,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Get all accounts belonging to a user",
+        "summary": "Admin/staff/Authorized user can get all bank accounts belonging to the user",
         "produces": [
           "application/json"
         ],
@@ -291,7 +290,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Gets all bank accounts",
+        "summary": "Admin/staff can get all bank accounts in the database",
         "consumes": [
           "application/json"
         ],
@@ -313,7 +312,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Users can create new bank accounts",
+        "summary": "Admin/Staff/Clients can create new bank account",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
@@ -359,7 +358,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Gets all active bank accounts",
+        "summary": "Admin/Staff can get all active bank accounts",
         "consumes": [
           "application/json"
         ],
@@ -391,7 +390,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Gets all dormant bank accounts",
+        "summary": "Admin/Staff can get all dormant bank accounts",
         "consumes": [
           "application/json"
         ],
@@ -423,7 +422,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Get an account by the number",
+        "summary": "Admin/Staff and owner of the account can access this route",
         "produces": [
           "application/json"
         ],
@@ -454,7 +453,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Delete a specific bank account",
+        "summary": "Only Admin can delete a bank account",
         "produces": [
           "application/json"
         ],
@@ -521,7 +520,7 @@
         "tags": [
           "accounts"
         ],
-        "summary": "Get all transactions on an account",
+        "summary": "Admin/Staff and owner of the account can get all transactions on the account",
         "produces": [
           "application/json"
         ],
@@ -553,7 +552,7 @@
         "tags": [
           "transactions"
         ],
-        "summary": "Gets all transactions",
+        "summary": "Admin/staff can get all bank transactions",
         "consumes": [
           "application/json"
         ],
@@ -577,7 +576,7 @@
         "tags": [
           "transactions"
         ],
-        "summary": "Get a transaction by its id",
+        "summary": "Admin/staff and Authorized user can get specific transaction",
         "produces": [
           "application/json"
         ],
@@ -607,7 +606,7 @@
         "tags": [
           "transactions"
         ],
-        "summary": "Credit an account",
+        "summary": "Only cashier can credit an account",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
@@ -663,7 +662,7 @@
         "tags": [
           "transactions"
         ],
-        "summary": "Debit an account",
+        "summary": "Only cashier can debit an account",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],

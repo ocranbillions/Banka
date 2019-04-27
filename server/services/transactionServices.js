@@ -6,49 +6,99 @@ const { db } = dbServices;
 
 const TransactionServices = {
 
+  /**
+  * @description gets all transactions
+  * @returns {object} response object
+  */
   async getAllTransactions() {
-    const searchQuery = 'SELECT * FROM transactions';
-    const result = await db.query(searchQuery);
-    return result.rows;
-  },
-
-  async getTransactionById(transactionId) {
-    const searchQuery = 'SELECT * FROM transactions WHERE id=$1';
-    const result = await db.query(searchQuery, [transactionId]);
-    return result;
-  },
-
-  async makeTransaction(accountNum, transaction) {
-    // lookup account
-    const resp = await AccountServices.getSingleAccount(accountNum);
-    if (resp.rows < 1) return false;
-
-    const date = moment(new Date());
-    const oldbalance = resp.rows[0].balance;
-    const amount = parseFloat(transaction.amount);
-    let newbalance;
-
-    switch (transaction.type) {
-      case 'debit':
-        newbalance = oldbalance + (-amount);
-        if (newbalance < amount) return 'Insufficient funds';
-        break;
-      case 'credit':
-        newbalance = oldbalance + amount;
-        break;
-      default:
-        return 'Wrong transaction type';
+    try {
+      const searchQuery = 'SELECT * FROM transactions';
+      const result = await db.query(searchQuery);
+      return result.rows;
+    } catch (error) {
+      return 500;
     }
-
-    await AccountServices.updateAccountBalance(newbalance, accountNum);
-
-    const insertQuery = `INSERT INTO transactions(createdon, type, accountnumber, amount, cashier, oldbalance, newbalance) 
-    VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`;
-
-    const result = await db.query(insertQuery, [date, transaction.type, accountNum, amount, transaction.cashier, oldbalance, newbalance]);
-    return result.rows[0];
   },
 
+  /**
+  * @description gets a specific transaction
+  * @param {object} transactionId id of transaction
+  * @returns {object} response object
+  */
+  async getTransactionById(transactionId) {
+    try {
+      const searchQuery = 'SELECT * FROM transactions WHERE id=$1';
+      const result = await db.query(searchQuery, [transactionId]);
+      return result;
+    } catch (error) {
+      return 500;
+    }
+  },
+
+  /**
+  * @description credit an account
+  * @param {string} accountNum account to be credited
+  * @param {int} cashierId cashier to consume the transaction.
+  * @param {float} creditAmount to be credited
+  * @returns {object} response object
+  */
+  async creditAccount(accountNum, cashierId, creditAmount) {
+    try {
+      const resp = await AccountServices.getSingleAccount(accountNum);
+      if (resp.rows < 1) return false;
+      if (resp.rows[0].status !== 'active') return 'Not Active';
+
+      const date = moment(new Date());
+      const oldbalance = resp.rows[0].balance;
+      const amount = parseFloat(creditAmount);
+      const newbalance = oldbalance + amount;
+
+      const updatedAccount = await AccountServices.updateAccountBalance(newbalance, accountNum);
+
+      const insertQuery = `INSERT INTO transactions
+        (createdon, type, accountnumber, amount, cashier, oldbalance, newbalance) 
+        VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`;
+
+      const result = await db.query(insertQuery,
+        [date, 'credit', accountNum, amount, cashierId, oldbalance, updatedAccount.balance]);
+      return result.rows[0];
+    } catch (error) {
+      return 500;
+    }
+  },
+
+  /**
+  * @description debit an account
+  * @param {string} accountNum account to be debited
+  * @param {int} cashierId cashier to consume the transaction.
+  * @param {float} debitAmount to be debited
+  * @returns {object} response object
+  */
+  async debitAccount(accountNum, cashierId, debitAmount) {
+    try {
+      const resp = await AccountServices.getSingleAccount(accountNum);
+      if (resp.rows < 1) return false;
+      if (resp.rows[0].status !== 'active') return 'Not Active';
+
+      const date = moment(new Date());
+      const oldbalance = resp.rows[0].balance;
+      const amount = parseFloat(debitAmount);
+      const newbalance = oldbalance - amount;
+
+      if (amount > oldbalance) return 'Insufficient funds';
+      const updatedAccount = await AccountServices.updateAccountBalance(newbalance, accountNum);
+
+      const insertQuery = `INSERT INTO transactions
+      (createdon, type, accountnumber, amount, cashier, oldbalance, newbalance) 
+      VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`;
+
+      const result = await db.query(insertQuery,
+        [date, 'debit', accountNum, amount, cashierId, oldbalance, updatedAccount.balance]);
+      return result.rows[0];
+    } catch (error) {
+      return 500;
+    }
+  },
 };
 
 export default TransactionServices;
