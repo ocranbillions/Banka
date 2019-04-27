@@ -16,6 +16,15 @@ const Helpers = {
   generateAccountNumber() {
     return Math.floor(1000000000 + Math.random() * 9000000000);
   },
+
+  checkServerError(queryResult, responseObject) {
+    if (queryResult.name === 'error') {
+      return responseObject.status(500).json({
+        status: 500,
+        errorMessage: 'An unexpected error occured',
+      });
+    }
+  }
   // Next helper method
 
 };

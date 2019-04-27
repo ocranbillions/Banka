@@ -1,5 +1,6 @@
 import TransactionServices from '../services/transactionServices';
 import AccountServices from '../services/accountServices';
+import helpers from '../helpers/helpers';
 
 const TransactionController = {
 
@@ -11,7 +12,10 @@ const TransactionController = {
    * @returns {object} containing status code and array of transactions || errorMessage
    */
   async getAllTransactions(req, res) {
-    const transactions = await TransactionServices.getAllTransactions();
+    const result = await TransactionServices.getAllTransactions();
+    helpers.checkServerError(result, res);
+
+    const transactions = result.rows;
     return res.json({
       status: 200,
       data: transactions,
@@ -27,6 +31,8 @@ const TransactionController = {
   */
   async getTransactionById(req, res) {
     const result = await TransactionServices.getTransactionById(req.params.id);
+    helpers.checkServerError(result, res);
+
     if (result.rows < 1) {
       return res.status(404).json({
         status: 404,
@@ -36,6 +42,8 @@ const TransactionController = {
 
     // Get owner details
     const resp = await AccountServices.getSingleAccount(result.rows[0].accountnumber);
+    helpers.checkServerError(result, res);
+
     const owner = resp.rows[0].owneremail;
 
     // Check for authorization
@@ -65,26 +73,22 @@ const TransactionController = {
     const { accountNumber } = req.params;
     const cashierId = req.userData.id;
     const { amount } = req.body;
-
     const result = await TransactionServices.creditAccount(accountNumber, cashierId, amount);
-    // Wrong account number
+    helpers.checkServerError(result, res);
+
     if (result === false) {
       return res.status(404).json({
         status: 404,
         errorMessage: 'The account with the given number was not found',
       });
     }
-
-    // Account must be active
     if (result === 'Not Active') {
       return res.status(406).json({
         status: 406,
-        errorMessage: 'Your account is inactive, kindly fill account activation form',
+        errorMessage: 'This account isn\'t active',
       });
     }
-
-    // Return newly created transaction
-    const transaction = result;
+    const transaction = result.rows[0];
     return res.status(201).json({
       status: 201,
       data: transaction,
@@ -102,24 +106,21 @@ const TransactionController = {
     const { accountNumber } = req.params;
     const cashierId = req.userData.id;
     const { amount } = req.body;
-
     const result = await TransactionServices.debitAccount(accountNumber, cashierId, amount);
-    // Wrong account number
+    helpers.checkServerError(result, res);
+
     if (result === false) {
       return res.status(404).json({
         status: 404,
         errorMessage: 'The account with the given number was not found',
       });
     }
-
-    // Account must be active
     if (result === 'Not Active') {
       return res.status(406).json({
         status: 406,
-        errorMessage: 'Your account is inactive, kindly fill account activation form',
+        errorMessage: 'This account isn\'t active',
       });
     }
-
     if (result === 'Insufficient funds') {
       return res.status(200).json({
         status: 200,
@@ -127,8 +128,7 @@ const TransactionController = {
       });
     }
 
-    // Return newly created transaction
-    const transaction = result;
+    const transaction = result.rows[0];
     return res.status(201).json({
       status: 201,
       data: transaction,

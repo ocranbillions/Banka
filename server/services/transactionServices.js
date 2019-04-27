@@ -14,9 +14,9 @@ const TransactionServices = {
     try {
       const searchQuery = 'SELECT * FROM transactions';
       const result = await db.query(searchQuery);
-      return result.rows;
+      return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -31,7 +31,7 @@ const TransactionServices = {
       const result = await db.query(searchQuery, [transactionId]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -50,7 +50,8 @@ const TransactionServices = {
 
       const date = moment(new Date());
       const oldbalance = resp.rows[0].balance;
-      const amount = parseFloat(creditAmount);
+      let amount = Number.parseFloat(creditAmount).toFixed(2);
+      amount = Number.parseFloat(amount);
       const newbalance = oldbalance + amount;
 
       const updatedAccount = await AccountServices.updateAccountBalance(newbalance, accountNum);
@@ -61,9 +62,9 @@ const TransactionServices = {
 
       const result = await db.query(insertQuery,
         [date, 'credit', accountNum, amount, cashierId, oldbalance, updatedAccount.balance]);
-      return result.rows[0];
+      return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -82,7 +83,8 @@ const TransactionServices = {
 
       const date = moment(new Date());
       const oldbalance = resp.rows[0].balance;
-      const amount = parseFloat(debitAmount);
+      let amount = Number.parseFloat(debitAmount).toFixed(2);
+      amount = Number.parseFloat(amount);
       const newbalance = oldbalance - amount;
 
       if (amount > oldbalance) return 'Insufficient funds';
@@ -94,9 +96,9 @@ const TransactionServices = {
 
       const result = await db.query(insertQuery,
         [date, 'debit', accountNum, amount, cashierId, oldbalance, updatedAccount.balance]);
-      return result.rows[0];
+      return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 };

@@ -87,7 +87,7 @@ const Validations = {
 
   validateTransaction(req, res, next) {
     const schema = {
-      amount: Joi.number().min(100).required(),
+      amount: Joi.number().min(1000).required(),
     };
     const result = Joi.validate(req.body, schema);
     if (result.error) {

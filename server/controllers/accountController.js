@@ -1,4 +1,5 @@
 import AccountServices from '../services/accountServices';
+import helpers from '../helpers/helpers';
 
 const AccountController = {
 
@@ -10,10 +11,12 @@ const AccountController = {
    * @returns {object} response object
    */
   async getAccounts(req, res) {
-    const accounts = await AccountServices.getAccounts(req.query);
+    const result = await AccountServices.getAccounts(req.query);
+    helpers.checkServerError(result, res);
+
     return res.json({
       status: 200,
-      data: accounts,
+      data: result.rows,
     });
   },
 
@@ -27,6 +30,7 @@ const AccountController = {
    */
   async getSingleAccount(req, res) {
     const result = await AccountServices.getSingleAccount(req.params.accountNumber);
+    helpers.checkServerError(result, res);
 
     if (result.rows < 1) {
       return res.status(404).json({
@@ -60,7 +64,7 @@ const AccountController = {
    */
   async getAccountTransactions(req, res) {
     const resp = await AccountServices.getSingleAccount(req.params.accountNumber);
-
+    helpers.checkServerError(resp, res);
     if (resp.rows < 1) {
       return res.status(404).json({
         status: 404,
@@ -76,15 +80,15 @@ const AccountController = {
         errorMessage: `Forbidden: Account ${req.params.accountNumber} doesn't belong to you`,
       });
     }
-
     const result = await AccountServices.getAccountTransactions(req.params.accountNumber);
+    helpers.checkServerError(result, res);
+
     if (result.rows < 1) {
       return res.status(404).json({
         status: 404,
         errorMessage: 'No transactions yet on this account',
       });
     }
-    // Return retrived transactions
     const transactions = result.rows;
     return res.json({
       status: 200,
@@ -101,9 +105,10 @@ const AccountController = {
    */
   async createAccount(req, res) {
     const result = await AccountServices.createAccount(req.body, req.userData);
+    helpers.checkServerError(result, res);
 
     // Return newly created account
-    const newAccount = result;
+    const newAccount = result.rows[0];
     return res.status(201).json({
       status: 201,
       data: newAccount,
@@ -119,6 +124,7 @@ const AccountController = {
    */
   async deleteAccount(req, res) {
     const result = await AccountServices.deleteAccount(req.params.accountNumber);
+    helpers.checkServerError(result, res);
 
     if (result.rowCount < 1) {
       return res.status(404).json({
@@ -148,18 +154,21 @@ const AccountController = {
     }
 
     const result = await AccountServices.changeAccountStatus(req.params.accountNumber, req.body.status);
+    helpers.checkServerError(result, res);
 
-    if (!result) {
+    if (result.rowCount < 1) {
       return res.status(404).json({
         status: 404,
         errorMessage: 'The account with the given number was not found',
       });
     }
+
+    const account = result.rows[0];
     return res.status(201).json({
       status: 201,
       data: {
-        accountNumber: result.accountnumber,
-        status: result.status,
+        accountNumber: account.accountnumber,
+        status: account.status,
       },
     });
   },

@@ -15,9 +15,9 @@ const UserController = {
     try {
       const searchQuery = 'SELECT id, email, firstName, lastName, type, isAdmin FROM users';
       const result = await db.query(searchQuery);
-      return result.rows;
+      return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -32,7 +32,7 @@ const UserController = {
       const result = await db.query(searchQuery, [id]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -47,7 +47,7 @@ const UserController = {
       const result = await db.query(searchQuery, [email]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -63,7 +63,7 @@ const UserController = {
       const result = await db.query(searchQuery, [email]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -79,10 +79,11 @@ const UserController = {
 
       const salt = bcrypt.genSaltSync(10);
       const hashedPassword = bcrypt.hashSync(staff.password, salt);
-      const result = await db.query(insertQuery, [staff.email, staff.firstName, staff.lastName, 'staff', staff.isAdmin, hashedPassword]);
+      const email = staff.email.toLowerCase();
+      const result = await db.query(insertQuery, [email, staff.firstName, staff.lastName, 'staff', staff.isAdmin, hashedPassword]);
       return result.rows[0];
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -97,7 +98,7 @@ const UserController = {
       const result = await db.query(deleteQuery, [id]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 };

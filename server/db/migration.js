@@ -58,7 +58,7 @@ INSERT INTO
 INSERT INTO
   accounts
     VALUES
-    ( default, 4194194410, '${date}', 'joe@gmail.com', 'current', 50000.10, 'active'),
+    ( default, 4194194410, '${date}', 'joe@gmail.com', 'current', 500000.10, 'active'),
     ( default, 9852136521, '${date}', 'samo@gmail.com', 'savings', 1000.00, 'dormant'),
     ( default, 5421214520, '${date}', 'mikejones@gmail.com', 'savings', 45000.50, 'active'),
     ( default, 1212452132, '${date}', 'joe@gmail.com', 'savings', 30000.10, 'dormant'),

@@ -1,4 +1,5 @@
 import UserServices from '../services/userServices';
+import helpers from '../helpers/helpers';
 
 const UserController = {
 
@@ -9,10 +10,12 @@ const UserController = {
   * @returns {object} response object
   */
   async getUsers(req, res) {
-    const users = await UserServices.getUsers();
-    return res.json({
+    const result = await UserServices.getUsers();
+    helpers.checkServerError(result, res);
+
+    return res.status(200).json({
       status: 200,
-      data: users,
+      data: result.rows,
     });
   },
 
@@ -24,6 +27,7 @@ const UserController = {
   */
   async getUserByID(req, res) {
     const result = await UserServices.getUserByID(req.params.id);
+    helpers.checkServerError(result, res);
 
     if (result.rows < 1) {
       return res.status(404).json({
@@ -55,7 +59,10 @@ const UserController = {
   */
   async getAccountsByOwnerEmail(req, res) {
     // Lookup email
-    const resp = await UserServices.getUserByEmail(req.params.owneremail);
+    const email = req.params.owneremail.toLowerCase();
+    const resp = await UserServices.getUserByEmail(email);
+    helpers.checkServerError(resp, res);
+
     if (resp.rows < 1) {
       return res.status(404).json({
         status: 404,
@@ -63,7 +70,8 @@ const UserController = {
       });
     }
 
-    const result = await UserServices.getAccountsByOwnerEmail(req.params.owneremail);
+    const result = await UserServices.getAccountsByOwnerEmail(email);
+    helpers.checkServerError(result, res);
 
     if (result.rows < 1) {
       return res.status(404).json({
@@ -97,8 +105,7 @@ const UserController = {
   */
   async createStaff(req, res) {
     const result = await UserServices.createStaff(req.body);
-
-    if (result.name === 'error') {
+    if (result.constraint === 'users_email_key') {
       return res.status(409).json({
         status: 409,
         errorMessage: 'Email already used',
@@ -121,6 +128,7 @@ const UserController = {
   */
   async deleteUser(req, res) {
     const result = await UserServices.deleteUser(req.params.id);
+    helpers.checkServerError(result, res);
 
     if (result.rowCount < 1) {
       return res.status(404).json({

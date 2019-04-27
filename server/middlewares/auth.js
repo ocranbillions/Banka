@@ -6,8 +6,8 @@ dotenv.config();
 export default {
   isLoggedIn(req, res, next) {
     if (!req.headers.authorization) {
-      return res.status(403).json({
-        status: 403,
+      return res.status(401).json({
+        status: 401,
         errorMessage: 'You must be logged in to access this route',
       });
     }
