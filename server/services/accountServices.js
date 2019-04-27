@@ -18,14 +18,14 @@ const AccountController = {
         const { status } = urlQuery;
         searchQuery = 'SELECT * FROM accounts WHERE status=$1';
         const result = await db.query(searchQuery, [status]);
-        return result.rows;
+        return result;
       }
 
       searchQuery = 'SELECT * FROM accounts';
       const result = await db.query(searchQuery);
-      return result.rows;
+      return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -40,7 +40,7 @@ const AccountController = {
       const result = await db.query(searchQuery, [accountNum]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -55,7 +55,7 @@ const AccountController = {
       const result = await db.query(searchQuery, [accountNum]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -70,8 +70,10 @@ const AccountController = {
       const num = helpers.generateAccountNumber();
       const date = moment(new Date());
       const status = 'draft';
-      const { type, openingBalance } = reqBody;
+      const { type } = reqBody;
       const owneremail = userData.email;
+      let openingBalance = Number.parseFloat(reqBody.openingBalance).toFixed(2);
+      openingBalance = Number.parseFloat(openingBalance);
 
       const insertQuery = `INSERT INTO accounts(accountnumber, createdon, owneremail, type, balance, status) 
       VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`;
@@ -79,7 +81,7 @@ const AccountController = {
       const result = await db.query(insertQuery,
         [num, date, owneremail, type, openingBalance, status]);
 
-      return result.rows[0];
+      return result;
     } catch (error) {
       return error;
     }
@@ -96,7 +98,7 @@ const AccountController = {
       const result = await db.query(deleteQuery, [accountNum]);
       return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -110,9 +112,9 @@ const AccountController = {
     try {
       const updateQuery = 'UPDATE accounts SET status=$1 WHERE accountnumber=$2 RETURNING *';
       const result = await db.query(updateQuery, [status, num]);
-      return result.rows[0];
+      return result;
     } catch (error) {
-      return 500;
+      return error;
     }
   },
 
@@ -128,7 +130,7 @@ const AccountController = {
       const result = await db.query(updateQuery, [newBalace, accountNumber]);
       return result.rows[0];
     } catch (error) {
-      return 5000;
+      return error;
     }
   }
 

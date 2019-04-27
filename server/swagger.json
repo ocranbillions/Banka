@@ -321,12 +321,6 @@
         ],
         "parameters": [
           {
-            "name": "owneremail",
-            "in": "formData",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "type",
             "in": "formData",
             "description": "account type",
@@ -606,7 +600,7 @@
         "tags": [
           "transactions"
         ],
-        "summary": "Only cashier can credit an account",
+        "summary": "Cashier can credit an account",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
@@ -621,25 +615,11 @@
             "type": "integer"
           },
           {
-            "name": "type",
-            "in": "formData",
-            "description": "transaction type",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "amount",
             "in": "formData",
             "required": true,
             "type": "number",
             "format": "float"
-          },
-          {
-            "name": "cashier",
-            "in": "formData",
-            "description": "ID of cashier",
-            "required": true,
-            "type": "number"
           }
         ],
         "responses": {
@@ -662,7 +642,7 @@
         "tags": [
           "transactions"
         ],
-        "summary": "Only cashier can debit an account",
+        "summary": "Cashier can debit an account",
         "consumes": [
           "application/x-www-form-urlencoded"
         ],
@@ -677,25 +657,11 @@
             "type": "integer"
           },
           {
-            "name": "type",
-            "in": "formData",
-            "description": "transaction type",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "amount",
             "in": "formData",
             "required": true,
             "type": "number",
             "format": "float"
-          },
-          {
-            "name": "cashier",
-            "in": "formData",
-            "description": "ID of cashier",
-            "required": true,
-            "type": "number"
           }
         ],
         "responses": {

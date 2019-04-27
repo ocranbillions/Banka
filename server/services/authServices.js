@@ -18,13 +18,13 @@ const AuthServices = {
 
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(user.password, salt);
-    let result;
+    const email = user.email.toLowerCase();
     try {
-      result = await db.query(insertQuery, [user.email, user.firstName, user.lastName, 'client', false, hashedPassword]);
-    } catch (err) {
-      return err;
+      const result = await db.query(insertQuery, [email, user.firstName, user.lastName, 'client', false, hashedPassword]);
+      return result;
+    } catch (error) {
+      return error;
     }
-    return result.rows[0];
   },
 
   /**
@@ -33,9 +33,13 @@ const AuthServices = {
   * @returns {object} response object
   */
   async signIn(user) {
-    const searchQuery = 'SELECT * FROM users WHERE email=$1';
-    const result = await db.query(searchQuery, [user.email]);
-    return result;
+    try {
+      const searchQuery = 'SELECT * FROM users WHERE email=$1';
+      const result = await db.query(searchQuery, [user.email]);
+      return result;
+    } catch (error) {
+      return error;
+    }
   },
 };
 
