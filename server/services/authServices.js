@@ -34,8 +34,9 @@ const AuthServices = {
   */
   async signIn(user) {
     try {
+      const email = user.email.toLowerCase();
       const searchQuery = 'SELECT * FROM users WHERE email=$1';
-      const result = await db.query(searchQuery, [user.email]);
+      const result = await db.query(searchQuery, [email]);
       return result;
     } catch (error) {
       return error;
