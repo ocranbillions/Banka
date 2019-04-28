@@ -13,7 +13,7 @@
 	<title>Banka! - Accounts</title>
 </head>
 
-<body>
+<body class="wrapper">
 	<nav>
 		<div class="nav-flex-container">
 			<div class="logo-container margin-bottom-small">
@@ -23,8 +23,8 @@
 				<ul class="list">
 					<li><a href="./admin.accounts.html">Accounts</a></li>
 					<li><a href="#" class="new-staff">Create Staff</a></li>
-					<li><a href="./admin.employees.html">Staff List</a></li>
-					<a href="../index.html" class="last-link"><i class="fas fa-sign-out-alt"></i>LogOut</a>
+					<li><a href="./admin.users.html">User List</a></li>
+					<a href="../index.html" class="last-link"><i class="fas fa-sign-out-alt"></i> LogOut</a>
 				</ul>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 					<span>matts@gmail.com</span>
 				</div>
 				<a href="./admin.accounts.html"><span class="icon"> <i class="fas fa-users"></i> </span>Accounts</a>
-				<a href="./admin.employees.html"><span class="icon"><i class="fas fa-th-list"></i> </span>Staff List</a>
+				<a href="./admin.users.html"><span class="icon"><i class="fas fa-th-list"></i> </span>User List</a>
 				<a href="#" class="new-staff"><span class="icon"><i class="fas fa-user-check"></i> </span>Create Staff</a>
 				<a href="#"><span class="icon"><i class="fas fa-tools"></i> </span>Settings</a>
 				<a href="#"><span class="icon"><i class="fas fa-external-link-square-alt"></i> </span>Quick Links</a>
@@ -232,9 +232,9 @@
 					<p class="balance"><span>N44,000.00</span></p>
 				</div>
 				<div class="action">
-					<p class="activate"><a href="./admin.accounts.html" class="btn">Activate Account</a></p>
-					<p class="deactivate"><a href="./admin.accounts.html" class="btn">Deactivate Account</a></p>
-					<p class="delete"><a href="./admin.accounts.html" class="btn">Delete Account</a></p>
+					<p class="activate"><a href="./admin.accounts.html" class="btn bg-green">Activate Account</a></p>
+					<p class="deactivate"><a href="./admin.accounts.html" class="btn bg-orange">Deactivate Account</a></p>
+					<p class="delete"><a href="./admin.accounts.html" class="btn bg-red">Delete Account</a></p>
 				</div>
 			</div>
 		</div>
@@ -243,7 +243,7 @@
 			<div class="popup_content">
 				<div class="popup_close">X</div>
 				<div>
-					<form action="./admin.employees.html" class="login_form margin-bottom-small">
+					<form action="./admin.employees.html" class="margin-bottom-small">
 						<div class="form__group">
 							<label for="fname" class="form__label">First Name</label>
 							<input type="text" class="form__input" placeholder="" id="fname">

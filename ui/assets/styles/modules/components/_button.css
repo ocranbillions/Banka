@@ -16,3 +16,8 @@
 .account-details .btn-blue {
   color: white;
 }
+
+.btn-select {
+  border: 2px solid var(--dark2);
+  padding: 0.5rem;
+}

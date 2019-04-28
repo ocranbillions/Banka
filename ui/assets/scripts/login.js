@@ -7,7 +7,7 @@ loginBtn.addEventListener('click', () => {
   if (userType === 'client') {
     loginForm.setAttribute('action', './pages/client.dashboard.html');
   } else if (userType === 'cashier') {
-    loginForm.setAttribute('action', './pages/cashier.transactions.html');
+    loginForm.setAttribute('action', './pages/cashier.accounts.html');
   } else if (userType === 'admin') {
     loginForm.setAttribute('action', './pages/admin.accounts.html');
   }

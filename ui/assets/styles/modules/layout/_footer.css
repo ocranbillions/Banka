@@ -4,14 +4,14 @@ footer {
   position: relative;
   font-size: 1.5rem;
   line-height: 1.5;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   text-align: center;
 }
 
 footer a {
   color: white;
-  font-size: 95%;
+  font-size: 80%;
 }
 .foot_contents {
   padding-bottom: 2rem;
@@ -21,13 +21,13 @@ footer a {
 }
 
 .foot_contents h4 {
-  color: var(--primary-color);
+  color: orange;
 }
 
 .foot_social img {
   font-size: 15px;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   margin-top: 10px;
   cursor: pointer;
   transition: all 0.6s;

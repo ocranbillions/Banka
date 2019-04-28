@@ -11,7 +11,7 @@
 }
 
 .popup_content {
-  padding: 1.5rem;
+  padding-bottom: 5px;
   width: 300px;
   margin: 50px auto;
   background: white;
@@ -48,4 +48,6 @@
 .popup_close {
   text-align: right;
   font-size: 2rem;
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
 }

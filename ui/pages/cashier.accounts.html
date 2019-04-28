@@ -13,7 +13,7 @@
 	<title>Banka! - Tellers</title>
 </head>
 
-<body>
+<body class="wrapper">
 	<nav>
 		<div class="nav-flex-container">
 			<div class="logo-container margin-bottom-small">
@@ -23,7 +23,8 @@
 				<ul class="list">
 					<li><a href="./cashier.transactions.html">Transactions</a></li>
 					<li><a href="./cashier.accounts.html">Accounts</a></li>
-					<a href="../index.html" class="last-link"><i class="fas fa-sign-out-alt"></i>LogOut</a>
+					<a href="../index.html" class="last-link"><span class="icon"><i class="fas fa-sign-out-alt"></i>
+						</span>LogOut</a>
 				</ul>
 			</div>
 		</div>
@@ -49,8 +50,8 @@
 			<div class="account-list">
 				<h1 class="heading-1">Accounts</h1>
 				<div class="center-text">
-					<a href="#" class="debit bg-red btn white transactjs">Debit</a>
-					<a href="#" class="credit bg-green btn white transactjs">Credit</a>
+					<a href="#" class="debit btn-blue btn white transactjs">Debit</a>
+					<a href="#" class="credit btn-blue btn white transactjs">Credit</a>
 				</div>
 
 				<div class="trans-column padding-top-small">
@@ -216,18 +217,13 @@
 		<div class="popup_content">
 			<div class="popup_close">X</div>
 
-			<div class="transaction">
+			<form action="transaction_form">
 				<p class="">Account<input type="number" class=""> </p>
 				<p class="amount">Amount<input type="number" class=""> </p>
-				<p class="teller-num">Teller Number<input type="number" class=""> </p>
-				<select class="btn">
-					<option value="debit">Debit</option>
-					<option value="credit">Credit</option>
-				</select>
-			</div>
-			<div class="action">
-				<p class="credit"><a href="./cashier.transactions.html" class="btn margin-top-small">POST</a></p>
-			</div>
+				<div class="action">
+					<p class="credit"><a href="./cashier.transactions.html" class="btn btn-blue margin-top-small">SUBMIT</a></p>
+				</div>
+			</form>
 		</div>
 	</section>
 

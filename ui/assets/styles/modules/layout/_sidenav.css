@@ -48,7 +48,8 @@
     background: gainsboro;
     text-align: center;
   }
-  .side_nav .user-info h3 {
+  .side_nav .user-info h3,
+  .side_nav .user-info span {
     color: black;
   }
 

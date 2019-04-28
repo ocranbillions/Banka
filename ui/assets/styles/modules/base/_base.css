@@ -34,7 +34,7 @@ a {
 }
 
 .wrapper {
-  max-width: 120rem;
+  max-width: 140rem;
   margin: 0px auto;
 }
 
@@ -43,7 +43,7 @@ a {
   font-weight: 300;
   text-align: center;
   margin: 2rem 0rem;
-  color: var(--dark2);
+  color: orange;
 }
 
 .heading-3 {

@@ -35,7 +35,7 @@ a {
 }
 
 .wrapper {
-  max-width: 120rem;
+  max-width: 140rem;
   margin: 0px auto;
 }
 
@@ -44,7 +44,7 @@ a {
   font-weight: 300;
   text-align: center;
   margin: 2rem 0rem;
-  color: var(--dark2);
+  color: orange;
 }
 
 .heading-3 {
@@ -168,10 +168,17 @@ a {
 }
 
 .view-account {
-  border: 2px solid var(--dark2);
+  border: 2px solid orange;
   padding-left: 0.2rem;
   padding-right: 0.2rem;
   border-radius: 0.5rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .view-account {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
 }
 
 .view-account:hover {
@@ -275,6 +282,10 @@ nav {
   .last-link {
     display: block;
   }
+
+  .fas .fa-sign-out-alt {
+    margin-right: 0.5rem;
+  }
 }
 
 nav a {
@@ -298,6 +309,11 @@ nav a {
 
 .account-details .btn-blue {
   color: white;
+}
+
+.btn-select {
+  border: 2px solid var(--dark2);
+  padding: 0.5rem;
 }
 
 .login-section {
@@ -338,8 +354,12 @@ button {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  /* background: inherit; */
   box-shadow: 0 1.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+form {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .form-radio input {
@@ -439,7 +459,8 @@ input::placeholder {
     text-align: center;
   }
 
-  .side_nav .user-info h3 {
+  .side_nav .user-info h3,
+  .side_nav .user-info span {
     color: black;
   }
 
@@ -466,6 +487,8 @@ input::placeholder {
   width: 80%;
   overflow: auto;
   padding-bottom: 3rem;
+  color: #222632;
+  margin: 0px auto;
 }
 
 @media only screen and (max-width: 755px) {
@@ -476,7 +499,8 @@ input::placeholder {
 
 .table_container th,
 .table_container td {
-  padding: 1.5rem 2.5rem;
+  padding: 0.5rem 2.5rem;
+  border: 1px solid orange;
 }
 
 .table_container {
@@ -488,14 +512,15 @@ table {
   margin: 0 auto;
 }
 
-tr:nth-child(even) {
-  background: rgb(179, 172, 172);
+th {
+  color: orange;
 }
 
 @media only screen and (max-width: 900px) {
   .table_container th,
   .table_container td {
-    padding: 1.2rem 2rem;
+    padding: 0.2rem 2rem;
+    font-size: 80%;
   }
 }
 
@@ -508,13 +533,19 @@ tr:nth-child(even) {
   display: flex;
 }
 
+.trans-table-title p {
+  color: orange;
+}
+
 .type-symbol {
   position: relative;
-  height: 3rem;
-  width: 3rem;
-  font-size: 3.5rem;
+  height: 2rem;
+  width: 5rem;
+  font-size: 12px;
   margin: 0.5rem;
-  border-radius: 50%;
+  border-radius: 7px;
+  color: white;
+  margin-top: 0.85rem;
 }
 
 .trans-details {
@@ -563,7 +594,7 @@ tr:nth-child(even) {
 }
 
 .popup_content {
-  padding: 1.5rem;
+  padding-bottom: 5px;
   width: 300px;
   margin: 50px auto;
   background: white;
@@ -603,6 +634,8 @@ tr:nth-child(even) {
 .popup_close {
   text-align: right;
   font-size: 2rem;
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .profile-section {
@@ -637,14 +670,14 @@ footer {
   position: relative;
   font-size: 1.5rem;
   line-height: 1.5;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   text-align: center;
 }
 
 footer a {
   color: white;
-  font-size: 95%;
+  font-size: 80%;
 }
 
 .foot_contents {
@@ -655,13 +688,13 @@ footer a {
 }
 
 .foot_contents h4 {
-  color: var(--primary-color);
+  color: orange;
 }
 
 .foot_social img {
   font-size: 15px;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   margin-top: 10px;
   cursor: pointer;
   transition: all 0.6s;

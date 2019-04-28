@@ -13,8 +13,7 @@
 	<title>Banka! - History</title>
 </head>
 
-<body>
-
+<body class="wrapper">
 	<nav>
 		<div class="nav-flex-container">
 			<div class="logo-container margin-bottom-small">
@@ -53,10 +52,9 @@
 			<div class="account-list">
 				<div class="select_account align-center margin-bottom-small">
 					<h1 class="heading-1">History</h1>
-					<select class="btn">
+					<select class="btn btn-select">
 						<option value="0162456854">0162456854</option>
 						<option value="2255412365">2255412365</option>
-						<option value="4112121523">4112121523</option>
 					</select>
 					<a href="#" class="btn btn-blue">Load</a>
 				</div>
@@ -64,7 +62,7 @@
 				<div class="trans-column padding-top-small">
 
 					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
+						<div class="type-symbol bg-green"><span class="absolute-center">credit</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
 							<p>Account number: <span class="trans-account">0162456854</span></p>
@@ -79,7 +77,7 @@
 					</div>
 
 					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
+						<div class="type-symbol bg-red"><span class="absolute-center">debit</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
 							<p>Account number: <span class="trans-account">0162456854</span></p>
@@ -94,7 +92,7 @@
 					</div>
 
 					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">+</span></div>
+						<div class="type-symbol bg-green"><span class="absolute-center">credit</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
 							<p>Account number: <span class="trans-account">0162456854</span></p>
@@ -109,7 +107,7 @@
 					</div>
 
 					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
+						<div class="type-symbol bg-red"><span class="absolute-center">debit</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
 							<p>Account number: <span class="trans-account">0162456854</span></p>
@@ -124,7 +122,7 @@
 					</div>
 
 					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">-</span></div>
+						<div class="type-symbol bg-red"><span class="absolute-center">debit</span></div>
 						<div class="trans-details">
 							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
 							<p>Account number: <span class="trans-account">0162456854</span></p>
@@ -185,20 +183,7 @@
 		<div class="popup_content">
 			<div class="popup_close">X</div>
 			<div>
-				<form action="./client.dashboard.html" class="login_form margin-bottom-small">
-					<div class="form__group">
-						<label for="fname" class="form__label">First Name</label>
-						<input type="text" class="form__input" placeholder="First Name" id="fname">
-					</div>
-					<div class="form__group">
-						<label for="lname" class="form__label">Last Name</label>
-						<input type="text" class="form__input" placeholder="Last Name" id="lname">
-					</div>
-					<div class="form__group">
-						<label for="email" class="form__label">Email</label>
-						<input type="email" class="form__input" placeholder="email" id="email">
-					</div>
-
+				<form action="./client.dashboard.html" class="margin-bottom-small">
 					<div class="form__group">
 						<label for="openingbal" class="form__label">Opening balance</label>
 						<input type="number" class="form__input" id="openingbal">
@@ -214,7 +199,6 @@
 			</div>
 		</div>
 	</div>
-
 	</section>
 
 	<script src="../assets/scripts/client.js"></script>
