@@ -6,13 +6,13 @@ const Validations = {
     const schema = Joi.object().keys({
       firstName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
         message: 'name requires alphabets only - min(2)',
-      })),
+      })).required(),
       lastName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
         message: 'name requires alphabets only - min(2)',
-      })),
+      })).required(),
       email: Joi.string().regex(/\S+@\S+\.\S+/).min(2).error(() => ({
         message: 'provide a valid email',
-      })),
+      })).required(),
       password: Joi.string().min(5).required(),
       isAdmin: Joi.boolean().required(),
     });
@@ -47,13 +47,13 @@ const Validations = {
     const schema = Joi.object().keys({
       firstName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
         message: 'name requires alphabets only - min(2)',
-      })),
+      })).required(),
       lastName: Joi.string().regex(/^[A-Za-z]+$/).min(2).error(() => ({
         message: 'name requires alphabets only - min(2)',
-      })),
+      })).required(),
       email: Joi.string().regex(/\S+@\S+\.\S+/).min(2).error(() => ({
         message: 'provide a valid email',
-      })),
+      })).required(),
       password: Joi.string().min(5).required(),
     });
     const result = schema.validate(req.body, { abortEarly: false });
@@ -71,7 +71,7 @@ const Validations = {
     const schema = Joi.object().keys({
       email: Joi.string().regex(/\S+@\S+\.\S+/).min(2).error(() => ({
         message: 'provide a valid email',
-      })),
+      })).required(),
       password: Joi.string().min(5).required(),
     });
     const result = schema.validate(req.body, { abortEarly: false });
