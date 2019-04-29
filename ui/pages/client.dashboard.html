@@ -37,8 +37,8 @@
 				<div class="side_nav">
 					<div class="user-info margin-bottom-small">
 						<img src="../assets/images/profilepic.JPG" alt="">
-						<h3 class="heading-3">Samuel Ocran</h3>
-						<span>samuel@gmail.com</span>
+						<h3 class="heading-3" id="fullName"></h3>
+						<span id="email"></span>
 					</div>
 
 					<a href="./client.dashboard.html" class="active"><span class="icon"><i
@@ -52,26 +52,10 @@
 					<a href="../index.html"><span class="icon"><i class="fas fa-sign-out-alt"></i> </span>Log out</a>
 				</div>
 				<div class="account-list">
-					<h1 class="heading-1">My Accounts</h1>
+					<h1 class="heading-1" id="h1-title"></h1>
 
-					<div class="profile-section padding-top-small">
-						<div class="account margin-bottom-small f-item">
-							<p class="heading-3"><span class="">0132152333 </span> - <span class="green">Active</span></p>
-							<div class="account-details">
-								<p class="margin-bottom-small">Available Balance: N255,000.00</p>
-								<p class="margin-bottom-small">Type: Savings</p>
-								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
-							</div>
-						</div>
+					<div class="profile-section padding-top-small" id="accounts-container">
 
-						<div class="account margin-bottom-small f-item">
-							<p class="heading-3"><span class="">2541536521 </span> - <span class="green">Active</span></p>
-							<div class="account-details">
-								<p class="margin-bottom-small">Available Balance: N20,150.00</p>
-								<p class="margin-bottom-small">Type: Current</p>
-								<a href="./client.history.html" class="btn btn-blue margin-bottom-small">Account history</a>
-							</div>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -121,26 +105,25 @@
 		<div class="popup_content">
 			<div class="popup_close">X</div>
 			<div>
-				<form action="./client.dashboard.html" class="margin-bottom-small">
+				<form class="margin-bottom-small">
 					<div class="form__group">
 						<label for="openingbal" class="form__label">Opening balance</label>
 						<input type="number" class="form__input" id="openingbal">
 					</div>
 
-					<div class="form__group form-radio">
-						Savings<input type="radio" name="account-type" value="saving" checked>
+					<div class="form__group form-radio" id="type">
+						Savings<input type="radio" name="account-type" value="savings">
 						Current<input type="radio" name="account-type" value="current">
 					</div>
 
-					<button type="submit" class="btn btn-blue">Create Account</button>
+					<input type="submit" class="btn btn-blue" id="submit-new-account"></input>
 				</form>
 			</div>
 		</div>
 	</div>
 
-	</section>
-
 	<script src="../assets/scripts/client.js"></script>
+	<script src="../assets/scripts/client.dashboard.js"></script>
 
 </body>
 

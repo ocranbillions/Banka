@@ -9,5 +9,6 @@
 @media only screen and (max-width: 755px) {
   .account-list {
     margin: 0px auto;
+    min-height: 600px;
   }
 }

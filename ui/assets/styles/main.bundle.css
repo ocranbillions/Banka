@@ -43,7 +43,7 @@ a {
   font-size: 2rem;
   font-weight: 300;
   text-align: center;
-  margin: 2rem 0rem;
+  margin: 1rem 0rem;
   color: orange;
 }
 
@@ -52,10 +52,12 @@ a {
   font-size: 1.7rem;
 }
 
+.bg-credit,
 .bg-green {
   background: yellowgreen;
 }
 
+.bg-debit,
 .bg-red {
   background: orangered;
 }
@@ -64,11 +66,13 @@ a {
   background: orange;
 }
 
-.green {
+.green,
+.credit {
   color: yellowgreen;
 }
 
-.red {
+.red,
+.debit {
   color: orangered;
 }
 
@@ -405,7 +409,7 @@ input::placeholder {
 
 .side_nav {
   background: var(--primary-color-light);
-  width: 180px;
+  width: 20rem;
   padding-top: 2rem;
   margin-right: 1rem;
   color: white;
@@ -494,6 +498,7 @@ input::placeholder {
 @media only screen and (max-width: 755px) {
   .account-list {
     margin: 0px auto;
+    min-height: 600px;
   }
 }
 
@@ -640,14 +645,15 @@ th {
 
 .profile-section {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  margin: 0px auto;
 }
 
 .account {
   background: #f5f5f5;
   padding: 2rem;
   border: 2px solid var(--primary-color2);
+  margin: 5px;
 }
 
 .account-details a {
@@ -655,12 +661,13 @@ th {
 }
 
 .f-item {
-  width: 290px;
+  width: 26rem;
+  height: 15rem;
 }
 
 @media only screen and (max-width: 900px) {
   .profile-section {
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 }
 
