@@ -35,8 +35,8 @@
 			<div class="side_nav">
 				<div class="user-info margin-bottom-small">
 					<img src="../assets/images/profilepic.JPG" alt="">
-					<h3 class="heading-3">Samuel Ocran</h3>
-					<span>samuel@gmail.com</span>
+					<h3 class="heading-3" id="fullName"></h3>
+					<span id="email"></span>
 				</div>
 
 				<a href="./client.dashboard.html" class="active"><span class="icon"><i
@@ -51,90 +51,16 @@
 			</div>
 			<div class="account-list">
 				<div class="select_account align-center margin-bottom-small">
-					<h1 class="heading-1">History</h1>
+					<h1 class="heading-1" id="h1-title">History</h1>
 					<select class="btn btn-select">
-						<option value="0162456854">0162456854</option>
-						<option value="2255412365">2255412365</option>
+						<option value="0162456854">accountNumber</option>
+						<option value="2255412365">accountNumber</option>
 					</select>
 					<a href="#" class="btn btn-blue">Load</a>
 				</div>
 
-				<div class="trans-column padding-top-small">
+				<div class="trans-column padding-top-small" id="tansactions-container">
 
-					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">credit</span></div>
-						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
-							<p>Account number: <span class="trans-account">0162456854</span></p>
-							<p>Transaction ID: <span class="trans-id">3444</span></p>
-							<p>Type: <span class="trans-type">Deposit</span></p>
-							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
-							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N44,000.00</span></p>
-							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>James Olawale</strong></span></p>
-						</div>
-					</div>
-
-					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">debit</span></div>
-						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
-							<p>Account number: <span class="trans-account">0162456854</span></p>
-							<p>Transaction ID: <span class="trans-id">3444</span></p>
-							<p>Type: <span class="trans-type">Withdrawal</span></p>
-							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
-							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N44,000.00</span></p>
-							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>David Balogun</strong></span></p>
-						</div>
-					</div>
-
-					<div class="trans-block">
-						<div class="type-symbol bg-green"><span class="absolute-center">credit</span></div>
-						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="green">N10,000</strong></span></p>
-							<p>Account number: <span class="trans-account">0162456854</span></p>
-							<p>Transaction ID: <span class="trans-id">3444</span></p>
-							<p>Type: <span class="trans-type">Deposit</span></p>
-							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
-							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N44,000.00</span></p>
-							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>James Olawale</strong></span></p>
-						</div>
-					</div>
-
-					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">debit</span></div>
-						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
-							<p>Account number: <span class="trans-account">0162456854</span></p>
-							<p>Transaction ID: <span class="trans-id">3444</span></p>
-							<p>Type: <span class="trans-type">Withdrawal</span></p>
-							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
-							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N44,000.00</span></p>
-							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>James Olawale</strong></span></p>
-						</div>
-					</div>
-
-					<div class="trans-block">
-						<div class="type-symbol bg-red"><span class="absolute-center">debit</span></div>
-						<div class="trans-details">
-							<p class=""><span class="trans-amount"><strong class="red">N14,000</strong></span></p>
-							<p>Account number: <span class="trans-account">0162456854</span></p>
-							<p>Transaction ID: <span class="trans-id">3444</span></p>
-							<p>Type: <span class="trans-type">Withdrawal</span></p>
-							<p>Date: <span class="trans-date">20-03-2019 12:33:04</span></p>
-							<p>Old balance: <span class="old-bal">N34,000.00</span></p>
-							<p>New balance: <span class="new-bal">N44,000.00</span></p>
-							<p>Status: <span class="status">Completed</span></p>
-							<p>Cashier: <span class="status"><strong>Yusuf Temitope</strong></span></p>
-						</div>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -183,25 +109,25 @@
 		<div class="popup_content">
 			<div class="popup_close">X</div>
 			<div>
-				<form action="./client.dashboard.html" class="margin-bottom-small">
+				<form class="margin-bottom-small">
 					<div class="form__group">
 						<label for="openingbal" class="form__label">Opening balance</label>
 						<input type="number" class="form__input" id="openingbal">
 					</div>
 
-					<div class="form__group form-radio">
-						Savings<input type="radio" name="account-type" value="saving" checked>
+					<div class="form__group form-radio" id="type">
+						Savings<input type="radio" name="account-type" value="savings">
 						Current<input type="radio" name="account-type" value="current">
 					</div>
 
-					<button type="submit" class="btn btn-blue">Create Account</button>
+					<input type="submit" class="btn btn-blue" id="submit-new-account"></input>
 				</form>
 			</div>
 		</div>
 	</div>
-	</section>
 
 	<script src="../assets/scripts/client.js"></script>
+	<script src="../assets/scripts/client.history.js"></script>
 </body>
 
 </html>

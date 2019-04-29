@@ -42,7 +42,7 @@ a {
   font-size: 2rem;
   font-weight: 300;
   text-align: center;
-  margin: 2rem 0rem;
+  margin: 1rem 0rem;
   color: orange;
 }
 
@@ -51,10 +51,12 @@ a {
   font-size: 1.7rem;
 }
 
+.bg-credit,
 .bg-green {
   background: yellowgreen;
 }
 
+.bg-debit,
 .bg-red {
   background: orangered;
 }
@@ -62,11 +64,14 @@ a {
 .bg-orange {
   background: orange;
 }
-.green {
+
+.green,
+.credit {
   color: yellowgreen;
 }
 
-.red {
+.red,
+.debit {
   color: orangered;
 }
 

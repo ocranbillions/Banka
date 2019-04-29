@@ -1,13 +1,14 @@
 .profile-section {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  margin: 0px auto;
 }
 
 .account {
   background: #f5f5f5;
   padding: 2rem;
   border: 2px solid var(--primary-color2);
+  margin: 5px;
 }
 
 .account-details a {
@@ -15,11 +16,12 @@
 }
 
 .f-item {
-  width: 290px;
+  width: 26rem;
+  height: 15rem;
 }
 
 @media only screen and (max-width: 900px) {
   .profile-section {
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 }
