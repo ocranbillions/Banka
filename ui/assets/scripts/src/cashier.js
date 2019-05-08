@@ -9,3 +9,4 @@ document.addEventListener('click', (event) => {
     transactionModal.style.visibility = 'hidden';
   }
 });
+
