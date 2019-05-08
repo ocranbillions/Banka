@@ -24,7 +24,7 @@
 					<li><a href="./client.dashboard.html">Dashboard</a></li>
 					<li><a href="./client.history.html">History</a></li>
 					<li><a href="#" class="new-acct">New Account</a></li>
-					<a href="../index.html" class="last-link"><i class="fas fa-sign-out-alt"></i> LogOut</a>
+					<a href="" class="last-link" id="logout"><i class="fas fa-sign-out-alt"></i> LogOut</a>
 				</ul>
 			</div>
 		</div>
@@ -47,16 +47,14 @@
 				<a href="#"><span class="icon"><i class="fas fa-tools"></i> </span>Settings</a>
 				<a href="#"><span class="icon"><i class="fas fa-external-link-square-alt"></i> </span>Quick Links</a>
 				<a href="#"><span class="icon"><i class="far fa-question-circle"></i> </i></span>FAQ</a>
-				<a href="../index.html"><span class="icon"><i class="fas fa-sign-out-alt"></i> </span>Log out</a>
 			</div>
 			<div class="account-list">
 				<div class="select_account align-center margin-bottom-small">
 					<h1 class="heading-1" id="h1-title">History</h1>
-					<select class="btn btn-select">
-						<option value="0162456854">accountNumber</option>
-						<option value="2255412365">accountNumber</option>
+					<select class="btn btn-select" id="numbersContainer">
+
 					</select>
-					<a href="#" class="btn btn-blue">Load</a>
+					<a href="#" class="btn btn-blue" id="loadHistory">Load</a>
 				</div>
 
 				<div class="trans-column padding-top-small" id="tansactions-container">
@@ -116,7 +114,7 @@
 					</div>
 
 					<div class="form__group form-radio" id="type">
-						Savings<input type="radio" name="account-type" value="savings">
+						Savings<input type="radio" name="account-type" value="savings" checked>
 						Current<input type="radio" name="account-type" value="current">
 					</div>
 
@@ -126,8 +124,7 @@
 		</div>
 	</div>
 
-	<script src="../assets/scripts/client.js"></script>
-	<script src="../assets/scripts/client.history.js"></script>
+	<script src="../assets/scripts/dist/client.bundle.js"></script>
 </body>
 
 </html>

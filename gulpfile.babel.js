@@ -3,6 +3,7 @@
 import gulp from 'gulp';
 import watch from 'gulp-watch';
 import concatCss from 'gulp-concat-css';
+import webpack from 'webpack';
 import bS from 'browser-sync';
 
 const browserSync = bS.create();
@@ -24,6 +25,10 @@ function liveEdit(done) {
 
   // Inject css into browser when change occurs to any css file
   watch('./ui/assets/styles/**/*.css', gulp.series(bundleCss, injectCssToBrowser));
+
+  // Reload browser when js files changes
+  watch('./ui/assets/scripts/src/**/*.js', gulp.series(bundleScripts, reloadBrowser));
+
   done();
 }
 
@@ -40,4 +45,15 @@ function injectCssToBrowser() {
 
 function reloadBrowser() {
   browserSync.reload();
+}
+
+function bundleScripts(callback) {
+  webpack(require('./webpack.config.js'), (err, stats) => {
+    if (err) {
+      console.log(err.toString());
+    }
+
+    console.log(stats.toString());
+    callback();
+  });
 }
