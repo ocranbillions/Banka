@@ -51,7 +51,7 @@ const AccountController = {
   */
   async getAccountTransactions(accountNum) {
     try {
-      const searchQuery = 'SELECT * FROM transactions WHERE accountnumber=$1';
+      const searchQuery = 'SELECT * FROM transactions WHERE accountnumber=$1 ORDER BY createdon DESC';
       const result = await db.query(searchQuery, [accountNum]);
       return result;
     } catch (error) {
