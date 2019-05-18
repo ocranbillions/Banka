@@ -52,3 +52,15 @@ input {
 input::placeholder {
   color: white;
 }
+
+.smallInput {
+  display: inline;
+}
+
+.smallInput--searchbox {
+  width: 17rem;
+}
+
+.smallInput--btn {
+  width: 5.2rem;
+}

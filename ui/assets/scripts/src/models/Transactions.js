@@ -23,4 +23,23 @@ export default class Transactions {
       return error;
     }
   }
+
+  async credit(amount) {
+    try {
+      const res = await fetch(`${baseUrl}/transactions/${this.accountNumber}/credit/`, {
+        // const res = await fetch('https://my-banka.herokuapp.com/api/v1/transactions/4194194410/credit/', {
+        method: 'POST',
+        body: JSON.stringify(amount),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+
+      const result = res.text();
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
 }

@@ -16,6 +16,10 @@ export const elements = {
   viewHistoryBtn: document.getElementById('viewHistory'),
 
   logoutBtn: document.getElementById('logout'),
+  cashierAccountsContainer: document.getElementById('cashierAccountsContainer'),
+  transactionModal: document.querySelector('.popup-transaction'),
+  transactionBtn: document.getElementById('transactionBtn'),
+  transactionAmount: document.getElementById('transactionAmount'),
 };
 
 

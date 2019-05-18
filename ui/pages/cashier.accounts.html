@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../assets/styles/main.bundle.css">
-	<title>Banka! - Tellers</title>
+	<title>Banka! - Accounts</title>
 </head>
 
 <body class="wrapper">
@@ -23,7 +23,7 @@
 				<ul class="list">
 					<li><a href="./cashier.transactions.html">Transactions</a></li>
 					<li><a href="./cashier.accounts.html">Accounts</a></li>
-					<a href="../index.html" class="last-link"><span class="icon"><i class="fas fa-sign-out-alt"></i>
+					<a href="" class="last-link" id="logout"><span class="icon"><i class="fas fa-sign-out-alt"></i>
 						</span>LogOut</a>
 				</ul>
 			</div>
@@ -35,8 +35,8 @@
 			<div class="side_nav">
 				<div class="user-info margin-bottom-small">
 					<img src="../assets/images/profilepic.JPG" alt="">
-					<h3 class="heading-3">Olawale James</h3>
-					<span>oj@gmail.com</span>
+					<h3 class="heading-3" id="fullName"></h3>
+					<span id="email"></span>
 				</div>
 				<a href="./cashier.transactions.html"><span class="icon"><i
 							class="fas fa-comments-dollar"></i></span>Transactions</a>
@@ -44,14 +44,30 @@
 				<a href="#"><span class="icon"><i class="fas fa-tools"></i> </span>Settings</a>
 				<a href="#"><span class="icon"><i class="fas fa-external-link-square-alt"></i> </span>Quick Links</a>
 				<a href="#"><span class="icon"><i class="far fa-question-circle"></i> </span>FAQ</a>
-				<a href="../index.html"><span class="icon"><i class="fas fa-sign-out-alt"></i> </span>Log out</a>
 			</div>
 
 			<div class="account-list">
 				<h1 class="heading-1">Accounts</h1>
 				<div class="center-text">
-					<a href="#" class="debit btn-blue btn white transactjs">Debit</a>
-					<a href="#" class="credit btn-blue btn white transactjs">Credit</a>
+
+					<form action="">
+						<input type="number" name="seachAccount" class="smallInput smallInput--searchbox">
+						<input type="submit" value="Search" class="btn btn-blue smallInput smallInput--btn">
+					</form>
+
+					<h3>No account found</h3>
+					<!-- <div class="trans-block box-shadow-1">
+						<div class="trans-details teller-content-container">
+							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
+							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
+							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
+							<p class="teller-item"><span class="trans-type">Savings</span></p>
+							<p class="teller-item"><span class="status">Active</span></p>
+							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
+							<p class="teller-item"><span class="teller_number">click</span></p>
+						</div>
+					</div> -->
+
 				</div>
 
 				<div class="trans-column padding-top-small">
@@ -62,104 +78,38 @@
 							<p class="teller-item"><span class="trans-owner"><strong>Owner</strong></span></p>
 							<p class="teller-item"><span class="trans-type"><strong>Type</strong></span></p>
 							<p class="teller-item"><span class="status"><strong>Status</strong></span></p>
-							<p class="teller-item"><span class="teller_number"><strong>Balance</strong></span></p>
+							<p class="teller-item"><span class=""><strong>Balance</strong></span></p>
+							<p class="teller-item"><span class=""><strong>View</strong></span></p>
 						</div>
 					</div>
 
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
+					<div id="cashierAccountsContainer">
+						<div class="trans-block box-shadow-1">
+							<div class="trans-details teller-content-container">
+								<p class="teller-item"><span class="trans-amount">0162456854</span></p>
+								<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
+								<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
+								<p class="teller-item"><span class="trans-type">Savings</span></p>
+								<p class="teller-item"><span class="status">Active</span></p>
+								<p class="teller-item"><span class="">44,000.00</span></p>
+								<p class="teller-item"><span class="view-account">view</span></p>
+							</div>
+						</div>
+
+						<div class="trans-block box-shadow-1">
+							<div class="trans-details teller-content-container">
+								<p class="teller-item"><span class="trans-amount">0162456854</span></p>
+								<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
+								<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
+								<p class="teller-item"><span class="trans-type">Savings</span></p>
+								<p class="teller-item"><span class="status">Active</span></p>
+								<p class="teller-item"><span class="">44,000.00</span></p>
+								<p class="teller-item"><span class="view-account">view</span></p>
+							</div>
 						</div>
 					</div>
 
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
 
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
-
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
-
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
-					<div class="trans-block box-shadow-1">
-						<div class="trans-details teller-content-container">
-							<p class="teller-item"><span class="trans-amount">0162456854</span></p>
-							<p class="teller-item"><span class="trans-account">24-02-2019</span></p>
-							<p class="teller-item"><span class="trans-owner">Samuel Ocran</span></p>
-							<p class="teller-item"><span class="trans-type">Savings</span></p>
-							<p class="teller-item"><span class="status">Active</span></p>
-							<p class="teller-item"><span class="teller_number">44,000.00</span></p>
-						</div>
-					</div>
 
 					<div class="pagination pagination-flex-container">
 						<div class="btn">
@@ -212,22 +162,7 @@
 		</div>
 	</footer>
 
-	<!-- HIDDEN MODAL -->
-	<section class="popup popup-transaction">
-		<div class="popup_content">
-			<div class="popup_close">X</div>
-
-			<form action="transaction_form">
-				<p class="">Account<input type="number" class=""> </p>
-				<p class="amount">Amount<input type="number" class=""> </p>
-				<div class="action">
-					<p class="credit"><a href="./cashier.transactions.html" class="btn btn-blue margin-top-small">SUBMIT</a></p>
-				</div>
-			</form>
-		</div>
-	</section>
-
-	<script src="../assets/scripts/cashier.js"></script>
+	<script src="../assets/scripts/dist/cashier.bundle.js"></script>
 </body>
 
 </html>

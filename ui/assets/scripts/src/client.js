@@ -83,7 +83,11 @@ window.addEventListener('load', (e) => {
     const accountNumbers = accounts.map(account => account.accountnumber);
 
     // Populate select account option with user's acc numbers
-    historyViews.renderAccountNumbers(accountNumbers);
+    // historyViews.renderAccountNumbers(accountNumbers);
+    accountNumbers.forEach((number) => {
+      const markup = `<option value="${number}" class="selectAccountOption">${number}</option>`;
+      elements.numbersContainer.insertAdjacentHTML('beforeend', markup);
+    });
 
     // If an account history was clicked from the previous page (dashboard)
     if (localStorage.getItem('accountNumber')) {

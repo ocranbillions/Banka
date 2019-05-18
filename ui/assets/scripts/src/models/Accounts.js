@@ -41,4 +41,20 @@ export default class Accounts {
       return error;
     }
   }
+
+  async fetchAllAccounts() {
+    try {
+      const res = await fetch(`${baseUrl}/accounts`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+
+      const result = res.json();
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
 }
