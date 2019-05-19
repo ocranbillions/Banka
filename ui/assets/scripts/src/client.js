@@ -40,7 +40,7 @@ window.addEventListener('load', (e) => {
 
 
   // Load user's accounts if on dashboard page
-  if (location.pathname === '/pages/client.dashboard.html') {
+  if (location.pathname === '/pages/client.dashboard.html' || location.pathname === 'banka/ui/pages/client.dashboard.html') {
     accountsModel.fetchUserAccounts()
       .then((response) => {
         if (response.status === 200) {
@@ -77,13 +77,17 @@ window.addEventListener('load', (e) => {
   }
 
   // History page
-  if (location.pathname === '/pages/client.history.html') {
+  if (location.pathname === '/pages/client.history.html' || location.pathname === 'banka/ui/pages/client.history.html') {
     // Get user's account numbers
     const accounts = JSON.parse(localStorage.getItem('accounts'));
     const accountNumbers = accounts.map(account => account.accountnumber);
 
     // Populate select account option with user's acc numbers
-    historyViews.renderAccountNumbers(accountNumbers);
+    // historyViews.renderAccountNumbers(accountNumbers);
+    accountNumbers.forEach((number) => {
+      const markup = `<option value="${number}" class="selectAccountOption">${number}</option>`;
+      elements.numbersContainer.insertAdjacentHTML('beforeend', markup);
+    });
 
     // If an account history was clicked from the previous page (dashboard)
     if (localStorage.getItem('accountNumber')) {
@@ -116,7 +120,6 @@ window.addEventListener('load', (e) => {
 
     // Select a different account to view transactions
     elements.historyBtn.addEventListener('click', () => {
-
       // Clear previously displayed transactions
       elements.transactionsContainer.innerHTML = '';
 
@@ -154,7 +157,7 @@ window.addEventListener('load', (e) => {
     accountsModel.createAccount(accountInfo)
       .then((response) => {
         if (response.status === 201) {
-          if (location.pathname === '/pages/client.dashboard.html') {
+          if (location.pathname === '/pages/client.dashboard.html' || location.pathname === 'banka/ui/pages/client.dashboard.html') {
             // Render new account
             accountsView.renderNewAccount(response.data);
           } else {

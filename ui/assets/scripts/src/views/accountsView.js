@@ -32,3 +32,23 @@ export const renderNewAccount = (account) => {
 
   elements.accountContainer.insertAdjacentHTML('beforeend', markup);
 };
+
+export const renderAllAccounts = (accounts) => {
+  let accountList = '';
+  accounts.forEach((account) => {
+    accountList += `
+      <div class="trans-block box-shadow-1">
+        <div class="trans-details teller-content-container">
+          <p class="teller-item"><span class="trans-amount">${account.accountnumber}</span></p>
+          <p class="teller-item"><span class="trans-account">${account.createdon.split('T')[0]}</span></p>
+          <p class="teller-item"><span class="trans-owner">${account.owneremail}</span></p>
+          <p class="teller-item"><span class="trans-type">${account.type}</span></p>
+          <p class="teller-item"><span class="status">${account.status}</span></p>
+          <p class="teller-item"><span class="">N${account.balance}</span></p>
+          <p class="teller-item"><span class="view-account ${account.accountnumber}">view</span></p>
+        </div>
+      </div>
+      `;
+  });
+  elements.cashierAccountsContainer.innerHTML = accountList;
+};

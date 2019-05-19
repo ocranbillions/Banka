@@ -23,4 +23,40 @@ export default class Transactions {
       return error;
     }
   }
+
+  async credit(amount) {
+    try {
+      const res = await fetch(`${baseUrl}/transactions/${this.accountNumber}/credit/`, {
+        method: 'POST',
+        body: JSON.stringify(amount),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+
+      const result = res.json();
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async debit(amount) {
+    try {
+      const res = await fetch(`${baseUrl}/transactions/${this.accountNumber}/debit/`, {
+        method: 'POST',
+        body: JSON.stringify(amount),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+
+      const result = res.json();
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
 }

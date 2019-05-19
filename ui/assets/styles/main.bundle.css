@@ -386,6 +386,18 @@ input::placeholder {
   color: white;
 }
 
+.smallInput {
+  display: inline;
+}
+
+.smallInput--searchbox {
+  width: 17rem;
+}
+
+.smallInput--btn {
+  width: 5.2rem;
+}
+
 .main-section-flex {
   display: flex;
 }
@@ -413,6 +425,7 @@ input::placeholder {
   padding-top: 2rem;
   margin-right: 1rem;
   color: white;
+  min-height: 50rem;
 }
 
 .side_nav > * {
