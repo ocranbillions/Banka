@@ -425,6 +425,7 @@ input::placeholder {
   padding-top: 2rem;
   margin-right: 1rem;
   color: white;
+  min-height: 50rem;
 }
 
 .side_nav > * {

@@ -20,9 +20,13 @@ export const elements = {
   transactionModal: document.querySelector('.popup-transaction'),
   transactionBtn: document.getElementById('transactionBtn'),
   transactionAmount: document.getElementById('transactionAmount'),
+  accountDetails: document.getElementById('accountDetails'),
+  transactionBtns: document.getElementById('transactionBtns'),
+  searchAccountBtn: document.getElementById('searchAccountBtn'),
+  searchAccountInput: document.getElementById('searchAccountInput'),
+  found: document.getElementById('found'),
+  
 };
 
 
-export const elementStrings = {
-  loader: 'loader',
-};
+export const elementStrings = {};

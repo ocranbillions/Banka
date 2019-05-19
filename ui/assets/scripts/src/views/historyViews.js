@@ -30,7 +30,7 @@ export const renderAccountHistory = (transactions) => {
 
 export const renderRecentTransactions = (transactions) => {
   let markup = '';
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < transactions.length; i++) {
     markup += `
       <div class="trans-block">
       <div class="type-symbol bg-${transactions[i].type}"><span class="absolute-center">${transactions[i].type}</span></div>
@@ -43,6 +43,7 @@ export const renderRecentTransactions = (transactions) => {
       </div>
     </div>
         `;
+    if (i > 2) break;
   }
   elements.h1Title.innerHTML = 'Recent Transactions';
   elements.transactionsContainer.innerHTML = markup;

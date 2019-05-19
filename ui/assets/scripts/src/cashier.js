@@ -42,7 +42,7 @@ window.addEventListener('load', (e) => {
 
 
   // Accounts page
-  if (location.pathname === '/pages/cashier.accounts.html') {
+  if (location.pathname === '/pages/cashier.accounts.html' || location.pathname === 'banka/ui/pages/cashier.accounts.html') {
     accountsModel.fetchAllAccounts()
       .then((response) => {
         if (response.status === 200) {
@@ -73,14 +73,63 @@ window.addEventListener('load', (e) => {
         });
       }
     });
+
+    elements.searchAccountBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const acc = elements.searchAccountInput.value;
+      if (acc === '') {
+        alert('enter an account number');
+      } else {
+        accountsModel.getAccount(acc)
+          .then((response) => {
+            if (response.status === 200) {
+              const markup = `
+              <div class="trans-block box-shadow-1">
+                <div class="trans-details teller-content-container">
+                  <p class="teller-item"><span class="trans-amount">${response.data.accountnumber}</span></p>
+                  <p class="teller-item"><span class="trans-account">${response.data.createdon.split('T')[0]}</span></p>
+                  <p class="teller-item"><span class="trans-owner">${response.data.owneremail}</span></p>
+                  <p class="teller-item"><span class="trans-type">${response.data.type}</span></p>
+                  <p class="teller-item"><span class="status">${response.data.status}</span></p>
+                  <p class="teller-item"><span class="">${response.data.balance}</span></p>
+                  <p class="teller-item"><span class="view-account ${response.data.accountnumber}">view</span></p>
+                </div>
+              </div>`;
+              elements.cashierAccountsContainer.innerHTML = markup;
+            } else {
+              elements.found.innerHTML = response.errorMessage;
+              elements.cashierAccountsContainer.innerHTML = '';
+            }
+          })
+          .catch((error) => {
+            alert('An unexpected error occured!');
+            console.log(error);
+          });
+      }
+    });
+
+    elements.searchAccountInput.addEventListener('keyup', () => {
+      if (elements.searchAccountInput.value === '') {
+        accountsView.renderAllAccounts(accounts);
+      }
+    });
   }
 
-
   // Transactions page
-  if (location.pathname === '/pages/cashier.transactions.html') {
+  if (location.pathname === '/pages/cashier.transactions.html' || location.pathname === 'banka/ui/pages/cashier.transactions.html') {
     let account = [localStorage.getItem('account')];
     account = JSON.parse(account);
 
+
+    const markup = `
+      <p class=""><span class="trans-amount"><strong class="green">${account.accountnumber} - ${account.type}</strong></span></p>
+      <p>${account.owneremail}</p>
+      <p>${account.status}</span></p>
+      <p>Available Balance: <span id="currentBalance">N${account.balance}</span></p>
+      `;
+    elements.accountDetails.insertAdjacentHTML('afterbegin', markup);
+
+    // Render transactions
     const transaction = new Transactions(account.accountnumber, token);
     transaction.fetchAccountTrasactions()
       .then((response) => {
@@ -91,35 +140,80 @@ window.addEventListener('load', (e) => {
         }
       })
       .catch((error) => {
-        alert('An unexpected error occured!');
+        alert('type errors, An unexpected error occured!');
         console.log(error);
       });
 
 
+    // Initiate a transaction
+    let transactionType;
+    elements.transactionBtns.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      transactionType = ev.target.textContent;
+    });
+      
     elements.transactionBtn.addEventListener('click', (event) => {
       event.preventDefault();
-
-      console.log('transaction submitted', elements.transactionAmount.value);
+      const amount = elements.transactionAmount.value;
       elements.transactionModal.style.visibility = 'hidden';
 
-      const transactionDetails = {
-        amount: elements.transactionAmount.value,
-      };
+      const transactionDetails = { amount };
       const transact = new Transactions(account.accountnumber, token);
-      transact.credit(transactionDetails)
-        .then((response) => {
-          if (response.status === 201) {
-            console.log('prepend new transaction', response.data);
-          } else {
-            console.log('response not 200', response);
-          }
-        })
-        .catch((error) => {
-          alert('An unexpected error occured!');
-          console.log(error);
-        });
-    });
 
+      if (transactionType === 'Credit') {
+        transact.credit(transactionDetails)
+          .then((response) => {
+            if (response.status === 201) {
+              transaction.fetchAccountTrasactions()
+                .then((response) => {
+                  if (response.status === 200) {
+                    historyViews.renderRecentTransactions(response.data);
+                    document.getElementById('currentBalance').textContent = response.data[0].newbalance; 
+                  } else {
+                    elements.h1Title.innerHTML = response.errorMessage;
+                  }
+                })
+                .catch((error) => {
+                  alert('An unexpected error occured!');
+                  console.log(error);
+                });
+            } else {
+              elements.h1Title.innerHTML = response.errorMessage;
+            }
+          })
+          .catch((error) => {
+            alert('An unexpected error occured!');
+            console.log(error);
+          });
+      }
+
+      if (transactionType === 'Debit') {
+        transact.debit(transactionDetails)
+          .then((response) => {
+            if (response.status === 201) {
+              transaction.fetchAccountTrasactions()
+                .then((response) => {
+                  if (response.status === 200) {
+                    historyViews.renderRecentTransactions(response.data);
+                    document.getElementById('currentBalance').textContent = response.data[0].newbalance; 
+                  } else {
+                    elements.h1Title.innerHTML = response.errorMessage;
+                  }
+                })
+                .catch((error) => {
+                  alert('An unexpected error occured!');
+                  console.log(error);
+                });
+            } else {
+              elements.h1Title.innerHTML = response.errorMessage;
+            }
+          })
+          .catch((error) => {
+            alert('An unexpected error occured!');
+            console.log(error);
+          });
+      }
+    });
     document.addEventListener('click', (event) => {
       if (event.target.classList.contains('transactjs')) {
         elements.transactionModal.style.visibility = 'visible';
