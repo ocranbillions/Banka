@@ -42,7 +42,7 @@ window.addEventListener('load', (e) => {
 
 
   // Accounts page
-  if (location.pathname === '/pages/cashier.accounts.html' || location.pathname === 'banka/ui/pages/cashier.accounts.html') {
+  if (location.pathname === '/pages/cashier.accounts.html' || location.pathname === '/banka/ui/pages/cashier.accounts.html') {
     accountsModel.fetchAllAccounts()
       .then((response) => {
         if (response.status === 200) {
@@ -116,7 +116,7 @@ window.addEventListener('load', (e) => {
   }
 
   // Transactions page
-  if (location.pathname === '/pages/cashier.transactions.html' || location.pathname === 'banka/ui/pages/cashier.transactions.html') {
+  if (location.pathname === '/pages/cashier.transactions.html' || location.pathname === '/banka/ui/pages/cashier.transactions.html') {
     let account = [localStorage.getItem('account')];
     account = JSON.parse(account);
 
