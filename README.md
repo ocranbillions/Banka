@@ -55,6 +55,3 @@ Run `npm test` in the root folder.
 
 ### Author
 [**Samuel Ocran**](https://twitter.com/ocranbillions)
-
-### Acknowledgments
-[**Andela Nigeria**](https://andela.com/)
