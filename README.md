@@ -1,6 +1,5 @@
 # Banka
-Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money.
-[https://ocranbillions.github.io/banka/ui/](https://ocranbillions.github.io/banka/ui/)
+Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. 
 
 [![Build Status](https://travis-ci.org/ocranbillions/banka.svg?branch=develop)](https://travis-ci.org/ocranbillions/banka) [![Coverage Status](https://coveralls.io/repos/github/ocranbillions/banka/badge.svg?branch=develop)](https://coveralls.io/github/ocranbillions/banka?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/7ff9e7a0df839ca0e882/maintainability)](https://codeclimate.com/github/ocranbillions/banka/maintainability)
 ## Getting Started
